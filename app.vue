@@ -1,8 +1,5 @@
 <template>
   <div>
-    <LBtn/>
+    Dupa cyce
   </div>
 </template>
-
-<script setup>
-</script>
