@@ -1,6 +1,6 @@
 <template>
   <div>
-    Nuxt module playground!
+    <LBtn/>
   </div>
 </template>
 
