@@ -1,7 +1,7 @@
 import {type Config} from 'tailwindcss';
 
-export default <Config>{
-  extend: {
+export default <Partial<Config>>{
+  theme: {
     fontFamily: {
       sans: ["Nunito Sans"],
     },
