@@ -1,9 +1,12 @@
 {
   "extends": "./.playground/.nuxt/tsconfig.json",
   "compilerOptions": {
+    "baseUrl": ".",
     "paths": {
-      "lumier-types": ["types/utils.d.ts"]
+      "lumier-types": ["types/index.d.ts"]
     }
   },
-  "include": ["types/**/*.d.ts"]
+  "include": [
+    "types/**/*.d.ts"
+  ]
 }

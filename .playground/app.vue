@@ -7,6 +7,7 @@
   <p>Test</p>
   <p class="headline-1">Test1</p>
   <h1>Test2</h1>
+  <LBtn/>
 </div>
 </template>
 
