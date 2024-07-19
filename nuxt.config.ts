@@ -8,6 +8,11 @@ export default defineNuxtConfig({
   modules: [
     '@nuxtjs/tailwindcss',
   ],
+  imports: {
+    dirs: [
+      'types/**'
+    ]
+  },
   tailwindcss: {
     configPath: 'tailwind.config',
   },
