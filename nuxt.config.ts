@@ -19,5 +19,8 @@ export default defineNuxtConfig({
   typescript: {
     strict: true,
     typeCheck: true,
+    tsConfig: {
+      include: ['types/**/*.d.ts']
+    }
   },
 });
