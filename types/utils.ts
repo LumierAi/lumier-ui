@@ -14,7 +14,7 @@ export type OmitUnion<T, U extends  T> = T extends U ? never : T;
  * @template U - A union type.
  * @example. type a = 'a' | 'b' | 'c'; type b = PickUnion<a, 'a'>; // b = 'a'
  */
-export type PickUnion<T, U> = T extends U ? T : never;
+export type PickUnion<T, U extends T> = T extends U ? T : never;
 
 /**
  * Type that makes some properties of a given type optional.
