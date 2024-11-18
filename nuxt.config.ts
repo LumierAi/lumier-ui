@@ -21,7 +21,8 @@ export default defineNuxtConfig({
       subsets: [
         'latin-ext',
         'latin',
-      ]
+      ],
+    },
   },
   tailwindcss: {
     configPath: 'tailwind.config',
