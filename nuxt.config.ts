@@ -14,6 +14,15 @@ export default defineNuxtConfig({
       'types/**'
     ]
   },
+  fonts: {
+    defaults: {
+      weights: [400, 600],
+      styles: ['normal'],
+      subsets: [
+        'latin-ext',
+        'latin',
+      ]
+  },
   tailwindcss: {
     configPath: 'tailwind.config',
   },
