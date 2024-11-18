@@ -6,15 +6,3 @@ body {
     "wdth" 100,
     "YTLC" 500;
 }
-
-h1, h2, h3, h4, h5, h6 {
-  font-family: "Patua One", sans-serif;
-}
-
-.text-body-1, .text-body-2, .text-body-3, .text-body-4, .text-body-5, .text-body-6 {
-  font-family: "Nunito Sans", sans-serif;
-} 
-
-.text-headline-1, .text-headline-2, .text-headline-3, .text-headline-4, .text-headline-5, .text-headline-6 {
-  font-family: "Patua One", sans-serif;
-}
