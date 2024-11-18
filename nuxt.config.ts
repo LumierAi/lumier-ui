@@ -7,6 +7,7 @@ const currentDir = dirname(fileURLToPath(import.meta.url))
 export default defineNuxtConfig({
   modules: [
     '@nuxtjs/tailwindcss',
+    '@nuxt/fonts',
   ],
   imports: {
     dirs: [

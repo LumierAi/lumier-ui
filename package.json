@@ -17,8 +17,9 @@
     "typescript": "5.4.5"
   },
   "dependencies": {
-    "vue-tsc": "1.8.27",
+    "@nuxt/fonts": "^0.10.2",
     "@nuxtjs/tailwindcss": "6.12.1",
-    "tailwindcss": "3.4.6"
+    "tailwindcss": "3.4.6",
+    "vue-tsc": "1.8.27"
   }
 }
