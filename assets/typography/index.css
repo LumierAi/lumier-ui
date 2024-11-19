@@ -1,36 +1,36 @@
 body {
   h1, .headline-1 {
-    font-family: "Patua One", sans-serif;
+    font-family: "Roboto Slab", serif;
     font-size: 3rem;
     font-weight: 600;
     line-height: 1.2;
   }
   h2, .headline-2 {
-    font-family: "Patua One", sans-serif;
+    font-family: "Roboto Slab", serif;
     font-size: 2.5rem;
     font-weight: 600;
     line-height: 1.2;
   }
   h3, .headline-3 {
-    font-family: "Patua One", sans-serif;
+    font-family: "Roboto Slab", serif;
     font-size: 2rem;
     font-weight: 600;
     line-height: 1.2;
   }
   h4, .headline-4 {
-    font-family: "Patua One", sans-serif;
+    font-family: "Roboto Slab", serif;
     font-size: 1.75rem;
     font-weight: 600;
     line-height: 1.2;
   }
   h5, .headline-5 {
-    font-family: "Patua One", sans-serif;
+    font-family: "Roboto Slab", serif;
     font-size: 1.5rem;
     font-weight: 600;
     line-height: 1.2;
   }
   h6, .headline-6 {
-    font-family: "Patua One", sans-serif;
+    font-family: "Roboto Slab", serif;
     font-size: 1.25rem;
     font-weight: 600;
     line-height: 1.2;
