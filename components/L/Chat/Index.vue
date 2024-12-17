@@ -52,7 +52,10 @@
   import { useChat } from '@ai-sdk/vue'
 import { ref } from 'vue';
 import { useCookie, useAsyncData } from 'nuxt/app';
-  import {ChatConfig} from "../../../types/ChatConfig";
+export interface ChatConfig {
+  webSearch: boolean
+}
+
    const teamId = useCookie('teamId');
   const config = ref<ChatConfig>({
     webSearch: false,
