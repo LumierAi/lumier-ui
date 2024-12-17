@@ -1,6 +1,7 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 import { fileURLToPath } from 'url'
 import { dirname, join } from 'path'
+import { JasnePreset } from './constants/PrimeTheme';
 
 const currentDir = dirname(fileURLToPath(import.meta.url))
 
@@ -8,7 +9,13 @@ export default defineNuxtConfig({
   modules: [
     '@nuxtjs/tailwindcss',
     '@nuxt/fonts',
+    '@primevue/nuxt-module', 
+    '@nuxt/icon', 
   ],
+  ssr: false,
+  future: {
+    compatibilityVersion: 4,
+  },
   imports: {
     dirs: [
       'types/**'
@@ -38,5 +45,20 @@ export default defineNuxtConfig({
     tsConfig: {
       include: ['types/**/*.d.ts']
     }
+  },
+  primevue: {
+    options: {
+      theme: {
+        preset: JasnePreset,
+        options: {
+          darkModeSelector: '.dark-mode',
+        },
+      },
+    },
+  },
+
+  icon: {
+    provider: 'server',
+    collections: ['tabler'],
   },
 });

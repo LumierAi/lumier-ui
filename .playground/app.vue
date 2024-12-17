@@ -8,6 +8,7 @@
   <p class="headline-1">Test1 --- żżżżźźźźź</p>
   <h1>Test2</h1>
   <LBtn/>
+  <LChat/>
 </div>
 </template>
 

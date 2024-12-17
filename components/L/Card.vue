@@ -14,7 +14,7 @@
     </div>
 
     <!-- Slot actions -->
-    <template v-if="slots.actions">
+    <template v-if="slots.actions"> 
       <LDivider/>
       <div class="actions">
         <slot name="actions"/>
