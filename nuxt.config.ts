@@ -1,14 +1,46 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
-import { dirname, join } from 'path';
-import { fileURLToPath } from 'url';
-
-const currentDir = dirname(fileURLToPath(import.meta.url));
+import { join } from 'node:path'
 
 export default defineNuxtConfig({
-  modules: ['@nuxtjs/tailwindcss', '@nuxt/fonts'],
+  modules: ['@nuxtjs/tailwindcss', '@nuxt/fonts', '@nuxt/eslint'],
+
+  ssr: false,
+
   imports: {
-    dirs: ['types/**'],
+    dirs: ['composables', 'utils', 'types/**'],
   },
+
+  devtools: { enabled: true },
+
+  css: [
+    join(__dirname, './assets/fonts/font-face.css'),
+    join(__dirname, './assets/typography/index.css'),
+  ],
+
+  runtimeConfig: {
+    public: {
+      // eslint-disable-next-line node/prefer-global/process
+      baseApiUrl: process.env.BASE_API_URL || '',
+    },
+  },
+
+  compatibilityDate: '2024-12-22',
+
+  typescript: {
+    typeCheck: true,
+    tsConfig: {
+      include: ['types/**/*.d.ts'],
+    },
+    includeWorkspace: true,
+  },
+
+  eslint: {
+    config: {
+      standalone: false,
+      stylistic: true,
+    },
+  },
+
   fonts: {
     defaults: {
       weights: [400, 600],
@@ -16,20 +48,8 @@ export default defineNuxtConfig({
       subsets: ['latin-ext', 'latin'],
     },
   },
+
   tailwindcss: {
-    configPath: 'tailwind.config'
+    configPath: 'tailwind.config',
   },
-  devtools: { enabled: true },
-  css: [
-    join(currentDir, './assets/fonts/font-face.css'),
-    join(currentDir, './assets/typography/index.css'),
-  ],
-  typescript: {
-    strict: true,
-    typeCheck: true,
-    tsConfig: {
-      include: ['types/**/*.d.ts'],
-    },
-  },
-}); 
-  
+})

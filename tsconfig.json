@@ -1,12 +1,15 @@
 {
-  "extends": "./.playground/.nuxt/tsconfig.json",
+  "extends": "./.nuxt/tsconfig.json",
   "compilerOptions": {
+    "target": "esnext",
+    "module": "esnext",
+    "types": ["./types/index.d.ts", "./.nuxt/nuxt.d.ts"],
+    "verbatimModuleSyntax": true,
+    "skipLibCheck": true,
     "baseUrl": ".",
     "paths": {
       "lumier-types": ["types/index.d.ts"]
     }
-  },
-  "include": [
-    "types/**/*.d.ts"
-  ]
+  }
 }
+

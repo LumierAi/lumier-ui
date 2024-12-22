@@ -5,7 +5,7 @@
  * @template U - A union type.
  * @returns {T | never} - Returns T if it is not a part of the union U, otherwise it returns never.
  */
-export type OmitUnion<T, U extends  T> = T extends U ? never : T;
+export type OmitUnion<T, U extends T> = T extends U ? never : T
 
 /**
  * Type that picks a type from a union.
@@ -14,7 +14,7 @@ export type OmitUnion<T, U extends  T> = T extends U ? never : T;
  * @template U - A union type.
  * @example. type a = 'a' | 'b' | 'c'; type b = PickUnion<a, 'a'>; // b = 'a'
  */
-export type PickUnion<T, U extends T> = T extends U ? T : never;
+export type PickUnion<T, U extends T> = T extends U ? T : never
 
 /**
  * Type that makes some properties of a given type optional.
@@ -38,7 +38,7 @@ export type OptionalProperties<T, TKey extends keyof T> = Omit<T, TKey> & Partia
  *
  * @typedef KeyedItem
  *
- * @type {Object}
+ * @type {object}
  *
  * @property {[P in Key]: any} - A computed property that represents the key.
  * @property {[Q in Label]: any} - A computed property that represents the label.
@@ -60,9 +60,8 @@ export type KeyedItem<Key extends string, Label extends string> = {
 } & {
   [Q in Label]: any;
 } & {
-  [key: string]: any;
-};
-
+  [key: string]: any
+}
 
 /**
  * Type that checks if a value is not an array of strings.
@@ -78,9 +77,9 @@ export type NotStringArray<T> = T extends string[] ? never : T
  * @template T - A type.
  * @returns {T | never} - Returns T if it is not undefined, otherwise it returns never.
  */
-export type NotUndefined<T> = T extends undefined ? never : T;
+export type NotUndefined<T> = T extends undefined ? never : T
 
-export type NotNull<T> = T extends null ? never : T;
+export type NotNull<T> = T extends null ? never : T
 
 /**
  * Type that omits properties of a given object type that are undefined.
@@ -89,7 +88,7 @@ export type NotNull<T> = T extends null ? never : T;
  *
  * @typedef OmitUndefined
  *
- * @type {Object}
+ * @type {object}
  *
  * @property {[K in keyof T]: T[K] extends undefined ? never : T[K]} - An object type where each property is either the original type or never if the original type was undefined.
  *
@@ -109,12 +108,11 @@ export type OmitUndefined<T extends object> = {
   [K in keyof T]: T[K] extends undefined ? never : T[K];
 }
 
-
 /**
  * OptionalUndefined - Converts properties that are possibly undefined to optional.
  *
  * @template T - The type to be transformed.
- * @typedef {Object} OptionalUndefined
+ * @typedef {object} OptionalUndefined
  * @property {Partial<Pick<T, {[K in keyof T as undefined extends T[K] ? K : never]: T[K] }[keyof T]>>} [Properties that are optional]
  * @property {Pick<T, {[K in keyof T as undefined extends T[K] ? never : K]: T[K] }[keyof T]>} [Properties that are not optional]
  *
@@ -138,14 +136,13 @@ export type OptionalUndefined<T> = {
   [K in keyof T as undefined extends T[K] ? K : never]?: T[K];
 } & {
   [K in keyof T as undefined extends T[K] ? never : K]: T[K];
-};
-
+}
 
 /**
  * NullableDeep - Makes all properties of a type and its subtypes nullable.
  *
  * @template T - The type to be transformed.
- * @typedef {Object} NullableDeep
+ * @typedef {object} NullableDeep
  * @property {T[K] | null} Properties - Properties that can be null.
  * @property {NullableDeep<T[K]> | null} [Nested properties] - Nested properties that can be null.
  *
