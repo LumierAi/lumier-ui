@@ -6,6 +6,6 @@ type Rule = {
 
 export default function useValidationRules() {
   return {
-    rules: [] as Rule[]
-  }
+    rules: [] as Rule[],
+  };
 }

@@ -1,9 +1,9 @@
-import {type Config} from 'tailwindcss';
+import { type Config } from 'tailwindcss';
 
 export default <Partial<Config>>{
   theme: {
     fontFamily: {
-      sans: ["Nunito Sans", "Roboto Slab"],
+      sans: ['Nunito Sans', 'Roboto Slab'],
     },
   },
 };

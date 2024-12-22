@@ -1,31 +1,23 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
-import { fileURLToPath } from 'url'
-import { dirname, join } from 'path'
+import { dirname, join } from 'path';
+import { fileURLToPath } from 'url';
 
-const currentDir = dirname(fileURLToPath(import.meta.url))
+const currentDir = dirname(fileURLToPath(import.meta.url));
 
 export default defineNuxtConfig({
-  modules: [
-    '@nuxtjs/tailwindcss',
-    '@nuxt/fonts',
-  ],
+  modules: ['@nuxtjs/tailwindcss', '@nuxt/fonts'],
   imports: {
-    dirs: [
-      'types/**'
-    ]
+    dirs: ['types/**'],
   },
   fonts: {
     defaults: {
       weights: [400, 600],
       styles: ['normal'],
-      subsets: [
-        'latin-ext',
-        'latin',
-      ],
+      subsets: ['latin-ext', 'latin'],
     },
   },
   tailwindcss: {
-    configPath: 'tailwind.config',
+    configPath: 'tailwind.config'
   },
   devtools: { enabled: true },
   css: [
@@ -36,7 +28,8 @@ export default defineNuxtConfig({
     strict: true,
     typeCheck: true,
     tsConfig: {
-      include: ['types/**/*.d.ts']
-    }
+      include: ['types/**/*.d.ts'],
+    },
   },
-});
+}); 
+  
