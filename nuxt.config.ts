@@ -4,8 +4,6 @@ import { join } from 'node:path'
 export default defineNuxtConfig({
   modules: ['@nuxtjs/tailwindcss', '@nuxt/fonts', '@nuxt/eslint'],
 
-  ssr: false,
-
   imports: {
     dirs: ['composables', 'utils', 'types/**'],
   },
