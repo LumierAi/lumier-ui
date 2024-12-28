@@ -1,8 +1,9 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 import { join } from 'node:path'
+import { JasnePreset } from './app/constants/PrimeTheme'
 
 export default defineNuxtConfig({
-  modules: ['@nuxtjs/tailwindcss', '@nuxt/fonts', '@nuxt/eslint'],
+  modules: ['@nuxtjs/tailwindcss', '@nuxt/fonts', '@nuxt/eslint', '@primevue/nuxt-module'],
 
   imports: {
     dirs: ['composables', 'utils', 'types/**'],
@@ -48,6 +49,17 @@ export default defineNuxtConfig({
       weights: [400, 600],
       styles: ['normal'],
       subsets: ['latin-ext', 'latin'],
+    },
+  },
+
+  primevue: {
+    options: {
+      theme: {
+        preset: JasnePreset,
+        options: {
+          prefix: 'p',
+        },
+      },
     },
   },
 
