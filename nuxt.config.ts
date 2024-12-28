@@ -11,8 +11,8 @@ export default defineNuxtConfig({
   devtools: { enabled: true },
 
   css: [
-    join(__dirname, './assets/fonts/font-face.css'),
-    join(__dirname, './assets/typography/index.css'),
+    join(__dirname, './app/assets/fonts/font-face.css'),
+    join(__dirname, './app/assets/typography/index.css'),
   ],
 
   runtimeConfig: {
@@ -20,6 +20,10 @@ export default defineNuxtConfig({
       // eslint-disable-next-line node/prefer-global/process
       baseApiUrl: process.env.BASE_API_URL || '',
     },
+  },
+
+  future: {
+    compatibilityVersion: 4,
   },
 
   compatibilityDate: '2024-12-22',
