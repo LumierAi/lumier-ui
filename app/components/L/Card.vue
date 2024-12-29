@@ -28,7 +28,7 @@ const slots = defineSlots<{
     <template v-if="slots.actions">
       <LDivider />
       <div class="actions">
-        <slot name="actions" /> 
+        <slot name="actions" />
       </div>
     </template>
   </div>

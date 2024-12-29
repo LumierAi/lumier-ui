@@ -1,8 +1,16 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 import { join } from 'node:path'
+import { JasnePreset } from './app/constants/PrimeTheme'
 
 export default defineNuxtConfig({
-  modules: ['@nuxtjs/tailwindcss', '@nuxt/fonts', '@nuxt/eslint'],
+  modules: [
+    '@nuxtjs/tailwindcss',
+    '@nuxt/fonts',
+    '@nuxt/eslint',
+    '@primevue/nuxt-module',
+    '@nuxt/icon',
+    'nuxt-typed-router',
+  ],
 
   imports: {
     dirs: ['composables', 'utils', 'types/**'],
@@ -15,18 +23,20 @@ export default defineNuxtConfig({
     join(__dirname, './app/assets/typography/index.css'),
   ],
 
-  runtimeConfig: {
-    public: {
-      // eslint-disable-next-line node/prefer-global/process
-      baseApiUrl: process.env.BASE_API_URL || '',
-    },
-  },
-
   future: {
     compatibilityVersion: 4,
   },
 
   compatibilityDate: '2024-12-22',
+  vite: {
+    css: {
+      preprocessorOptions: {
+        sass: {
+          api: 'modern-compiler', // or "modern"
+        },
+      },
+    },
+  },
 
   typescript: {
     typeCheck: true,
@@ -48,6 +58,47 @@ export default defineNuxtConfig({
       weights: [400, 600],
       styles: ['normal'],
       subsets: ['latin-ext', 'latin'],
+    },
+  },
+
+  primevue: {
+    autoImport: false,
+    components: {
+      include: [
+        'Textarea',
+        'Button',
+        'Card',
+        'Chip',
+        'Skeleton',
+        'Toast',
+        'Image',
+        'ToggleSwitch',
+        'InputText',
+        'Divider',
+        'Menu',
+        'ProgressBar',
+        'Step',
+        'StepList',
+        'StepPanel',
+        'StepPanels',
+        'Select',
+        'Checkbox',
+        'ProgressSpinner',
+        'AccordionHeader',
+        'AccordionContent',
+        'AccordionPanel',
+        'Accordion',
+        'Slider',
+        'Dialog',
+      ],
+    },
+    options: {
+      theme: {
+        preset: JasnePreset,
+        options: {
+          darkModeSelector: '.dark-mode',
+        },
+      },
     },
   },
 

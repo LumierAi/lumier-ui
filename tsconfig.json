@@ -6,10 +6,6 @@
     "types": ["./types/index.d.ts", "./.nuxt/nuxt.d.ts"],
     "verbatimModuleSyntax": true,
     "skipLibCheck": true,
-    "baseUrl": ".",
-    "paths": {
-      "lumier-types": ["types/index.d.ts"]
-    }
   }
 }
 
