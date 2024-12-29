@@ -28,6 +28,15 @@ export default defineNuxtConfig({
   },
 
   compatibilityDate: '2024-12-22',
+  vite: {
+    css: {
+      preprocessorOptions: {
+        sass: {
+          api: 'modern-compiler', // or "modern"
+        },
+      },
+    },
+  },
 
   typescript: {
     typeCheck: true,
