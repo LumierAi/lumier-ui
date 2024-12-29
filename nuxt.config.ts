@@ -1,13 +1,11 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 import { join } from 'node:path'
-import { JasnePreset } from './app/constants/PrimeTheme'
 
 export default defineNuxtConfig({
   modules: [
     '@nuxtjs/tailwindcss',
     '@nuxt/fonts',
     '@nuxt/eslint',
-    '@primevue/nuxt-module',
     '@nuxt/icon',
     'nuxt-typed-router',
   ],
@@ -58,20 +56,6 @@ export default defineNuxtConfig({
       weights: [400, 600],
       styles: ['normal'],
       subsets: ['latin-ext', 'latin'],
-    },
-  },
-
-  primevue: {
-    components: {
-      include: ['Textarea', 'Button', 'Card', 'ToggleSwitch', 'Image', 'Chip', 'Skeleton'],
-    },
-    options: {
-      theme: {
-        preset: JasnePreset,
-        options: {
-          darkModeSelector: '.dark-mode',
-        },
-      },
     },
   },
 
