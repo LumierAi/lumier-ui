@@ -1,9 +1,12 @@
 <script setup lang="ts">
-
+const a = () => console.log('a')
 </script>
 
 <template>
-  <h2>PLAYGROUND</h2>
+  <div>
+    <h2>PLAYGROUND</h2>
+    <YBtn primary :click="a" label="Zaloguj" block />
+  </div>
 </template>
 
 <style scoped lang="scss">
