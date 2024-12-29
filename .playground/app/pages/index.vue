@@ -6,6 +6,7 @@ const a = () => console.log('a')
   <div>
     <h2>PLAYGROUND</h2>
     <YBtn primary :click="a" label="Zaloguj" block />
+    <Icon name="tabler:home" />
   </div>
 </template>
 

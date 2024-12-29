@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import type { BaseFieldProps } from '~~/types/props/BaseField'
+import type { BaseFieldProps } from '../../../types/props/BaseField'
 
 const props = defineProps<BaseFieldProps>()
 const id = `field-${Math.floor(Math.random() * (9999 - 1000 + 1)) + 1000}`

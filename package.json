@@ -4,7 +4,7 @@
   "version": "0.0.1",
   "main": "./nuxt.config.ts",
   "scripts": {
-    "dev": "nuxi dev",
+    "dev": "nuxi dev --cwd ./.playground",
     "build": "nuxt build",
     "generate": "nuxt generate",
     "preview": "nuxt preview",
@@ -25,9 +25,7 @@
   "devDependencies": {
     "@ai-sdk/vue": "^1.0.7",
     "@antfu/eslint-config": "^3.12.0",
-    "@iconify-json/tabler": "^1.2.13",
     "@nuxt/eslint": "0.7.4",
-    "@nuxt/icon": "^1.10.3",
     "@types/node": "22.9.3",
     "ai": "^4.0.22",
     "eslint": "^9.17.0",

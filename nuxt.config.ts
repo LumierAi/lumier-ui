@@ -8,7 +8,6 @@ export default defineNuxtConfig({
     '@nuxt/fonts',
     '@nuxt/eslint',
     '@primevue/nuxt-module',
-    '@nuxt/icon',
     'nuxt-typed-router',
   ],
 
@@ -60,7 +59,6 @@ export default defineNuxtConfig({
       subsets: ['latin-ext', 'latin'],
     },
   },
-
   primevue: {
     autoImport: false,
     components: {
