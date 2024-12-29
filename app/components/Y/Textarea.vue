@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import type { BaseFieldProps } from '../../../types/props/BaseField'
+import type { BaseFieldProps } from '~~/types/props/BaseField'
 
 const props = defineProps<BaseFieldProps & {
   rows?: number
