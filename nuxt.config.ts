@@ -57,7 +57,7 @@ export default defineNuxtConfig({
       theme: {
         preset: JasnePreset,
         options: {
-          prefix: 'p',
+          darkModeSelector: '.dark-mode',
         },
       },
     },
