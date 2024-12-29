@@ -10,7 +10,6 @@ export default defineNuxtConfig({
     '@primevue/nuxt-module',
     'nuxt-typed-router',
   ],
-
   imports: {
     dirs: ['composables', 'utils', 'types/**'],
   },
@@ -21,6 +20,8 @@ export default defineNuxtConfig({
     join(__dirname, './app/assets/fonts/font-face.css'),
     join(__dirname, './app/assets/typography/index.css'),
   ],
+
+  ignore: ['./.playground'],
 
   future: {
     compatibilityVersion: 4,
