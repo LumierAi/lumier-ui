@@ -96,6 +96,9 @@ export default defineNuxtConfig({
         'RadioButton',
         'DataTable',
         'Column',
+        'ConfirmDialog',
+        'Paginator',
+        'Drawer',
       ],
     },
     options: {
