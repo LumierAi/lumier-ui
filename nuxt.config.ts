@@ -62,6 +62,9 @@ export default defineNuxtConfig({
   },
 
   primevue: {
+    components: {
+      include: ['Textarea', 'Button', 'Card', 'ToggleSwitch', 'Image', 'Chip', 'Skeleton'],
+    },
     options: {
       theme: {
         preset: JasnePreset,
