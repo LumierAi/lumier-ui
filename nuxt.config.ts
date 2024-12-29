@@ -90,6 +90,12 @@ export default defineNuxtConfig({
         'Accordion',
         'Slider',
         'Dialog',
+        'InputNumber',
+        'MultiSelect',
+        'Dropdown',
+        'RadioButton',
+        'DataTable',
+        'Column',
       ],
     },
     options: {
