@@ -13,21 +13,26 @@
     "postinstall": "nuxt prepare"
   },
   "dependencies": {
-    "snarkdown": "2.0.0",
     "@nuxt/fonts": "^0.10.2",
     "@nuxtjs/tailwindcss": "6.12.2",
     "@primevue/themes": "^4.2.5",
     "primevue": "^4.2.5",
+    "snarkdown": "2.0.0",
     "tailwindcss": "3.4.17",
     "vue-tsc": "^2.1.10"
   },
   "devDependencies": {
+    "ai": "^4.0.22",
+    "@ai-sdk/vue": "^1.0.7",
     "@antfu/eslint-config": "^3.12.0",
+    "@iconify-json/tabler": "^1.2.13",
     "@nuxt/eslint": "0.7.4",
+    "@nuxt/icon": "^1.10.3",
     "@primevue/nuxt-module": "^4.2.5",
     "@types/node": "22.9.3",
     "eslint": "^9.17.0",
     "nuxt": "3.13.2",
-    "typescript": "^5.7.2"
+    "typescript": "^5.7.2",
+    "nuxt-typed-router": "3.7.2"
   }
 }

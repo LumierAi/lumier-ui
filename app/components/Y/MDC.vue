@@ -6,6 +6,7 @@ const props = defineProps<{
 const parsedContent = ref<string>(useMarkdown(props.content))
 
 watch(() => props.content, (newContent) => {
+  // TODO: remove this console.log
   console.log('props.content', props.content)
   parsedContent.value = useMarkdown(newContent)
 })

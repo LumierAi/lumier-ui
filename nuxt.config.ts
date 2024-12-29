@@ -3,7 +3,7 @@ import { join } from 'node:path'
 import { JasnePreset } from './app/constants/PrimeTheme'
 
 export default defineNuxtConfig({
-  modules: ['@nuxtjs/tailwindcss', '@nuxt/fonts', '@nuxt/eslint', '@primevue/nuxt-module'],
+  modules: ['@nuxtjs/tailwindcss', '@nuxt/fonts', '@nuxt/eslint', '@primevue/nuxt-module', '@nuxt/icon', 'nuxt-typed-router'],
 
   imports: {
     dirs: ['composables', 'utils', 'types/**'],
