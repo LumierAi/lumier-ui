@@ -64,7 +64,7 @@ export default defineNuxtConfig({
   primevue: {
     autoImport: false,
     components: {
-      include: ['InputText', 'Button', 'Card'],
+      include: ['Textarea', 'Button', 'Card', 'Chip', 'Skeleton', 'Toast', 'Image', 'ToggleSwitch'],
     },
     options: {
       theme: {
