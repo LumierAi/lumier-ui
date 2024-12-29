@@ -66,43 +66,45 @@ async function onClick(e: Event) {
 </script>
 
 <template>
-  <Button
-    :as="to ? 'router-link' : undefined"
-    :to="to"
-    :loading="computedLoading"
-    :icon="icon"
-    :size="size || 'large'"
-    :label="label"
-    :variant="text ? 'text' : undefined"
-    :rounded="rounded || fullIcon"
-    :severity="computedColor"
-    :disabled="computedLoading || computedDisable"
+  <LCard>
+    <Button
+      :as="to ? 'router-link' : undefined"
+      :to="to"
+      :loading="computedLoading"
+      :icon="icon"
+      :size="size || 'large'"
+      :label="label"
+      :variant="text ? 'text' : undefined"
+      :rounded="rounded || fullIcon"
+      :severity="computedColor"
+      :disabled="computedLoading || computedDisable"
 
-    :pt="{
-      root: {
-        class: [
-          { '!p-0': fullIcon },
-          `!bg-${computedColor}`,
-          props.class,
-        ],
-      },
-      icon: {
-        class: 'min-w-4',
-      },
-      label: {
-        class: !text ? 'text-white' : undefined,
-      },
-    }"
-    :class="[{
-      'glow-effect': props.glow,
-      'w-full': block,
-    }]"
-    @click="onClick"
-  >
-    <template v-if="icon" #icon>
-      <Icon :name="icon" />
-    </template>
-  </Button>
+      :pt="{
+        root: {
+          class: [
+            { '!p-0': fullIcon },
+            `!bg-${computedColor}`,
+            props.class,
+          ],
+        },
+        icon: {
+          class: 'min-w-4',
+        },
+        label: {
+          class: !text ? 'text-white' : undefined,
+        },
+      }"
+      :class="[{
+        'glow-effect': props.glow,
+        'w-full': block,
+      }]"
+      @click="onClick"
+    >
+      <template v-if="icon" #icon>
+        <Icon :name="icon" />
+      </template>
+    </Button>
+  </LCard>
 </template>
 
 <style scoped lang="scss">

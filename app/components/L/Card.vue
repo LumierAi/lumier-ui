@@ -4,6 +4,7 @@ import type { VNode } from 'vue'
 const slots = defineSlots<{
   actions?: (props: unknown) => VNode
   content: (props: unknown) => VNode
+  default: (props: unknown) => VNode
   title?: (props: unknown) => VNode
 }>()
 </script>
@@ -20,7 +21,9 @@ const slots = defineSlots<{
 
     <!-- Slot content -->
     <div class="content">
+      dupa
       <slot name="content" />
+      <slot name="default" />
     </div>
 
     <!-- Slot actions -->
@@ -28,7 +31,7 @@ const slots = defineSlots<{
     <template v-if="slots.actions">
       <LDivider />
       <div class="actions">
-        <slot name="actions" /> 
+        <slot name="actions" />
       </div>
     </template>
   </div>

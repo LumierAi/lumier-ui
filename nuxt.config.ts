@@ -62,6 +62,10 @@ export default defineNuxtConfig({
   },
 
   primevue: {
+    autoImport: false,
+    components: {
+      include: ['InputText', 'Button', 'Card'],
+    },
     options: {
       theme: {
         preset: JasnePreset,
