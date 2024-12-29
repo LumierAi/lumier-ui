@@ -3,7 +3,14 @@ import { join } from 'node:path'
 import { JasnePreset } from './app/constants/PrimeTheme'
 
 export default defineNuxtConfig({
-  modules: ['@nuxtjs/tailwindcss', '@nuxt/fonts', '@nuxt/eslint', '@primevue/nuxt-module', '@nuxt/icon', 'nuxt-typed-router'],
+  modules: [
+    '@nuxtjs/tailwindcss',
+    '@nuxt/fonts',
+    '@nuxt/eslint',
+    '@primevue/nuxt-module',
+    '@nuxt/icon',
+    'nuxt-typed-router',
+  ],
 
   imports: {
     dirs: ['composables', 'utils', 'types/**'],
@@ -15,13 +22,6 @@ export default defineNuxtConfig({
     join(__dirname, './app/assets/fonts/font-face.css'),
     join(__dirname, './app/assets/typography/index.css'),
   ],
-
-  runtimeConfig: {
-    public: {
-      // eslint-disable-next-line node/prefer-global/process
-      baseApiUrl: process.env.BASE_API_URL || '',
-    },
-  },
 
   future: {
     compatibilityVersion: 4,
