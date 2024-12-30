@@ -21,8 +21,6 @@ export default defineNuxtConfig({
     join(__dirname, './app/assets/typography/index.css'),
   ],
 
-  ignore: ['./.playground'],
-
   future: {
     compatibilityVersion: 4,
   },
