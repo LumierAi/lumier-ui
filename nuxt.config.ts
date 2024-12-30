@@ -101,6 +101,7 @@ export default defineNuxtConfig({
         'ConfirmDialog',
         'Paginator',
         'Drawer',
+        'Message',
       ],
     },
     options: {
