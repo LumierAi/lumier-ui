@@ -70,14 +70,12 @@ async function onClick(e: Event) {
     :as="to ? 'router-link' : undefined"
     :to="to"
     :loading="computedLoading"
-    :icon="icon"
     :size="size || 'large'"
     :label="label"
     :variant="text ? 'text' : undefined"
     :rounded="rounded || fullIcon"
     :severity="computedColor"
     :disabled="computedLoading || computedDisable"
-
     :pt="{
       root: {
         class: [
@@ -98,7 +96,11 @@ async function onClick(e: Event) {
       'w-full': block,
     }]"
     @click="onClick"
-  />
+  >
+    <template #icon>
+      <Icon v-if="icon" :name="icon" />
+    </template>
+  </Button>
 </template>
 
 <style scoped lang="scss">

@@ -9,6 +9,7 @@ export default defineNuxtConfig({
     '@nuxt/eslint',
     '@primevue/nuxt-module',
     'nuxt-typed-router',
+    '@nuxt/icon',
   ],
   imports: {
     dirs: ['composables', 'utils', 'types/**'],
@@ -57,6 +58,10 @@ export default defineNuxtConfig({
       styles: ['normal'],
       subsets: ['latin-ext', 'latin'],
     },
+  },
+  icon: {
+    provider: 'server',
+    collections: ['tabler'],
   },
   primevue: {
     autoImport: false,
