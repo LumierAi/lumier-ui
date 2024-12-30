@@ -81,6 +81,7 @@ export default defineNuxtConfig({
         'ProgressBar',
         'Step',
         'StepList',
+        'Panel',
         'StepPanel',
         'StepPanels',
         'Select',
