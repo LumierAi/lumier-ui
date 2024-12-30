@@ -22,7 +22,7 @@ interface QuizResult {
   isModuleFinished: boolean
   explanation: string
   answer: string
-  newPoint: boolean
+  newBulb: boolean
 }
 
 const props = defineProps<{
@@ -147,7 +147,7 @@ function getPrefix(answer: string, isCorrect: boolean): string {
     </div>
 
     <!-- New Point Indicator -->
-    <div v-if="result.newPoint" class="mt-4 text-center text-sm text-success">
+    <div v-if="result.newBulb" class="mt-4 text-center text-sm text-success">
       <i class="pi pi-star-fill mr-2" />
       New point earned!
     </div>
