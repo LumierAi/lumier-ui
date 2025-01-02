@@ -4,7 +4,7 @@
   "version": "0.0.1",
   "main": "./nuxt.config.ts",
   "scripts": {
-    "dev": "nuxi dev --cwd ./.playground",
+    "dev": "nuxi dev",
     "build": "nuxt build",
     "generate": "nuxt generate",
     "preview": "nuxt preview",
