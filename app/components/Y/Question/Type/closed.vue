@@ -16,7 +16,7 @@ const modelValue = ref(props.question)
 
 <template>
   <div>
-    <label :for="question.id" class="leading-8 text-xl font-bold mb-6">{{ label }}</label>
-    <YRadio :id="question.id" v-model="modelValue.userAnswer" :items size="large" :letter-label="true" />
+    <label :for="question.id" class="leading-8 text-xl font-bold">{{ label }}</label>
+    <YRadio :id="question.id" v-model="modelValue.userAnswer" class="mt-6" :items size="large" :letter-label="true" />
   </div>
 </template>
