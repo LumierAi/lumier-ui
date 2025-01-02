@@ -1,4 +1,4 @@
-import type { KeyedItem } from '~~/types'
+import type { KeyedItem } from '../'
 
 export interface YDictionaryElement<T = string> {
   label: string

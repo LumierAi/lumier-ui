@@ -1,5 +1,5 @@
-import type { CustomDictionary, YDictionary } from '~~/types/Dictionary'
-import type { BaseFieldProps } from '~~/types/props/BaseField'
+import type { CustomDictionary, YDictionary } from '../Dictionary'
+import type { BaseFieldProps } from '../props/BaseField'
 
 export type SelectProps<TValue extends string, TTitle extends string> = BaseFieldProps & {
   multiple?: boolean

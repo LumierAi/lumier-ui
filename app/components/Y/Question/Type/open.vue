@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type { CourseQuestion } from '~~/types/Question'
+import type { CourseQuestion } from '../../../../../types/Question'
 
 const props = defineProps<{
   question: CourseQuestion

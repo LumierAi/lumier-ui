@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import type { YDictionary } from '~~/types/Dictionary'
-import type { CourseQuestion } from '~~/types/Question'
+import type { YDictionary } from '../../../../../types/Dictionary'
+import type { CourseQuestion } from '../../../../../types/Question'
 
 const props = defineProps<{
   question: CourseQuestion

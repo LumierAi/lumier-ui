@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import type { ConcreteComponent } from 'vue'
-import type { CourseQuestion, QuestionType } from '~~/types/Question'
+import type { CourseQuestion, QuestionType } from '../../../../types/Question'
 
 defineProps<{
   question: CourseQuestion
@@ -12,7 +12,7 @@ const components: Record<QuestionType, () => ConcreteComponent> = {
 }
 
 function getQuestionComponent(type: QuestionType) {
-  return components[type]()
+  return components[type]!()
 }
 </script>
 
