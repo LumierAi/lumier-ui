@@ -11,12 +11,11 @@ const items = computed<YDictionary>(() => props.question.body.options.map((optio
   value: option,
 })))
 const label = computed<string>(() => props.question.body.question)
-const modelValue = ref(props.question)
 </script>
 
 <template>
   <div>
     <label :for="question.id" class="leading-8 text-xl font-bold">{{ label }}</label>
-    <YRadio :id="question.id" v-model="modelValue.userAnswer" class="mt-6" :items size="large" :letter-label="true" />
+    <YRadio :id="question.id" v-model="question.userAnswer" class="mt-6" :items size="large" :letter-label="true" />
   </div>
 </template>
