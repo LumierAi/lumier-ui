@@ -1,18 +1,5 @@
 <script setup lang="ts">
-interface CurrentQuestion {
-  id: string
-  createdAt: Date
-  type: QuestionType
-  userAnswer: string | null
-  body: unknown
-  moduleId: string
-  schemaId: string
-  userId: string
-  position: number
-  lessonId: string
-  difficulty: CourseQuestionDifficulty | null
-  message?: string
-}
+import type { CurrentQuestion } from '~~/types/Question'
 
 type CourseQuestionDifficulty = 'easy' | 'medium' | 'hard' | 'very_hard'
 type QuestionType = 'closed_question' | 'open_question'
@@ -130,7 +117,7 @@ function getPrefix(answer: string, isCorrect: boolean): string {
         v-model:chat-started="chatMode"
         :module-id="currentQuestion.moduleId"
         :correct-answer="result.answer"
-        :question="(currentQuestion.body as any).question"
+        :question="currentQuestion"
         :user-answer="currentQuestion.userAnswer!"
         :explanation="result.explanation"
       />

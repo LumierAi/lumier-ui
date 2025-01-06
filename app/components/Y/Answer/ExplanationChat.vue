@@ -1,18 +1,20 @@
 <script setup lang="ts">
 import type { CoreMessage } from 'ai'
 import { useChat } from '@ai-sdk/vue'
+import type { CurrentQuestion } from '~~/types/Question'
 
 interface ExplanationChatBody {
   question: string
   userAnswer: string
   correctAnswer: string
+  options?: string[]
   explanation: string
   moduleId: string
   messages: CoreMessage[]
 }
 
 const props = defineProps<{
-  question: string
+  question: CurrentQuestion
   userAnswer: string
   correctAnswer: string
   explanation: string
@@ -31,7 +33,7 @@ const { messages, handleSubmit, input } = useChat({
     id: '1',
     role: 'system',
     content: `You are a helpful assistant that explains answers to questions.
-     Explain following question: ${props.question}
+     Explain following question: ${props.question.body.question}
      Correct answer: ${props.correctAnswer}
      User answer: ${props.userAnswer}
      Explanation: ${props.explanation}
@@ -40,11 +42,12 @@ const { messages, handleSubmit, input } = useChat({
      `,
   }],
   body: {
-    question: props.question,
+    question: props.question.body.question,
     userAnswer: props.userAnswer,
     correctAnswer: props.correctAnswer,
     explanation: props.explanation,
     moduleId: props.moduleId,
+    options: props.question.body.options,
   } satisfies Omit<ExplanationChatBody, 'messages'>,
 })
 
