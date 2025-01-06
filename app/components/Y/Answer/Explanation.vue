@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type { CurrentQuestion } from '~~/types/Question'
+import type { CourseQuestion } from '~~/types/Question'
 
 type CourseQuestionDifficulty = 'easy' | 'medium' | 'hard' | 'very_hard'
 type QuestionType = 'closed_question' | 'open_question'
@@ -14,7 +14,7 @@ interface QuizResult {
 
 const props = defineProps<{
   result: QuizResult
-  currentQuestion: CurrentQuestion
+  currentQuestion: CourseQuestion
 }>()
 
 defineEmits<{

@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import type { CoreMessage } from 'ai'
 import { useChat } from '@ai-sdk/vue'
-import type { CurrentQuestion } from '~~/types/Question'
+import type { CourseQuestion } from '~~/types/Question'
 
 interface ExplanationChatBody {
   question: string
@@ -14,7 +14,7 @@ interface ExplanationChatBody {
 }
 
 const props = defineProps<{
-  question: CurrentQuestion
+  question: CourseQuestion
   userAnswer: string
   correctAnswer: string
   explanation: string

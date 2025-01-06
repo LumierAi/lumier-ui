@@ -1,7 +1,7 @@
 export type QuestionType = 'closed_question' | 'open_question'
 export type QuestionDifficulty = 'easy' | 'medium' | 'hard' | 'very_hard'
 
-export interface CurrentQuestion {
+export interface CourseQuestion {
   id: string
   createdAt: Date
   type: QuestionType
