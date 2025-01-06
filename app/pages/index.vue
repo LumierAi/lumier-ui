@@ -27,6 +27,9 @@ const question: CourseQuestion = {
     <YBtn primary :click="a" label="Zaloguj" block />
     <Icon name="tabler:home" />
     <YQuestion :question />
+    <div class="w-1/2">
+      <YQuestionProgress :progress="50" />
+    </div>
   </div>
 </template>
 
