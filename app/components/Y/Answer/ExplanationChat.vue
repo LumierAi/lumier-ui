@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import type { CoreMessage } from 'ai'
 import { useChat } from '@ai-sdk/vue'
-import type { CourseQuestion } from '~~/types/Question'
+import type { CourseQuestion } from '../../../../types/Question'
 
 interface ExplanationChatBody {
   question: string
