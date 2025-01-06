@@ -56,7 +56,7 @@ onMounted(() => {
             }),
           }"
         />
-        <label :for="item.value" class="ml-2 mb-0 cursor-pointer text-sm absolute top-0 left-0 pl-12 flex items-center h-full w-full">{{ item.label }}</label>
+        <label :for="item.value" class="ml-2 mb-0 cursor-pointer text-sm absolute top-0 left-0 pl-12 pr-4 flex items-center h-full w-full">{{ item.label }}</label>
       </div>
     </div>
   </YField>
