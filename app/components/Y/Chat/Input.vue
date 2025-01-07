@@ -2,8 +2,13 @@
 defineProps<{
   handleSubmit: () => void
 }>()
+interface Config {
+  tavily_web_search: boolean
+  knowledge_blocks_search: boolean
+  jasne_initial_information: boolean
+}
+const config = defineModel<Config>('config', { required: true })
 
-const webSearchEnabled = defineModel<boolean>('webSearch')
 const inputModel = defineModel<string>()
 </script>
 
@@ -20,7 +25,10 @@ const inputModel = defineModel<string>()
       />
       <div class="absolute bottom-0 w-full border-t border-gray-200">
         <div class="pt-1.5 pb-3.5 px-2 space-x-2">
-          <ToggleSwitch v-model="webSearchEnabled" class="mr-2">
+          <ToggleSwitch
+            v-model="config.tavily_web_search"
+            v-tooltip.bottom="'Wyszukiwanie w internecie'"
+          >
             <template #handle="{ checked }">
               <Icon
                 :name="checked ? 'tabler:world' : 'tabler:world-off'"
@@ -28,6 +36,14 @@ const inputModel = defineModel<string>()
               />
             </template>
           </ToggleSwitch>
+          <ToggleSwitch
+            v-model="config.knowledge_blocks_search"
+            v-tooltip.bottom="'Wyszukiwanie w bazie wiedzy'"
+          />
+          <ToggleSwitch
+            v-model="config.jasne_initial_information"
+            v-tooltip.bottom="'Wprowadzenie do Jasne'"
+          />
         </div>
       </div>
     </div>
