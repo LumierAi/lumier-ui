@@ -1,4 +1,5 @@
 <script lang="ts" setup generic="TValue extends string, TTitle extends string">
+import type { RadioButtonPassThroughMethodOptions } from 'primevue/radiobutton'
 import type { SelectProps } from '~~/types/props/Select'
 import type { SelectModel } from '~/composables/useSelect'
 
@@ -51,7 +52,7 @@ onMounted(() => {
           :value="item.value"
           :disabled="disabled"
           :pt="{
-            box: ({ context }) => ({
+            box: ({ context }: RadioButtonPassThroughMethodOptions) => ({
               class: context.checked ? 'bg-primary' : '',
             }),
           }"
