@@ -4,8 +4,16 @@ import type { CourseQuestion } from '~~/types/Question'
 const a = () => console.log('a')
 const question: CourseQuestion = {
   id: 'asd',
+  createdAt: new Date(),
   type: 'closed_question',
   userAnswer: null,
+  moduleId: '',
+  schemaId: 'fbc3d12a-9b27-416e-8e95-8a60fac170b4',
+  userId: 'asd',
+  position: 1,
+  lessonId: 'asd',
+  difficulty: 'hard',
+  message: 'asd',
   body: {
     question: 'Jakie specyficzne cechy oświetlenia wyróżniają BYD Seal U DM-i na tle innych modeli?',
     options: [
@@ -28,7 +36,7 @@ const question: CourseQuestion = {
     <Icon name="tabler:home" />
     <YQuestion :question />
     <div class="w-1/2">
-      <YQuestionProgress :progress="50" />
+      <YQuestionProgress :steps="5" />
     </div>
   </div>
 </template>

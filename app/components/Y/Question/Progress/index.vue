@@ -1,25 +1,18 @@
 <script setup lang="ts">
 const props = defineProps<{
-  steps: number // liczba kroków
-  progress: number // wartość od 0 do 100
+  steps: number
 }>()
-
-const markersPositions: number[] = [50, 75, 100]
 
 const markers = computed(() => {
   const markersDictionary: { position: number, width: string }[] = []
-  Array.from({ length: props.steps - 1 }).forEach((_, index) => {
+  Array.from({ length: props.steps }).forEach((_, index) => {
     markersDictionary.push({ position: (index + 1) * 100 / props.steps, width: '' })
   })
+
   return markersDictionary.reduce((result, current, index, array) => {
     const offset = 40
-    if (index === 0) {
-      result.push({ position: current.position, width: `calc(${current.position}% - ${offset}px)` })
-    }
-    else {
-      const position = current.position - array[index - 1]!.position
-      result.push({ position, width: `calc(${position}% - ${offset}px)` })
-    }
+    const position = index === 0 ? current.position : current.position - array[index - 1]!.position
+    result.push({ position, width: `calc(${position}% - ${offset}px)` })
     return result
   }, [] as { position: number, width: string }[])
 })
