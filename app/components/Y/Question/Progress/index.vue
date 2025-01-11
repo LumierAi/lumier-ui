@@ -1,12 +1,12 @@
 <script setup lang="ts">
-import type { Lesson } from '~~/types/Lesson'
+import type { BulbThreshold, Lesson } from '../../../../../types/Lesson'
 
 const props = defineProps<{
   lesson: Lesson
 }>()
 
 const lessonQuestionsCount = props.lesson._count.CourseQuestion
-const shouldDrawBulb = (i: number) => props.lesson.bulbThresholds.map(t => t.questionsNeeded - 1).includes(i)
+const shouldDrawBulb = (i: number) => props.lesson.bulbThresholds.map((t: BulbThreshold) => t.questionsNeeded - 1).includes(i)
 
 const bulbStates = ref(Array.from({ length: lessonQuestionsCount }).fill(false)
   .map((_, index) => index < props.lesson.correctAnswers))

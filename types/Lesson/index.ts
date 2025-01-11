@@ -1,6 +1,6 @@
 export type LessonStatus = 'not_started' | 'in_progress' | 'completed'
 
-interface BulbThreshold {
+export interface BulbThreshold {
   bulbNumber: number
   questionsNeeded: number
 }
