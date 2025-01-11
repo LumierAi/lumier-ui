@@ -62,6 +62,12 @@ export default defineNuxtConfig({
   icon: {
     provider: 'server',
     collections: ['tabler'],
+    customCollections: [
+      {
+        prefix: 'jasne',
+        dir: './app/assets/jasne-icons',
+      },
+    ],
   },
   primevue: {
     autoImport: false,

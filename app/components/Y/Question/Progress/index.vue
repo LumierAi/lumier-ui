@@ -1,28 +1,47 @@
 <script setup lang="ts">
+import type { Lesson } from '~~/types/Lesson'
+
 const props = defineProps<{
-  steps: number
+  lesson: Lesson
 }>()
 
-const markers = computed(() => {
-  const markersDictionary: { position: number, width: string }[] = []
-  Array.from({ length: props.steps }).forEach((_, index) => {
-    markersDictionary.push({ position: (index + 1) * 100 / props.steps, width: '' })
-  })
+const lessonQuestionsCount = props.lesson._count.CourseQuestion
+const shouldDrawBulb = (i: number) => props.lesson.bulbThresholds.map(t => t.questionsNeeded - 1).includes(i)
 
-  return markersDictionary.reduce((result, current, index, array) => {
-    const offset = 40
-    const position = index === 0 ? current.position : current.position - array[index - 1]!.position
-    result.push({ position, width: `calc(${position}% - ${offset}px)` })
-    return result
-  }, [] as { position: number, width: string }[])
+const bulbStates = ref(Array.from({ length: lessonQuestionsCount }).fill(false)
+  .map((_, index) => index < props.lesson.correctAnswers))
+
+const markers = computed(() => {
+  const segmentWidth = 100 / lessonQuestionsCount
+  return Array.from({ length: lessonQuestionsCount }).map((_, index) => ({
+    position: segmentWidth,
+    isDone: index < props.lesson.correctAnswers,
+    width: `calc(${segmentWidth}% - ${shouldDrawBulb(index) ? 32 : 0}px)`,
+  }))
 })
+
+function onLineTransitionEnd(index: number) {
+  bulbStates.value[index] = index < props.lesson.correctAnswers
+}
 </script>
 
 <template>
   <div class="progress-container relative w-full flex items-center">
-    <template v-for="(marker) in markers" :key="marker.position">
-      <div class="progress-line w-full bg-black rounded-3xl relative" :style="{ width: marker.width }" />
-      <Icon name="tabler:bulb" class="w-8 h-8" />
+    <template v-for="(marker, i) in markers" :key="i">
+      <div class="progress-line w-full rounded-3xl relative overflow-hidden" :style="{ width: marker.width }">
+        <div class="absolute inset-0 bg-black" />
+        <div
+          class="absolute inset-0 bg-primary transition-transform duration-500 origin-left"
+          :class="[marker.isDone ? 'scale-x-100' : 'scale-x-0', shouldDrawBulb(i) ? 'ease-in' : 'ease-in-out']"
+          @transitionend="onLineTransitionEnd(i)"
+        />
+      </div>
+      <Icon
+        v-if="shouldDrawBulb(i)"
+        name="tabler:bulb"
+        class="w-8 h-8 transition-colors duration-500 ease-in-out"
+        :class="{ 'text-primary': bulbStates[i], 'text-black': !bulbStates[i] }"
+      />
     </template>
   </div>
 </template>

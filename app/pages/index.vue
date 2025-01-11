@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import type { Lesson } from '~~/types/Lesson'
 import type { CourseQuestion } from '~~/types/Question'
 
 const a = () => console.log('a')
@@ -27,6 +28,31 @@ const question: CourseQuestion = {
     schemaId: 'fbc3d12a-9b27-416e-8e95-8a60fac170b4',
   },
 }
+const lesson: Ref<Lesson> = ref({
+  id: '416fdc3a-313a-40e3-a95e-118d12ead25b',
+  bulbs: 0,
+  status: 'not_started',
+  position: 1,
+  maxBulbs: 2,
+  correctAnswers: 7,
+  _count: {
+    CourseQuestion: 8,
+  },
+  bulbThresholds: [
+    {
+      bulbNumber: 1,
+      questionsNeeded: 6,
+    },
+    {
+      bulbNumber: 2,
+      questionsNeeded: 8,
+    },
+  ],
+},
+)
+function updateCorrectAnswers() {
+  lesson.value.correctAnswers = ++lesson.value.correctAnswers
+}
 </script>
 
 <template>
@@ -36,8 +62,11 @@ const question: CourseQuestion = {
     <Icon name="tabler:home" />
     <YQuestion :question />
     <div class="w-1/2">
-      <YQuestionProgress :steps="5" />
+      <YQuestionProgress :lesson />
     </div>
+    <button @click="updateCorrectAnswers">
+      asd
+    </button>
   </div>
 </template>
 
