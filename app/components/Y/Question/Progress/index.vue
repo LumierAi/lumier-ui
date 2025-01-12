@@ -12,11 +12,13 @@ const bulbStates = ref(Array.from({ length: lessonQuestionsCount }).fill(false)
   .map((_, index) => index < props.lesson.correctAnswers))
 
 const markers = computed(() => {
+  const numberOfBulbs = props.lesson.bulbThresholds.length
+  const width = `calc((100% - ${numberOfBulbs * 40}px)/${lessonQuestionsCount})`
   const segmentWidth = 100 / lessonQuestionsCount
   return Array.from({ length: lessonQuestionsCount }).map((_, index) => ({
     position: segmentWidth,
     isDone: index < props.lesson.correctAnswers,
-    width: `calc(${segmentWidth}% - ${shouldDrawBulb(index) ? 32 : 0}px)`,
+    width,
   }))
 })
 
@@ -36,12 +38,13 @@ function onLineTransitionEnd(index: number) {
           @transitionend="onLineTransitionEnd(i)"
         />
       </div>
-      <Icon
-        v-if="shouldDrawBulb(i)"
-        name="tabler:bulb"
-        class="w-8 h-8 transition-colors duration-500 ease-in-out"
-        :class="{ 'text-primary': bulbStates[i], 'text-black': !bulbStates[i] }"
-      />
+      <div v-if="shouldDrawBulb(i)" class="flex items-center" :class="[i === markers.length - 1 ? 'w-10 justify-end' : 'w-12 justify-center']">
+        <Icon
+          name="tabler:bulb"
+          class="w-8 h-8 transition-colors duration-500 ease-in-out"
+          :class="{ 'text-primary': bulbStates[i], 'text-black': !bulbStates[i] }"
+        />
+      </div>
     </template>
   </div>
 </template>
