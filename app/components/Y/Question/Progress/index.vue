@@ -31,7 +31,7 @@ function onLineTransitionEnd(index: number) {
   <div class="progress-container relative w-full flex items-center">
     <template v-for="(marker, i) in markers" :key="i">
       <div class="progress-line w-full rounded-3xl relative overflow-hidden" :style="{ width: marker.width }">
-        <div class="absolute inset-0 bg-black" />
+        <div class="absolute inset-0 bg-surface300" />
         <div
           class="absolute inset-0 bg-primary transition-transform duration-500 origin-left"
           :class="[marker.isDone ? 'scale-x-100' : 'scale-x-0', shouldDrawBulb(i) ? 'ease-in' : 'ease-in-out']"
@@ -42,7 +42,7 @@ function onLineTransitionEnd(index: number) {
         <Icon
           name="tabler:bulb"
           class="w-8 h-8 transition-colors duration-500 ease-in-out"
-          :class="{ 'text-primary': bulbStates[i], 'text-black': !bulbStates[i] }"
+          :class="{ 'text-primary': bulbStates[i], 'text-surface300': !bulbStates[i] }"
         />
       </div>
     </template>

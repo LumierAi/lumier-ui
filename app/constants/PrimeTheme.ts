@@ -311,17 +311,17 @@ export const JasnePreset = definePreset(Aura, {
     iconSize: '1rem',
     anchorGutter: '2px',
     primary: {
-      50: '#fffbf6',
-      100: '#feebd2',
-      200: '#fedaaf',
-      300: '#fdca8c',
-      400: '#fdba68',
-      500: '#fcaa45',
-      600: '#d6913b',
-      700: '#b07730',
-      800: '#8b5e26',
-      900: '#65441c',
-      950: '#3f2b11',
+      50: '#fffef4',
+      100: '#fffbdd',
+      200: '#fff6aa',
+      300: '#fff095',
+      400: '#ffe77c',
+      500: '#ffd66e',
+      600: '#ffb63c',
+      700: '#fd8c10',
+      800: '#d86b0c',
+      900: '#b3580e',
+      950: '#672d00',
     },
     formField: {
       paddingX: '0.75rem',
@@ -407,18 +407,17 @@ export const JasnePreset = definePreset(Aura, {
     colorScheme: {
       light: {
         surface: {
-          0: '#ffffff',
-          50: '#f8f8f6',
-          100: '#dfdcd5',
-          200: '#c6c0b5',
-          300: '#ada494',
-          400: '#938973',
-          500: '#7a6d52',
-          600: '#685d46',
-          700: '#554c39',
-          800: '#433c2d',
-          900: '#312c21',
-          950: '#1f1b15',
+          50: '#f9f8f6',
+          100: '#eeece6',
+          200: '#dcd7cc',
+          300: '#c6bcab',
+          400: '#af9e88',
+          500: '#9e8871',
+          600: '#917965',
+          700: '#796355',
+          800: '#645248',
+          900: '#52443c',
+          950: '#2b231f',
         },
         primary: {
           color: '{primary.500}',
@@ -458,7 +457,7 @@ export const JasnePreset = definePreset(Aura, {
           shadow: '0 0 #0000, 0 0 #0000, 0 1px 2px 0 rgba(18, 18, 23, 0.05)',
         },
         text: {
-          color: '{surface.900}',
+          color: '{surface.950}',
           hoverColor: '{surface.800}',
           mutedColor: '{surface.800}',
           hoverMutedColor: '{surface.700}',
@@ -676,5 +675,25 @@ export const JasnePreset = definePreset(Aura, {
         height: '28px',
       },
     },
+    button: {
+      colorScheme: {
+        light: {
+          root: {
+            primary: {
+              background: '{primary.500}',
+              color: '{surface.950}',
+              hoverColor: '{surface.950}',
+              activeColor: '{surface.950}',
+              activeBackground: '{primary.300}',
+              activeBorderColor: '{primary.300}',
+            },
+          },
+        },
+      },
+
+    },
+  },
+  extend: {
+    secondary: '#312319',
   },
 })

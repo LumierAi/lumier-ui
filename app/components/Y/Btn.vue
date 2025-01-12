@@ -80,15 +80,11 @@ async function onClick(e: Event) {
       root: {
         class: [
           { '!p-0': fullIcon },
-          `!bg-${computedColor}`,
           props.class,
         ],
       },
       icon: {
         class: 'min-w-4',
-      },
-      label: {
-        class: !text ? 'text-white' : undefined,
       },
     }"
     :class="[{
@@ -106,12 +102,5 @@ async function onClick(e: Event) {
 <style scoped lang="scss">
 .glow-effect {
   box-shadow: 0 0 12px 8px rgba(255, 153, 0, 0.27);
-}
-
-:deep(.p-button-label) {
-  &:has(+ .bg-error),
-  &:has(+ .bg-success) {
-    color: white;
-  }
 }
 </style>
