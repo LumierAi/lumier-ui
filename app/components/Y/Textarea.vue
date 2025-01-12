@@ -7,6 +7,7 @@ const props = defineProps<BaseFieldProps & {
   rounded?: boolean
   placeholder?: string
   submitOnEnter?: boolean
+  glow?: boolean
 }>()
 const emits = defineEmits<{
   (e: 'focus'): void
@@ -35,6 +36,7 @@ function handleEnter(e: KeyboardEvent) {
     <Textarea
       v-model="model"
       class="w-full"
+      :class="{ 'input-glow': glow }"
       :size="size"
       :placeholder="placeholder"
       :auto-resize="true"
@@ -56,4 +58,10 @@ function handleEnter(e: KeyboardEvent) {
 </template>
 
 <style scoped lang="scss">
+.input-glow {
+  box-shadow: 0 0 12px 8px rgba(255, 153, 0, 0.27);
+  :deep(.p-inputtextarea:focus) {
+    border-color: var(--primary-color);
+  }
+}
 </style>
