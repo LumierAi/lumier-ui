@@ -36,7 +36,7 @@ function handleEnter(e: KeyboardEvent) {
     <Textarea
       v-model="model"
       class="w-full"
-      :class="{ 'input-glow': glow }"
+      :class="({ 'input-glow': glow } as any)"
       :size="size"
       :placeholder="placeholder"
       :auto-resize="true"
