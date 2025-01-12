@@ -457,7 +457,7 @@ export const JasnePreset = definePreset(Aura, {
           shadow: '0 0 #0000, 0 0 #0000, 0 1px 2px 0 rgba(18, 18, 23, 0.05)',
         },
         text: {
-          color: '{surface.900}',
+          color: '{surface.950}',
           hoverColor: '{surface.800}',
           mutedColor: '{surface.800}',
           hoverMutedColor: '{surface.700}',
