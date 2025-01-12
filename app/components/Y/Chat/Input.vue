@@ -6,7 +6,7 @@ interface Config {
   tavily_web_search: boolean
   knowledge_blocks_search: boolean
   jasne_initial_information: boolean
-  
+  issues_search: boolean
 }
 const config = defineModel<Config>('config', { required: true })
 
