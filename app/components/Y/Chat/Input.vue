@@ -6,6 +6,7 @@ interface Config {
   tavily_web_search: boolean
   knowledge_blocks_search: boolean
   jasne_initial_information: boolean
+  
 }
 const config = defineModel<Config>('config', { required: true })
 
@@ -43,6 +44,10 @@ const inputModel = defineModel<string>()
           <ToggleSwitch
             v-model="config.jasne_initial_information"
             v-tooltip.bottom="'Wprowadzenie do Jasne'"
+          />
+          <ToggleSwitch
+            v-model="config.issues_search"
+            v-tooltip.bottom="'Wyszukiwanie w zagadnieniach'"
           />
         </div>
       </div>
