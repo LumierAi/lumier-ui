@@ -58,7 +58,7 @@ function updateCorrectAnswers() {
 <template>
   <div>
     <h2>PLAYGROUND</h2>
-    <YBtn text contrast :click="a" label="Zaloguj" block />
+    <YBtn text :click="a" label="Zaloguj" block />
     <Icon name="tabler:home" />
     <YQuestion :question />
     <div class="w-1/2">
