@@ -46,11 +46,12 @@ function handleEnter(e: KeyboardEvent) {
       :pt="{
         root: {
           style: {
+            
             'border-radius': rounded ? '9999px' : undefined,
           },
         },
       }"
-      :disabled="disabled"
+      :disabled="loading || disabled"
       :rows="rows ?? 4"
       @focus="emits('focus')"
       @blur="emits('blur')"
