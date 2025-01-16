@@ -7,6 +7,7 @@ const props = defineProps<BaseFieldProps & {
   rounded?: boolean
   placeholder?: string
   submitOnEnter?: boolean
+  loading?: boolean
   glow?: boolean
 }>()
 const emits = defineEmits<{
@@ -38,6 +39,7 @@ function handleEnter(e: KeyboardEvent) {
       class="w-full"
       :class="({ 'input-glow': glow } as any)"
       :size="size"
+      :loading="loading"
       :placeholder="placeholder"
       :auto-resize="true"
       :rules="rules"
