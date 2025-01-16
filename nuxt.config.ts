@@ -20,6 +20,7 @@ export default defineNuxtConfig({
   css: [
     join(__dirname, './app/assets/fonts/font-face.css'),
     join(__dirname, './app/assets/typography/index.css'),
+    join(__dirname, './app/assets/core/index.css'),
   ],
 
   future: {
