@@ -12,6 +12,7 @@ const props = defineProps<{
   to?: RouteLocationRaw
   primary?: boolean
   secondary?: boolean
+  contrast?: boolean
   disabled?: boolean
   error?: boolean
   loading?: boolean
@@ -44,9 +45,11 @@ const computedColor = computed(() => {
     ? 'primary'
     : props.secondary
       ? 'secondary'
-      : props.error
-        ? 'error'
-        : props.color
+      : props.contrast
+        ? 'contrast'
+        : props.error
+          ? 'error'
+          : props.color
 })
 
 async function onClick(e: Event) {
