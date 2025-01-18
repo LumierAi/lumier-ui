@@ -5,66 +5,44 @@ const props = defineProps<{
   lesson: Lesson
 }>()
 
-const { bulbThresholds, correctAnswers, _count: { CourseQuestion: questionsCount } } = props.lesson
+const lessonQuestionsCount = props.lesson._count.CourseQuestion
+const shouldDrawBulb = (i: number) => props.lesson.bulbThresholds.map((t: BulbThreshold) => t.questionsNeeded - 1).includes(i)
 
-const bulbPositions = bulbThresholds.map((t: BulbThreshold) => t.questionsNeeded - 1)
-const shouldDrawBulb = (i: number) => bulbPositions.includes(i)
-
-const bulbStates = ref(Array.from({ length: questionsCount }).fill(false)
-  .map((_, i) => i < correctAnswers))
+const bulbStates = ref(Array.from({ length: lessonQuestionsCount }).fill(false)
+  .map((_, index) => index < props.lesson.correctAnswers))
 
 const markers = computed(() => {
-  const bulbsCount = bulbThresholds.length
-  const lineWidth = `calc((100% - ${bulbsCount * 40}px)/${questionsCount})`
-
-  return Array.from({ length: questionsCount }).fill(null).map((_, i) => ({
-    width: lineWidth,
-    isDone: i < correctAnswers,
-    isFirstSegment: i === 0,
-    isLastSegment: i === questionsCount - 1,
-    hasLeftBulb: shouldDrawBulb(i - 1),
-    hasRightBulb: shouldDrawBulb(i),
+  const numberOfBulbs = props.lesson.bulbThresholds.length
+  const width = `calc((100% - ${numberOfBulbs * 40}px)/${lessonQuestionsCount})`
+  const segmentWidth = 100 / lessonQuestionsCount
+  return Array.from({ length: lessonQuestionsCount }).map((_, index) => ({
+    position: segmentWidth,
+    isDone: index < props.lesson.correctAnswers,
+    width,
   }))
 })
 
 function onLineTransitionEnd(index: number) {
-  bulbStates.value[index] = index < correctAnswers
+  bulbStates.value[index] = index < props.lesson.correctAnswers
 }
 </script>
 
 <template>
   <div class="progress-container relative w-full flex items-center">
     <template v-for="(marker, i) in markers" :key="i">
-      <!-- Progress Line -->
-      <div
-        class="progress-line w-full relative overflow-hidden"
-        :class="[
-          { 'rounded-l-3xl': marker.isFirstSegment || marker.hasLeftBulb },
-          { 'rounded-r-3xl': marker.isLastSegment || marker.hasRightBulb },
-        ]"
-        :style="{ width: marker.width }"
-      >
+      <div class="progress-line w-full rounded-3xl relative overflow-hidden" :style="{ width: marker.width }">
         <div class="absolute inset-0 bg-surface300" />
         <div
           class="absolute inset-0 bg-primary transition-transform duration-500 origin-left"
-          :class="[
-            marker.isDone ? 'scale-x-100' : 'scale-x-0',
-            marker.hasRightBulb ? 'ease-in' : 'ease-in-out',
-          ]"
+          :class="[marker.isDone ? 'scale-x-100' : 'scale-x-0', shouldDrawBulb(i) ? 'ease-in' : 'ease-in-out']"
           @transitionend="onLineTransitionEnd(i)"
         />
       </div>
-
-      <!-- Bulb Icon -->
-      <div
-        v-if="marker.hasRightBulb"
-        class="flex items-center"
-        :class="marker.isLastSegment ? 'w-10 justify-end' : 'w-12 justify-center'"
-      >
+      <div v-if="shouldDrawBulb(i)" class="flex items-center" :class="[i === markers.length - 1 ? 'w-10 justify-end' : 'w-12 justify-center']">
         <Icon
           name="tabler:bulb"
           class="w-8 h-8 transition-colors duration-500 ease-in-out"
-          :class="bulbStates[i] ? 'text-primary' : 'text-surface300'"
+          :class="{ 'text-primary': bulbStates[i], 'text-surface300': !bulbStates[i] }"
         />
       </div>
     </template>
