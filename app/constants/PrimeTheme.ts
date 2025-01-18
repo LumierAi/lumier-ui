@@ -441,7 +441,7 @@ export const JasnePreset = definePreset(Aura, {
           filledBackground: '{surface.50}',
           filledHoverBackground: '{surface.50}',
           filledFocusBackground: '{surface.50}',
-          borderColor: '{surface.950}',
+          borderColor: '{background.4}',
           hoverBorderColor: '{surface.300}',
           focusBorderColor: '{primary.color}',
           invalidBorderColor: '{red.400}',
@@ -695,5 +695,8 @@ export const JasnePreset = definePreset(Aura, {
   },
   extend: {
     secondary: '#312319',
+    background: {
+      4: '#D1CCBE',
+    },
   },
 })
