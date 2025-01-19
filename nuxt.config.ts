@@ -104,6 +104,7 @@ export default defineNuxtConfig({
         'MultiSelect',
         'Dropdown',
         'RadioButton',
+        'AccordionTab',
         'DataTable',
         'Column',
         'ConfirmDialog',
