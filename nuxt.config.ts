@@ -110,6 +110,7 @@ export default defineNuxtConfig({
         'Paginator',
         'Drawer',
         'Message',
+        'MenuItem',
       ],
     },
     options: {
