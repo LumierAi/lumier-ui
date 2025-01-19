@@ -55,6 +55,13 @@ function updateCorrectAnswers() {
 }
 
 const search = ref(false)
+const prompt = ref('')
+const chatConfig = ref({
+  tavily_web_search: false,
+  knowledge_blocks_search: false,
+  jasne_initial_information: false,
+  issues_search: false,
+})
 </script>
 
 <template>
@@ -69,11 +76,12 @@ const search = ref(false)
     <button @click="updateCorrectAnswers">
       asd
     </button>
-    <YTextarea>
+    <YTextarea v-model="prompt">
       <template #actions>
         <YBtn text icon="tabler:world-search" rounded size="small" :label="search ? 'Search' : undefined" :color="search ? 'primary' : 'contrast'" icon-pos="left" @click="search = !search" />
       </template>
     </YTextarea>
+    <YChatInput v-model="prompt" v-model:config="chatConfig" :handle-submit="() => {}" />
   </div>
 </template>
 
