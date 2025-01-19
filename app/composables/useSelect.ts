@@ -1,4 +1,4 @@
-import type { YDictionaryElement } from '~~/types/Dictionary'
+import type { YDictionaryElement } from '../../types/Dictionary'
 
 type Model = object | string | boolean | number
 export type SelectModel = Model | Model[] | null

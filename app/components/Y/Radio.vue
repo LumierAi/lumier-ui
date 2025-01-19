@@ -1,7 +1,7 @@
 <script lang="ts" setup generic="TValue extends string, TTitle extends string">
 import type { RadioButtonPassThroughMethodOptions } from 'primevue/radiobutton'
-import type { SelectProps } from '~~/types/props/Select'
-import type { SelectModel } from '~/composables/useSelect'
+import type { SelectProps } from '../../../types/props/Select'
+import type { SelectModel } from '../../composables/useSelect'
 
 const props = withDefaults(defineProps<SelectProps<TValue, TTitle> & {
   inline?: boolean
