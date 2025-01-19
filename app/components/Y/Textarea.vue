@@ -16,6 +16,9 @@ const emits = defineEmits<{
   (e: 'submit'): void
 }>()
 
+const slots = defineSlots<{
+  actions?: () => VNode
+}>()
 const model = defineModel<string | null>()
 const { rules } = defineRules(props)
 
@@ -33,20 +36,19 @@ function handleEnter(e: KeyboardEvent) {
 </script>
 
 <template>
-  <YField v-bind="props" class="w-full">
+  <YField v-bind="props" class="w-full relative">
     <Textarea
       v-model="model"
       class="w-full"
       :class="({ 'input-glow': glow } as any)"
       :size="size"
-      :loading="loading"
       :placeholder="placeholder"
       :auto-resize="true"
       :rules="rules"
       :pt="{
         root: {
           style: {
-            
+            'padding-bottom': slots.actions ? '48px' : undefined,
             'border-radius': rounded ? '9999px' : undefined,
           },
         },
@@ -57,6 +59,25 @@ function handleEnter(e: KeyboardEvent) {
       @blur="emits('blur')"
       @keydown.enter="handleEnter"
     />
+    <div v-if="slots.actions" class="absolute bottom-2 border-t border-gray-100 dark:border-gray-800 w-full pt-[1px] ps-[1px]">
+      <slot name="actions" />
+    </div>
+    <Transition
+      enter-active-class="transition ease-out duration-300"
+      enter-from-class="opacity-0"
+      enter-to-class="opacity-100"
+      leave-active-class="transition ease-in duration-200"
+      leave-from-class="opacity-100"
+      leave-to-class="opacity-0"
+    >
+      <div v-if="loading" class="absolute bottom-1.5 left-0 right-0 px-2">
+        <ProgressBar
+          mode="indeterminate"
+          color="primary"
+          class="!h-[2px]"
+        />
+      </div>
+    </Transition>
   </YField>
 </template>
 
