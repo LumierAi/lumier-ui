@@ -53,6 +53,15 @@ const lesson: Ref<Lesson> = ref({
 function updateCorrectAnswers() {
   lesson.value.correctAnswers = ++lesson.value.correctAnswers
 }
+
+const search = ref(false)
+const prompt = ref('')
+const chatConfig = ref({
+  tavily_web_search: false,
+  knowledge_blocks_search: false,
+  jasne_initial_information: false,
+  issues_search: false,
+})
 </script>
 
 <template>
@@ -67,6 +76,12 @@ function updateCorrectAnswers() {
     <button @click="updateCorrectAnswers">
       asd
     </button>
+    <YTextarea v-model="prompt">
+      <template #actions>
+        <YBtn text icon="tabler:world-search" rounded size="small" :label="search ? 'Search' : undefined" :color="search ? 'primary' : 'contrast'" icon-pos="left" @click="search = !search" />
+      </template>
+    </YTextarea>
+    <YChatInput v-model="prompt" v-model:config="chatConfig" :handle-submit="() => {}" />
   </div>
 </template>
 

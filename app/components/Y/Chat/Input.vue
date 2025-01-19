@@ -21,22 +21,22 @@ const inputModel = defineModel<string>()
         placeholder="Wpisz swoją wiadomość..."
         :auto-resize="true"
         rows="3"
+        text
         class="w-full mb-2 pb-3 input-glow"
         @keydown.enter.prevent="handleSubmit"
       />
       <div class="absolute bottom-0 w-full border-t border-gray-200">
         <div class="pt-1.5 pb-3.5 px-2 space-x-2">
-          <ToggleSwitch
-            v-model="config.tavily_web_search"
+          <YBtn
             v-tooltip.bottom="'Wyszukiwanie w internecie'"
-          >
-            <template #handle="{ checked }">
-              <Icon
-                :name="checked ? 'tabler:world' : 'tabler:world-off'"
-                class="text-sm"
-              />
-            </template>
-          </ToggleSwitch>
+            icon="tabler:world-search"
+            size="small"
+            text
+            :color="config.tavily_web_search ? 'primary' : 'contrast'"
+            :label="config.tavily_web_search ? 'Szukaj' : undefined"
+            icon-pos="left"
+            @click="config.tavily_web_search = !config.tavily_web_search"
+          />
           <ToggleSwitch
             v-model="config.knowledge_blocks_search"
             v-tooltip.bottom="'Wyszukiwanie w bazie wiedzy'"

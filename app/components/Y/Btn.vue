@@ -2,9 +2,9 @@
 import type { RoutePathSchema, RoutesNamedLocations } from '~~/.nuxt/typed-router'
 
 export type RouteLocationRaw = RoutePathSchema | RoutesNamedLocations
-const props = defineProps<{
+const props = withDefaults(defineProps<{
   size?: 'large' | 'small'
-  color?: string
+  color?: 'primary' | 'secondary' | 'contrast' | 'error' | 'success' | 'warning'
   label?: string
   text?: boolean
   block?: boolean
@@ -18,10 +18,13 @@ const props = defineProps<{
   loading?: boolean
   glow?: boolean
   rounded?: boolean
+  iconPos?: 'left' | 'right' | 'top' | 'bottom'
   // eslint-disable-next-line ts/no-unsafe-function-type
   click?: Function
   class?: string
-}>()
+}>(), {
+  iconPos: 'right',
+})
 
 const emits = defineEmits<{
   click: [e: Event]
@@ -75,6 +78,7 @@ async function onClick(e: Event) {
     :loading="computedLoading"
     :size="size || 'large'"
     :label="label"
+    :icon-pos="iconPos"
     :variant="text ? 'text' : undefined"
     :rounded="rounded || fullIcon"
     :severity="computedColor"
@@ -82,12 +86,17 @@ async function onClick(e: Event) {
     :pt="{
       root: {
         class: [
-          { '!p-0': fullIcon },
           props.class,
+          { '!px-[12.5px]': label },
         ],
+        style: {
+          'min-height': size === 'small' ? '40px' : '48px',
+          'min-width': fullIcon ? size === 'small' ? '40px' : '48px' : undefined,
+          'flex-direction': iconPos === 'bottom' ? 'column-reverse' : iconPos === 'right' ? 'row-reverse' : undefined,
+        },
       },
       icon: {
-        class: 'min-w-4',
+        class: 'min-w-5',
       },
     }"
     :class="[{
