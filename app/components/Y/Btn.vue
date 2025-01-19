@@ -4,7 +4,7 @@ import type { RoutePathSchema, RoutesNamedLocations } from '~~/.nuxt/typed-route
 export type RouteLocationRaw = RoutePathSchema | RoutesNamedLocations
 const props = withDefaults(defineProps<{
   size?: 'large' | 'small'
-  color?: 'primary' | 'secondary' | 'contrast' | 'error' | 'success'
+  color?: 'primary' | 'secondary' | 'contrast' | 'error' | 'success' | 'warning'
   label?: string
   text?: boolean
   block?: boolean
