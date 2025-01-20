@@ -1,6 +1,9 @@
 <script setup lang="ts">
 import type { CourseQuestion } from '../../../../types/Question'
 
+type CourseQuestionDifficulty = 'easy' | 'medium' | 'hard' | 'very_hard'
+type QuestionType = 'closed_question' | 'open_question'
+
 interface QuizResult {
   isCorrect: boolean
   isModuleFinished: boolean
