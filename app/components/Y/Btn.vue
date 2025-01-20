@@ -92,7 +92,7 @@ async function onClick(e: Event) {
         style: {
           'min-height': size === 'small' ? '40px' : '48px',
           'min-width': fullIcon ? size === 'small' ? '40px' : '48px' : undefined,
-          'flex-direction': iconPos === 'bottom' ? 'column-reverse' : iconPos === 'right' ? 'row-reverse' : undefined,
+          'flex-direction': !block ? (iconPos === 'bottom' ? 'column-reverse' : iconPos === 'right' ? 'row-reverse' : undefined) : undefined,
         },
       },
       icon: {
