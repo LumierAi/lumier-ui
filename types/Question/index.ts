@@ -3,7 +3,7 @@ export type QuestionDifficulty = 'easy' | 'medium' | 'hard' | 'very_hard'
 
 export interface CourseQuestion {
   id: string
-  createdAt: Date
+  createdAt: string
   type: QuestionType
   userAnswer: string | null
   body: {
