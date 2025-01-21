@@ -4,7 +4,8 @@ import type { RoutePathSchema, RoutesNamedLocations } from '~~/.nuxt/typed-route
 export type RouteLocationRaw = RoutePathSchema | RoutesNamedLocations
 const props = withDefaults(defineProps<{
   size?: 'large' | 'small'
-  color?: 'primary' | 'secondary' | 'contrast' | 'error' | 'success' | 'warning'
+  height?: `${string}px`
+  color?: 'primary' | 'secondary' | 'contrast' | 'danger' | 'success' | 'warning'
   label?: string
   text?: boolean
   block?: boolean
@@ -14,7 +15,7 @@ const props = withDefaults(defineProps<{
   secondary?: boolean
   contrast?: boolean
   disabled?: boolean
-  error?: boolean
+  danger?: boolean
   loading?: boolean
   glow?: boolean
   rounded?: boolean
@@ -50,8 +51,8 @@ const computedColor = computed(() => {
       ? 'secondary'
       : props.contrast
         ? 'contrast'
-        : props.error
-          ? 'error'
+        : props.danger
+          ? 'danger'
           : props.color
 })
 
@@ -90,7 +91,7 @@ async function onClick(e: Event) {
           { '!px-[12.5px]': label },
         ],
         style: {
-          'min-height': size === 'small' ? '40px' : '48px',
+          'height': height || (size === 'small' ? '40px' : '48px'),
           'min-width': fullIcon ? size === 'small' ? '40px' : '48px' : undefined,
           'flex-direction': !block ? (iconPos === 'bottom' ? 'column-reverse' : iconPos === 'right' ? 'row-reverse' : undefined) : undefined,
         },

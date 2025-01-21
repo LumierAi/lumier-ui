@@ -13,5 +13,11 @@ watch(() => props.content, (newContent) => {
 </script>
 
 <template>
-  <div v-html="parsedContent" />
+  <div class="prose prose-sm dark:prose-invert" v-html="parsedContent" />
 </template>
+
+<style>
+code {
+  white-space: break-spaces;
+}
+</style>

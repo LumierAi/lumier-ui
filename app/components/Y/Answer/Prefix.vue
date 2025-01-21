@@ -1,7 +1,7 @@
 <script setup lang="ts">
 interface Props {
   prefix: string
-  color?: 'success' | 'error' | null
+  color?: 'success' | 'danger' | null
 }
 
 defineProps<Props>()

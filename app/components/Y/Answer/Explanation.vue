@@ -1,8 +1,7 @@
 <script setup lang="ts">
+import type { CoreMessage } from 'ai'
 import type { CourseQuestion } from '../../../../types/Question'
-
-type CourseQuestionDifficulty = 'easy' | 'medium' | 'hard' | 'very_hard'
-type QuestionType = 'closed_question' | 'open_question'
+import { useChat } from '@ai-sdk/vue'
 
 interface QuizResult {
   isCorrect: boolean
@@ -10,6 +9,16 @@ interface QuizResult {
   explanation: string
   answer: string
   newBulb: boolean
+}
+
+interface ExplanationChatBody {
+  question: string
+  userAnswer: string
+  correctAnswer: string
+  options?: string[]
+  explanation: string
+  moduleId: string
+  messages: CoreMessage[]
 }
 
 const props = defineProps<{
@@ -22,6 +31,55 @@ defineEmits<{
 }>()
 
 const chatMode = ref<boolean>(false)
+const isInputInFocus = ref(false)
+
+// Add chat functionality
+const { messages, handleSubmit, input, isLoading } = useChat({
+  api: '/api/ai/explanation/chat',
+  initialMessages: [{
+    id: '1',
+    role: 'system',
+    content: `You are a helpful assistant that explains answers to questions.
+     Explain following question: ${props.currentQuestion.body.question}
+     Correct answer: ${props.result.answer}
+     User answer: ${props.currentQuestion.userAnswer}
+     Explanation: ${props.result.explanation}
+     Use examples and explain why the user answer is correct or incorrect.
+     You are answering to a student, so use simple language and explain in a way that is easy to understand.
+     `,
+  }],
+  body: {
+    question: props.currentQuestion.body.question,
+    userAnswer: props.currentQuestion.userAnswer!,
+    correctAnswer: props.result.answer,
+    explanation: props.result.explanation,
+    moduleId: props.currentQuestion.moduleId,
+    options: props.currentQuestion.type === 'closed_question'
+      ? (props.currentQuestion.body as { options: string[] }).options
+      : undefined,
+  } satisfies Omit<ExplanationChatBody, 'messages'>,
+})
+
+function submitQuestion() {
+  chatMode.value = true
+  handleSubmit()
+}
+
+function startChat() {
+  chatMode.value = true
+  input.value = 'Wytłumacz mi to'
+  handleSubmit()
+}
+
+const isChatInputFull = computed(() => {
+  return chatMode.value || isInputInFocus.value
+})
+
+function handleBlur() {
+  if (!input.value.trim()) {
+    isInputInFocus.value = false
+  }
+}
 
 function getPrefix(answer: string, isCorrect: boolean): string {
   const prefixes = ['A', 'B', 'C', 'D']
@@ -50,7 +108,7 @@ function getPrefix(answer: string, isCorrect: boolean): string {
               <Icon
                 name="tabler:chevron-left"
                 class="size-6 cursor-pointer"
-                :class="result.isCorrect ? 'text-success' : 'text-error'"
+                :class="result.isCorrect ? 'text-success' : 'text-danger'"
                 @click="chatMode = false"
               />
             </div>
@@ -63,11 +121,11 @@ function getPrefix(answer: string, isCorrect: boolean): string {
           >
             <YAnswerPrefix
               :prefix="getPrefix(currentQuestion.userAnswer!, result.isCorrect)"
-              :color="result.isCorrect ? 'success' : 'error'"
+              :color="result.isCorrect ? 'success' : 'danger'"
             />
             <span
               class="headline-5"
-              :class="[result.isCorrect ? 'text-success' : 'text-error']"
+              :class="[result.isCorrect ? 'text-success' : 'text-danger']"
             >
               {{ result.isCorrect ? 'Correct' : 'Incorrect' }}
             </span>
@@ -76,12 +134,12 @@ function getPrefix(answer: string, isCorrect: boolean): string {
         <Transition name="slide-right">
           <div v-if="chatMode">
             <YBtn
-              label="Continue"
+              label="Kontynuuj"
               block
               class="w-full text-white"
               size="small"
-              rounded
-              :color="result.isCorrect ? 'success' : 'error'"
+              height="32px"
+              :color="result.isCorrect ? 'success' : 'danger'"
               @click="$emit('continue')"
             />
           </div>
@@ -113,22 +171,71 @@ function getPrefix(answer: string, isCorrect: boolean): string {
       </p>
     </div>
     <div class="flex flex-col flex-1 justify-end space-y-4">
-      <YAnswerExplanationChat
-        v-model:chat-started="chatMode"
-        :module-id="currentQuestion.moduleId"
-        :correct-answer="result.answer"
-        :question="currentQuestion"
-        :user-answer="currentQuestion.userAnswer!"
-        :explanation="result.explanation"
-      />
+      <div class="flex flex-col transition-all duration-300" :class="{ 'h-full': chatMode }">
+        <div v-show="chatMode" class="transition-all duration-300 flex-1 w-full pb-4">
+          <div class="overflow-y-auto space-y-4">
+            <div v-for="message in messages" :key="message.id">
+              <div v-if="message.role === 'assistant'" class="text-sm">
+                <YMDC
+                  class="prose prose-sm dark:prose-invert"
+                  :content="message.content"
+                />
+              </div>
+              <div v-else-if="message.role === 'user'" class="text-sm font-semibold text-right">
+                <div class="bg-primary/30 rounded-xl py-2 px-4 inline-block ml-auto">
+                  <span>{{ message.content }}</span>
+                </div>
+              </div>
+            </div>
+            <div v-if="isLoading" class="flex items-center gap-2 text-sm">
+              <div class="flex gap-1">
+                <div class="w-2 h-2 rounded-full bg-gray-400 animate-bounce" style="animation-delay: 0s" />
+                <div class="w-2 h-2 rounded-full bg-gray-400 animate-bounce" style="animation-delay: 0.2s" />
+                <div class="w-2 h-2 rounded-full bg-gray-400 animate-bounce" style="animation-delay: 0.4s" />
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="flex gap-2 items-start flex-shrink-0">
+          <div
+            class="transition-all duration-300 overflow-hidden flex items-center"
+            :class="[
+              isChatInputFull ? 'w-0 opacity-0' : 'w-[80px] opacity-100',
+            ]"
+          >
+            <YBtn
+              label="Wyjasnij"
+              class="text-white whitespace-nowrap transition-opacity duration-300"
+              size="small"
+              height="32px"
+              color="secondary"
+              rounded
+              @click="startChat()"
+            />
+          </div>
+          <YTextarea
+            v-model="input"
+            :rows="1"
+            rounded
+            placeholder="Ask a question"
+            size="small"
+            class="flex-1 transition-all duration-300 min-w-0"
+            :class="(isChatInputFull) ? 'max-w-full' : 'max-w-[200px]'"
+            submit-on-enter
+            @focus="isInputInFocus = true"
+            @blur="handleBlur"
+            @submit="submitQuestion"
+          />
+        </div>
+      </div>
       <Transition name="slide-down">
         <YBtn
           v-if="!chatMode"
-          label="Continue"
+          :label="input ? 'Wyślij wiadomość' : 'Kontynuuj'"
           block
           class="w-full text-white"
-          :color="result.isCorrect ? 'success' : 'error'"
-          @click="$emit('continue')"
+          :color="input ? undefined : result.isCorrect ? 'success' : 'danger'"
+          @click="input ? submitQuestion() : $emit('continue')"
         />
       </Transition>
     </div>
@@ -197,5 +304,19 @@ function getPrefix(answer: string, isCorrect: boolean): string {
 .icon-slide-left-leave-to {
   opacity: 0;
   transform: translateX(-10px);
+}
+
+@keyframes bounce {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-4px);
+  }
+}
+
+.animate-bounce {
+  animation: bounce 1s infinite;
 }
 </style>
