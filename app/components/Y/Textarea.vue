@@ -30,6 +30,7 @@ function handleEnter(e: KeyboardEvent) {
     }
     // Prevent default enter behavior and emit submit
     e.preventDefault()
+    e.stopPropagation()
     emits('submit')
   }
 }
