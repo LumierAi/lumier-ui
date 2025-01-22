@@ -12,6 +12,11 @@ async function handlePromise() {
       :click="() => handlePromise()"
     />
     <YBtn
+      label="Prepend icon me"
+      prepend-icon="tabler:a-b-off"
+      :click="() => handlePromise()"
+    />
+    <YBtn
       icon="tabler:a-b-off"
       :click="() => handlePromise()"
     />
