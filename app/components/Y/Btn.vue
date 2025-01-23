@@ -19,12 +19,12 @@ const props = withDefaults(defineProps<{
   loading?: boolean
   glow?: boolean
   rounded?: boolean
-  iconPos?: 'left' | 'right' | 'top' | 'bottom'
   // eslint-disable-next-line ts/no-unsafe-function-type
   click?: Function
   class?: string
+  prependIcon?: string
 }>(), {
-  iconPos: 'right',
+
 })
 
 const emits = defineEmits<{
@@ -76,10 +76,8 @@ async function onClick(e: Event) {
   <Button
     :as="to ? 'router-link' : undefined"
     :to="to"
-    :loading="computedLoading"
     :size="size || 'large'"
     :label="label"
-    :icon-pos="iconPos"
     :variant="text ? 'text' : undefined"
     :rounded="rounded || fullIcon"
     :severity="computedColor"
@@ -88,12 +86,12 @@ async function onClick(e: Event) {
       root: {
         class: [
           props.class,
+          'gap-0 transition-all duration-300 ease-in-out',
           { '!px-[12.5px]': label },
         ],
         style: {
           'height': height || (size === 'small' ? '40px' : '48px'),
           'min-width': fullIcon ? size === 'small' ? '40px' : '48px' : undefined,
-          'flex-direction': !block ? (iconPos === 'bottom' ? 'column-reverse' : iconPos === 'right' ? 'row-reverse' : undefined) : undefined,
         },
       },
       icon: {
@@ -106,9 +104,45 @@ async function onClick(e: Event) {
     }]"
     @click="onClick"
   >
-    <template #icon>
-      <Icon v-if="icon" :name="icon" />
-    </template>
+    <!-- Ikona na początku przycisku -->
+    <Icon
+      v-if="props.prependIcon"
+      :name="props.prependIcon"
+      class="size-5 min-w-5"
+      :class="{ 'mr-2': props.label }"
+    />
+
+    <!-- Tekst przycisku -->
+    <span v-if="label">{{ label }}</span>
+
+    <!-- Ikona na końcu przycisku -->
+    <div class="flex items-center">
+      <!-- Ikona ładowania dla przycisku z samą ikoną -->
+      <Icon
+        v-if="icon && computedLoading && fullIcon"
+        name="tabler:loader-2"
+        class="animate-spin size-5 min-w-5"
+      />
+      <!-- Standardowa ikona -->
+      <Icon
+        v-else-if="icon"
+        :name="icon"
+        class="size-5 min-w-5"
+        :class="{ 'ml-2': label }"
+      />
+      <!-- Ikona ładowania dla przycisku z tekstem -->
+      <div
+        v-if="!fullIcon"
+        class="transition-all duration-300 ease-in-out flex justify-center"
+        :class="[computedLoading ? 'w-5 opacity-100' : 'w-0 opacity-0']"
+      >
+        <Icon
+          v-if="computedLoading"
+          name="tabler:loader-2"
+          class="animate-spin size-5 min-w-5 ml-2"
+        />
+      </div>
+    </div>
   </Button>
 </template>
 
