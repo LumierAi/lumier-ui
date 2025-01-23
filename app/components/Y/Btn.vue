@@ -19,13 +19,12 @@ const props = withDefaults(defineProps<{
   loading?: boolean
   glow?: boolean
   rounded?: boolean
-  iconPos?: 'left' | 'right' | 'top' | 'bottom'
   // eslint-disable-next-line ts/no-unsafe-function-type
   click?: Function
   class?: string
   prependIcon?: string
 }>(), {
-  iconPos: 'right',
+
 })
 
 const emits = defineEmits<{
@@ -79,7 +78,6 @@ async function onClick(e: Event) {
     :to="to"
     :size="size || 'large'"
     :label="label"
-    :icon-pos="iconPos"
     :variant="text ? 'text' : undefined"
     :rounded="rounded || fullIcon"
     :severity="computedColor"
