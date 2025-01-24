@@ -29,7 +29,7 @@ const inputModel = defineModel<string>()
         <div class="pt-1.5 pb-3.5 px-2 space-x-2">
           <YBtn
             v-tooltip.bottom="'Wyszukiwanie w internecie'"
-            icon="tabler:world-search"
+            prepend-icon="tabler:world-search"
             size="small"
             text
             :color="config.tavily_web_search ? 'primary' : 'contrast'"
