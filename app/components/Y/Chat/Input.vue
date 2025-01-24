@@ -1,6 +1,7 @@
 <script setup lang="ts">
 defineProps<{
   handleSubmit: () => void
+  disabledAdditionalOptions: boolean
 }>()
 interface Config {
   tavily_web_search: boolean
@@ -40,14 +41,17 @@ const inputModel = defineModel<string>()
           <ToggleSwitch
             v-model="config.knowledge_blocks_search"
             v-tooltip.bottom="'Wyszukiwanie w bazie wiedzy'"
+            :disabled="disabledAdditionalOptions"
           />
           <ToggleSwitch
             v-model="config.jasne_initial_information"
             v-tooltip.bottom="'Wprowadzenie do Jasne'"
+            :disabled="disabledAdditionalOptions"
           />
           <ToggleSwitch
             v-model="config.issues_search"
             v-tooltip.bottom="'Wyszukiwanie w zagadnieniach'"
+            :disabled="disabledAdditionalOptions"
           />
         </div>
       </div>
