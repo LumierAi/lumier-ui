@@ -27,7 +27,7 @@ const inputModel = defineModel<string>()
         @keydown.enter.prevent="handleSubmit"
       />
       <div class="absolute bottom-0 w-full border-t border-gray-200">
-        <div class="pt-1.5 pb-3.5 px-2 space-x-2">
+        <div class="pt-1 pb-4 px-2 space-x-2">
           <YBtn
             v-tooltip.bottom="'Wyszukiwanie w internecie'"
             prepend-icon="tabler:world-search"
