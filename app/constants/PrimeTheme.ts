@@ -675,6 +675,17 @@ export const JasnePreset = definePreset(Aura, {
         height: '28px',
       },
     },
+    card: {
+      colorScheme: {
+        light: {
+          root: {
+            background: '{surface.0}',
+            border: '1px',
+            borderColor: '{background.4}',
+          },
+        },
+      },
+    },
     button: {
       colorScheme: {
         light: {
@@ -695,7 +706,17 @@ export const JasnePreset = definePreset(Aura, {
   },
   extend: {
     secondary: '#312319',
+    secondary2: '#312319CC',
+    influential: '#F9C322',
+    dominant: '#F82257',
+    stable: '#35E026',
+    success: '#28841C',
+    error: '#F20000',
+    info: '#3275FC',
     background: {
+      1: '#F9FAFC',
+      2: '#F3F1ED',
+      3: '#E7EADC',
       4: '#D1CCBE',
     },
   },

@@ -38,7 +38,7 @@ onUnmounted(() => {
 </script>
 
 <template>
-  <div class="relative bg-white dark:bg-gray-800 rounded-2xl overflow-hidden shadow-md" :class="[{ 'opacity-50': loading, '!border-none': props.borderless }, props.class]">
+  <div class="y-card relative bg-white dark:bg-gray-800 overflow-hidden" :class="[{ 'opacity-50': loading, '!border-none': props.borderless }, props.class]">
     <div
       v-if="slots.menu"
       class="absolute top-2 right-2"
@@ -80,5 +80,8 @@ onUnmounted(() => {
 </template>
 
 <style scoped lang="scss">
-
+.y-card {
+  border-radius: 2.25rem;
+  border: 1px solid var(--p-background4);
+}
 </style>
