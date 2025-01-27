@@ -1,8 +1,11 @@
 <script setup lang="ts">
-defineProps<{
+withDefaults(defineProps<{
   handleSubmit: () => void
   disabledAdditionalOptions: boolean
-}>()
+}>(), {
+  disabledAdditionalOptions: false,
+})
+
 interface Config {
   tavily_web_search: boolean
   knowledge_blocks_search: boolean

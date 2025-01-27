@@ -114,7 +114,7 @@ const chatConfig = ref({
         <YBtn text icon="tabler:world-search" rounded size="small" :label="search ? 'Search' : undefined" :color="search ? 'primary' : 'contrast'" icon-pos="left" @click="search = !search" />
       </template>
     </YTextarea>
-    <YChatInput v-model="prompt" v-model:config="chatConfig" :handle-submit="() => {}" />
+    <YChatInput v-model="prompt" v-model:config="chatConfig" :handle-submit="() => {}" :disabled-additional-options="false" />
     <YAnswerExplanation :result="answerResult" :current-question="currentAnswer" @continue="log" />
   </YCard>
 </template>
