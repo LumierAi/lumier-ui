@@ -66,7 +66,7 @@ onUnmounted(() => {
         </h2>
       </div>
     </template>
-    <div class="px-6" :class="props.contentClass">
+    <div :class="props.contentClass">
       <slot name="content" />
       <slot />
     </div>
