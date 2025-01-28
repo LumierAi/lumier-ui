@@ -57,7 +57,7 @@ onUnmounted(() => {
           />
           <Popover
             ref="menuRef"
-            class="y-card absolute right-0 mt-2 w-48 bg-white dark:bg-gray-800 ring-1 ring-black ring-opacity-5 z-50 transition-all duration-200 ease-in-out"
+            class="bg-white mt-2 dark:bg-gray-800"
             @click.stop
           >
             <slot name="menu" />
