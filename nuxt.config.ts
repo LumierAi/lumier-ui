@@ -108,6 +108,7 @@ export default defineNuxtConfig({
         'AccordionTab',
         'DataTable',
         'Column',
+        'Popover',
         'ConfirmDialog',
         'Paginator',
         'Drawer',
