@@ -36,6 +36,7 @@ const isInputInFocus = ref(false)
 // Add chat functionality
 const { messages, handleSubmit, input, isLoading } = useChat({
   api: 'https://crm.jasne.ai/api/ai/explanation/chat',
+  credentials: 'include',
   initialMessages: [{
     id: '1',
     role: 'system',
