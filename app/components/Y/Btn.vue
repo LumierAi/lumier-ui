@@ -90,8 +90,8 @@ async function onClick(e: Event) {
           { '!px-[12.5px]': label },
         ],
         style: {
-          'height': height || (size === 'small' ? '40px' : '48px'),
-          'min-width': fullIcon ? size === 'small' ? '40px' : '48px' : undefined,
+          'height': height || fullIcon ? 'initial' : 0 || (size === 'small' ? '40px' : '48px'),
+          'min-width': fullIcon ? 'initial' : 0 || (size === 'small' ? '40px' : '48px'),
         },
       },
       icon: {
