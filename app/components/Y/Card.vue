@@ -18,7 +18,7 @@ const slots = defineSlots<{
 }>()
 
 const isMenuOpen = ref(false)
-const menuRef = ref<HTMLElement | null>(null)
+const menuRef = ref()
 
 function closeMenu() {
   isMenuOpen.value = false
@@ -26,7 +26,7 @@ function closeMenu() {
 
 function changeMenuVisibility(event: Event) {
   event.stopPropagation()
-  isMenuOpen.value = !isMenuOpen.value
+  menuRef.value?.toggle(event)
 }
 
 onMounted(() => {
@@ -46,23 +46,23 @@ onUnmounted(() => {
         <h2 v-else-if="props.title" class="text-xl leading-8 font-bold">
           {{ props.title }}
         </h2>
-        <template v-if="slots.menu">
+        <div v-if="slots.menu">
           <YBtn
+            class="relative"
             text
             contrast
             size="small"
             icon="tabler:dots"
             @click.stop="changeMenuVisibility"
           />
-          <div
-            v-show="isMenuOpen"
+          <Popover
             ref="menuRef"
             class="y-card absolute right-0 mt-2 w-48 bg-white dark:bg-gray-800 ring-1 ring-black ring-opacity-5 z-50 transition-all duration-200 ease-in-out"
             @click.stop
           >
             <slot name="menu" />
-          </div>
-        </template>
+          </Popover>
+        </div>
       </div>
     </template>
     <div :class="props.contentClass">
