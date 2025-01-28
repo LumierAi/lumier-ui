@@ -35,8 +35,5 @@
     "typescript": "^5.7.2",
     "@iconify-json/tabler": "^1.2.13",
     "@nuxt/icon": "^1.10.3"
-  },
-  "overrides": {
-    "ai": "4.0.40"
   }
 }

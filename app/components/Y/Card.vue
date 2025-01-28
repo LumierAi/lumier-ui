@@ -6,6 +6,7 @@ const props = defineProps<{
   title?: string
   class?: string | object
   borderless?: boolean
+  contentClass?: string | object
 }>()
 
 const slots = defineSlots<{
@@ -38,7 +39,7 @@ onUnmounted(() => {
 </script>
 
 <template>
-  <div class="y-card relative bg-white dark:bg-gray-800 overflow-hidden" :class="[{ 'opacity-50': loading, '!border-none': props.borderless }, props.class]">
+  <div class="y-card p-6 relative bg-white dark:bg-gray-800 overflow-hidden" :class="[{ 'opacity-50': loading, '!border-none': props.borderless }, props.class]">
     <div
       v-if="slots.menu"
       class="absolute top-2 right-2"
@@ -51,29 +52,27 @@ onUnmounted(() => {
       <div
         v-show="isMenuOpen"
         ref="menuRef"
-        class="absolute right-0 mt-2 shadow-sm w-48 bg-white dark:bg-gray-800 rounded-lg ring-1 ring-black ring-opacity-5 z-50 transition-all duration-200 ease-in-out"
+        class="y-card absolute right-0 mt-2 w-48 bg-white dark:bg-gray-800 ring-1 ring-black ring-opacity-5 z-50 transition-all duration-200 ease-in-out"
         @click.stop
       >
         <slot name="menu" />
       </div>
     </div>
     <template v-if="slots.title || props.title">
-      <div class="px-4 py-3 border-b dark:border-gray-700" :class="{ '!border-none': props.borderless }">
+      <div class="dark:border-gray-700 pb-6">
         <slot v-if="slots.title" name="title" />
-        <h2 v-else-if="props.title" class="text-lg font-semibold">
+        <h2 v-else-if="props.title" class="text-xl leading-8 font-bold">
           {{ props.title }}
         </h2>
       </div>
     </template>
-    <div class="p-4">
+    <div class="px-6" :class="props.contentClass">
       <slot name="content" />
       <slot />
     </div>
     <template v-if="slots.actions">
-      <div class="border-t dark:border-gray-700">
-        <div class="px-4 py-3 flex justify-end space-x-2">
-          <slot name="actions" />
-        </div>
+      <div class="dark:border-gray-700 pt-6 flex justify-end space-x-2">
+        <slot name="actions" />
       </div>
     </template>
   </div>
