@@ -39,31 +39,30 @@ onUnmounted(() => {
 </script>
 
 <template>
-  <div class="y-card p-6 relative bg-white dark:bg-gray-800 overflow-hidden" :class="[{ 'opacity-50': loading, '!border-none': props.borderless }, props.class]">
-    <div
-      v-if="slots.menu"
-      class="absolute top-2 right-2"
-    >
-      <YBtn
-        class="rounded-full hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors w-5 h-5"
-        icon="tabler:dots-vertical"
-        @click.stop="changeMenuVisibility"
-      />
-      <div
-        v-show="isMenuOpen"
-        ref="menuRef"
-        class="y-card absolute right-0 mt-2 w-48 bg-white dark:bg-gray-800 ring-1 ring-black ring-opacity-5 z-50 transition-all duration-200 ease-in-out"
-        @click.stop
-      >
-        <slot name="menu" />
-      </div>
-    </div>
-    <template v-if="slots.title || props.title">
-      <div class="dark:border-gray-700 pb-6">
+  <div class="y-card p-6 bg-white dark:bg-gray-800 overflow-hidden" :class="[{ 'opacity-50': loading, '!border-none': props.borderless }, props.class]">
+    <template v-if="slots.title || props.title || slots.menu">
+      <div class="dark:border-gray-700 pb-6 flex justify-between">
         <slot v-if="slots.title" name="title" />
         <h2 v-else-if="props.title" class="text-xl leading-8 font-bold">
           {{ props.title }}
         </h2>
+        <template v-if="slots.menu">
+          <YBtn
+            text
+            contrast
+            size="small"
+            icon="tabler:dots"
+            @click.stop="changeMenuVisibility"
+          />
+          <div
+            v-show="isMenuOpen"
+            ref="menuRef"
+            class="y-card absolute right-0 mt-2 w-48 bg-white dark:bg-gray-800 ring-1 ring-black ring-opacity-5 z-50 transition-all duration-200 ease-in-out"
+            @click.stop
+          >
+            <slot name="menu" />
+          </div>
+        </template>
       </div>
     </template>
     <div :class="props.contentClass">

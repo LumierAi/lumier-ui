@@ -692,11 +692,16 @@ export const JasnePreset = definePreset(Aura, {
           root: {
             primary: {
               background: '{primary.500}',
-              color: '{surface.950}',
+              color: '{secondary}',
               hoverColor: '{surface.950}',
               activeColor: '{surface.950}',
               activeBackground: '{primary.300}',
               activeBorderColor: '{primary.300}',
+            },
+          },
+          text: {
+            contrast: {
+              color: '{secondary}',
             },
           },
         },

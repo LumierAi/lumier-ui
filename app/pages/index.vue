@@ -99,6 +99,11 @@ const chatConfig = ref({
 
 <template>
   <YCard class="m-4" title="Playground">
+    <template #menu>
+      <YBtn
+        label="Chat"
+      />
+    </template>
     <YBtn text :click="a" label="Zaloguj" block />
     <Icon name="tabler:home" />
     <YQuestion :question />
