@@ -65,7 +65,7 @@ onUnmounted(() => {
         </div>
       </div>
     </template>
-    <div :class="props.contentClass">
+    <div class="text-sm leading-5 font-normal" :class="props.contentClass">
       <slot name="content" />
       <slot />
     </div>
