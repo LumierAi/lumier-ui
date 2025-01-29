@@ -43,7 +43,7 @@ onUnmounted(() => {
     <template v-if="slots.title || props.title || slots.menu">
       <div class="dark:border-gray-700 flex justify-between">
         <slot v-if="slots.title" name="title" />
-        <h2 v-else-if="props.title" class="font-bold text-base leading-5">
+        <h2 v-else-if="props.title" class="font-bold text-base leading-6">
           {{ props.title }}
         </h2>
         <div v-if="slots.menu">
