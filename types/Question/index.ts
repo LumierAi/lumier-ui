@@ -1,4 +1,4 @@
-export type QuestionType = 'closed_question' | 'open_question'
+export type QuestionType = 'closed_question' | 'open_question' | 'true_or_false' | 'fill_in_blanks'
 export type QuestionDifficulty = 'easy' | 'medium' | 'hard' | 'very_hard'
 
 export interface CourseQuestion {

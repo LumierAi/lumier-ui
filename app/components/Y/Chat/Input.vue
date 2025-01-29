@@ -1,7 +1,7 @@
 <script setup lang="ts">
 withDefaults(defineProps<{
   handleSubmit: () => void
-  disabledAdditionalOptions: boolean
+  disabledAdditionalOptions?: boolean
 }>(), {
   disabledAdditionalOptions: false,
 })
