@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import type { ConcreteComponent } from 'vue'
-import type { PickUnion } from '~~/types'
+import type { PickUnion } from '../../../../types'
 import type { CourseQuestion, QuestionType } from '../../../../types/Question'
 
 defineProps<{
