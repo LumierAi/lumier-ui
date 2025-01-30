@@ -7,15 +7,15 @@ defineProps<{
   question: CourseQuestion
 }>()
 
-const components: Record<PickUnion<QuestionType, 'closed_question' | 'open_question'>, () => ConcreteComponent> = {
+const components: Record<QuestionType, () => ConcreteComponent> = {
   closed_question: () => resolveComponent('YQuestionTypeClosed') as ConcreteComponent,
   open_question: () => resolveComponent('YQuestionTypeOpen') as ConcreteComponent,
+  true_or_false: () => resolveComponent('YQuestionTypePreview') as ConcreteComponent,
+  fill_in_blanks: () => resolveComponent('YQuestionTypePreview') as ConcreteComponent,
 }
 
 function getQuestionComponent(type: QuestionType) {
-  // TODO: W przyszłości to trzeba wyczyścić dodając reszte typów
-  const componentCtor = components[type as unknown as keyof typeof components]!
-  return componentCtor()
+  return components[type]()
 }
 </script>
 
