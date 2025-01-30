@@ -10,7 +10,7 @@ defineProps<{
 const components: Record<QuestionType, () => ConcreteComponent> = {
   closed_question: () => resolveComponent('YQuestionTypeClosed') as ConcreteComponent,
   open_question: () => resolveComponent('YQuestionTypeOpen') as ConcreteComponent,
-  true_or_false: () => resolveComponent('YQuestionTypePreview') as ConcreteComponent,
+  true_or_false: () => resolveComponent('YQuestionTypeTrueOrFalse') as ConcreteComponent,
   fill_in_blanks: () => resolveComponent('YQuestionTypePreview') as ConcreteComponent,
 }
 
