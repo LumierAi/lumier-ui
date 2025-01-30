@@ -19,6 +19,7 @@ const items = ref<YDictionary<boolean>>([
     <YRadio
       :id="question.id"
       v-model="question.userAnswer"
+      :letter-label="true"
       class="mt-6"
       :items="items"
       size="large"

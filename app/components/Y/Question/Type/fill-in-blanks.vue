@@ -10,7 +10,7 @@ const parts = computed(() => props.question.body.question.split('__BLANK__'))
 
 <template>
   <div class="flex flex-col gap-4">
-    <label :for="question.id" class="text-xl font-bold leading-8">
+    <div class="flex flex-row items-center">
       <template v-for="(part, index) in parts" :key="index">
         {{ part }}
         <YInput
@@ -21,6 +21,6 @@ const parts = computed(() => props.question.body.question.split('__BLANK__'))
           placeholder="Wpisz brakujące słowo..."
         />
       </template>
-    </label>
+    </div>
   </div>
 </template>
