@@ -6,10 +6,10 @@ const props = defineProps<{
   question: CourseQuestion
 }>()
 
-const items = computed<YDictionary>(() => props.question.body.options.map((option: string) => ({
+const items = computed<YDictionary>(() => props.question.body.options?.map((option: string) => ({
   label: option,
   value: option,
-})))
+})) ?? [])
 const label = computed<string>(() => props.question.body.question)
 </script>
 

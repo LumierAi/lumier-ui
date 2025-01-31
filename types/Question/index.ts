@@ -8,10 +8,11 @@ export interface CourseQuestion {
   userAnswer: string | null
   body: {
     difficulty: QuestionDifficulty
-    options: string[]
+    options?: string[]
     question: string
     schemaId: string
     type: QuestionType
+    answer?: string
   }
   moduleId: string
   schemaId: string
