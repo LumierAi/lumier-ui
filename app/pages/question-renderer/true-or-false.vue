@@ -23,5 +23,6 @@ const question: CourseQuestion<boolean> = {
 </script>
 
 <template>
+  <div class="bg-success h-10 w-10 rounded-full" />
   <YQuestion :question="question" />
 </template>

@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import type { YDictionary } from '../../../../../types/Dictionary'
 import type { CourseQuestion } from '../../../../../types/Question'
 import { shuffle } from 'lodash-es'
 import { computed, ref, watch } from 'vue'
@@ -18,15 +19,10 @@ function generateRandomChars(count: number, includeDigits: boolean): string[] {
   }).filter(Boolean) as string[]
 }
 
-const scrambledLetters = ref<string[]>([])
+const scrambledLetters = ref<YDictionary>([])
 
 // Śledzenie wybranych liter przez użytkownika
 const selectedLetters = ref<string[]>([])
-
-// Dodawanie litery do odpowiedzi
-function addLetter(letter: string) {
-  selectedLetters.value.push(letter)
-}
 
 // Usuwanie litery z odpowiedzi
 function removeLetter(index: number) {
@@ -48,11 +44,28 @@ const filledAnswerLetters = filledAnswer.value.split('')
 const hasDigits = filledAnswerLetters.some(c => /\d/.test(c))
 const randomChars = generateRandomChars(filledAnswerLetters.length, hasDigits)
 const combined = [...filledAnswerLetters, ...randomChars]
-scrambledLetters.value = shuffle(combined)
+scrambledLetters.value = shuffle(combined).map(letter => ({
+  label: letter,
+  value: useId(),
+}))
+
+// Dodawanie litery do odpowiedzi
+function addLetter(letterId: string) {
+  if (selectedLetters.value.length < filledAnswer.value.length) {
+    selectedLetters.value.push(letterId)
+  }
+}
+
+watch(() => selectedLetters.value.length, () => {
+  const answer = selectedLetters.value.map(letterId => scrambledLetters.value.find(letter => letter.value === letterId)?.label).join('')
+  console.log('selectedLetters', answer)
+  props.question.userAnswer = answer
+})
 </script>
 
 <template>
   <div class="flex flex-col gap-4">
+    userAnswer: {{ question.userAnswer }}
     <!-- Wyświetlenie pytania z luką -->
     <div class="flex flex-row items-center flex-wrap">
       <template v-for="(part, index) in parts" :key="index">
@@ -73,7 +86,7 @@ scrambledLetters.value = shuffle(combined)
                 class="cursor-pointer flex items-center justify-center bg-gray-100 rounded hover:bg-gray-200 transition-colors w-full"
                 @click="removeLetter(i - 1)"
               >
-                {{ selectedLetters[i - 1] }}
+                {{ scrambledLetters.find(letter => letter.value === selectedLetters[i - 1])?.label }}
               </div>
             </div>
           </div>
@@ -84,14 +97,14 @@ scrambledLetters.value = shuffle(combined)
     <!-- Panel z dostępnymi literami -->
     <div class="flex flex-wrap gap-2">
       <button
-        v-for="(letter, index) in scrambledLetters"
+        v-for="(object, index) in scrambledLetters"
         :key="index"
         class="px-4 py-2 border rounded hover:bg-gray-100 transition-colors"
-        :class="{ 'opacity-50 cursor-not-allowed': selectedLetters.includes(letter) }"
-        :disabled="selectedLetters.includes(letter)"
-        @click="addLetter(letter)"
+        :class="{ 'opacity-50 cursor-not-allowed': selectedLetters.includes(object.value) }"
+        :disabled="selectedLetters.includes(object.value)"
+        @click="addLetter(object.value)"
       >
-        {{ letter }}
+        {{ object.label }}
       </button>
     </div>
   </div>
