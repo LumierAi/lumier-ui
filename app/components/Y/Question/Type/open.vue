@@ -2,7 +2,7 @@
 import type { CourseQuestion } from '../../../../../types/Question'
 
 const props = defineProps<{
-  question: CourseQuestion
+  question: CourseQuestion<string>
 }>()
 
 const label = computed<string>(() => props.question.body.question)

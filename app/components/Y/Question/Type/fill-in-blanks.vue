@@ -4,7 +4,7 @@ import { shuffle } from 'lodash-es'
 import { computed, ref, watch } from 'vue'
 
 const props = defineProps<{
-  question: CourseQuestion
+  question: CourseQuestion<string>
 }>()
 
 function generateRandomChars(count: number, includeDigits: boolean): string[] {
@@ -36,7 +36,7 @@ function removeLetter(index: number) {
 const parts = computed(() => props.question.body.question.split('__BLANK__'))
 
 const filledAnswer = computed(() => {
-  const answerString = props.question.body.answer!
+  const answerString = props.question.body.answer! as string
   const questionString = props.question.body.question
   const [prefix, suffix] = questionString.split('__BLANK__') as [string, string]
   return answerString.slice(prefix.length, answerString.length - (suffix?.length || 0)).trim()
@@ -59,22 +59,22 @@ scrambledLetters.value = shuffle(combined)
         {{ part }}
         <div
           v-if="index !== parts.length - 1"
-          class="mx-2 flex gap-1 min-h-[40px] items-center"
+          class="mx-2 flex gap-1 min-h-[32px] items-center"
         >
           <!-- Pola na litery -->
-          <div class="flex gap-1">
+          <div class="flex gap-1 flex-wrap">
             <div
               v-for="i in filledAnswer.length"
               :key="i"
-              class="w-10 h-10 border-b-2 border-gray-300 flex items-center justify-center"
+              class="w-6 h-6 border-b-2 border-gray-300 flex items-center justify-center pb-1"
             >
-              <span
+              <div
                 v-if="selectedLetters[i - 1]"
-                class="cursor-pointer px-3 py-1 bg-gray-100 rounded hover:bg-gray-200 transition-colors"
+                class="cursor-pointer flex items-center justify-center bg-gray-100 rounded hover:bg-gray-200 transition-colors w-full"
                 @click="removeLetter(i - 1)"
               >
                 {{ selectedLetters[i - 1] }}
-              </span>
+              </div>
             </div>
           </div>
         </div>

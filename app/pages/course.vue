@@ -2,7 +2,7 @@
 import type { Lesson } from '~~/types/Lesson'
 import type { CourseQuestion } from '~~/types/Question'
 
-const question: CourseQuestion = {
+const question: CourseQuestion<string> = {
   id: 'asd',
   createdAt: new Date(),
   type: 'closed_question',

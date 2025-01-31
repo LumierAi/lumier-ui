@@ -13,7 +13,7 @@ interface QuizResult {
 
 interface ExplanationChatBody {
   question: string
-  userAnswer: string
+  userAnswer: string | boolean
   correctAnswer: string
   options?: string[]
   explanation: string
@@ -23,7 +23,7 @@ interface ExplanationChatBody {
 
 const props = defineProps<{
   result: QuizResult
-  currentQuestion: CourseQuestion
+  currentQuestion: CourseQuestion<string | boolean>
 }>()
 
 defineEmits<{
@@ -81,9 +81,9 @@ function handleBlur() {
   }
 }
 
-function getPrefix(answer: string, isCorrect: boolean): string {
+function getPrefix(answer: string | boolean, isCorrect: boolean): string {
   const prefixes = ['A', 'B', 'C', 'D']
-  if (props.currentQuestion.type === 'closed_question') {
+  if (typeof answer === 'string' && props.currentQuestion.type === 'closed_question') {
     const questionBody = props.currentQuestion.body as { options: string[] }
     const index = questionBody.options.indexOf(answer)
     if (prefixes[index]) {

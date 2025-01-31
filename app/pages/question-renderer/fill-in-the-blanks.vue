@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import type { CourseQuestion } from '../../../types/Question'
 
-const question: CourseQuestion = {
+const question: CourseQuestion<string> = {
   id: 'f031ab89-a2a3-4e89-a3be-805c922b3810',
   createdAt: new Date('2025-01-30T15:26:04.639Z'),
   type: 'fill_in_blanks',

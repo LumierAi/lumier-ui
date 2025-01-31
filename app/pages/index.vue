@@ -3,7 +3,7 @@ import type { Lesson } from '~~/types/Lesson'
 import type { CourseQuestion } from '~~/types/Question'
 
 const a = () => console.log('a')
-const question: CourseQuestion = {
+const question: CourseQuestion<string> = {
   id: 'asd',
   createdAt: new Date(),
   type: 'closed_question',
@@ -49,7 +49,7 @@ const lesson: Ref<Lesson> = ref({
     },
   ],
 })
-const currentAnswer = ref<CourseQuestion>({
+const currentAnswer = ref<CourseQuestion<string>>({
   id: '646d65d6-d8a6-4fbe-80cb-ac5754b0c46c',
   createdAt: new Date('2025-01-19T15:37:00.570Z'),
   type: 'closed_question',

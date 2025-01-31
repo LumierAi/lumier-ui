@@ -3,7 +3,7 @@ import type { YDictionary } from '../../../../../types/Dictionary'
 import type { CourseQuestion } from '../../../../../types/Question'
 
 const props = defineProps<{
-  question: CourseQuestion
+  question: CourseQuestion<string>
 }>()
 
 const items = computed<YDictionary>(() => props.question.body.options?.map((option: string) => ({
