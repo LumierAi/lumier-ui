@@ -86,7 +86,7 @@ async function onClick(e: Event) {
       root: {
         class: [
           props.class,
-          'gap-0 transition-all duration-300 ease-in-out',
+          '!gap-0 transition-all duration-300 ease-in-out',
           { '!px-[12.5px]': label && !text, '!p-0': fullIcon },
         ],
         style: {
