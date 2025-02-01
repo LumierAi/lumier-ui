@@ -38,13 +38,19 @@ const filledAnswer = computed(() => {
   return answerString.slice(prefix.length, answerString.length - (suffix?.length || 0)).trim()
 })
 
-console.log('filledAnswer', filledAnswer.value)
 const filledAnswerLetters = filledAnswer.value.split('')
 
 const hasDigits = filledAnswerLetters.some(c => /\d/.test(c))
-const randomChars = generateRandomChars(filledAnswerLetters.length, hasDigits)
+// const randomChars = generateRandomChars(filledAnswerLetters.length, hasDigits)
+const proposalsCount = Math.ceil(filledAnswerLetters.length * 0.6)
+const randomChars = generateRandomChars(proposalsCount, hasDigits)
+
+// Tworzymy tablicę z literą z odpowiedzi oraz losowo wygenerowanymi literami
 const combined = [...filledAnswerLetters, ...randomChars]
-scrambledLetters.value = shuffle(combined).map(letter => ({
+
+// Zmiana: wszystkie litery na duże i sortowanie alfabetyczne
+const combinedUpperCase = combined.map(letter => letter.toUpperCase()).sort((a, b) => a.localeCompare(b))
+scrambledLetters.value = combinedUpperCase.map(letter => ({
   label: letter,
   value: useId(),
 }))
@@ -57,8 +63,11 @@ function addLetter(letterId: string) {
 }
 
 watch(() => selectedLetters.value.length, () => {
-  const answer = selectedLetters.value.map(letterId => scrambledLetters.value.find(letter => letter.value === letterId)?.label).join('')
-  console.log('selectedLetters', answer)
+  const answer = selectedLetters.value
+    .map(letterId =>
+      scrambledLetters.value.find(letter => letter.value === letterId)?.label,
+    )
+    .join('')
   props.question.userAnswer = answer
 })
 </script>
@@ -96,16 +105,16 @@ watch(() => selectedLetters.value.length, () => {
 
     <!-- Panel z dostępnymi literami -->
     <div class="flex flex-wrap gap-2">
-      <button
+      <YBtn
         v-for="(object, index) in scrambledLetters"
         :key="index"
-        class="px-4 py-2 border rounded hover:bg-gray-100 transition-colors"
-        :class="{ 'opacity-50 cursor-not-allowed': selectedLetters.includes(object.value) }"
+        :label="object.label"
+        size="small"
+        :secondary="selectedLetters.includes(object.value)"
+        class="transition-colors"
         :disabled="selectedLetters.includes(object.value)"
         @click="addLetter(object.value)"
-      >
-        {{ object.label }}
-      </button>
+      />
     </div>
   </div>
 </template>
