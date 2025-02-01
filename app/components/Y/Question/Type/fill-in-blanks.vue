@@ -76,7 +76,6 @@ watch(selectedLetters, () => {
 
 <template>
   <div class="flex flex-col gap-4">
-    userAnswer: {{ question.userAnswer }}
     <!-- Wyświetlenie pytania z luką -->
     <div class="flex flex-row items-center flex-wrap">
       <template v-for="(part, index) in parts" :key="index">
