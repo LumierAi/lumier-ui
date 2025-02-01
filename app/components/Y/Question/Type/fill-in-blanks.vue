@@ -35,7 +35,7 @@ const filledAnswer = computed(() => {
   const answerString = props.question.body.answer! as string
   const questionString = props.question.body.question
   const [prefix, suffix] = questionString.split('__BLANK__') as [string, string]
-  return answerString.slice(prefix.length, answerString.length - (suffix?.length || 0)).trim()
+  return answerString.slice(prefix.length, answerString.length - (suffix?.length || 0)).trim().replace(/\.$/, '')
 })
 
 const filledAnswerLetters = filledAnswer.value.split('')
