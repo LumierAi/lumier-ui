@@ -22,11 +22,11 @@ function generateRandomChars(count: number, includeDigits: boolean): string[] {
 const scrambledLetters = ref<YDictionary>([])
 
 // Śledzenie wybranych liter przez użytkownika
-const selectedLetters = ref<string[]>([])
+const selectedLetters = ref<(string | null)[]>([])
 
 // Usuwanie litery z odpowiedzi
 function removeLetter(index: number) {
-  selectedLetters.value.splice(index, 1)
+  selectedLetters.value[index] = null
 }
 
 const parts = computed(() => props.question.body.question.split('__BLANK__'))
@@ -57,19 +57,21 @@ scrambledLetters.value = combinedUpperCase.map(letter => ({
 
 // Dodawanie litery do odpowiedzi
 function addLetter(letterId: string) {
-  if (selectedLetters.value.length < filledAnswer.value.length) {
+  const nullIndex = selectedLetters.value.findIndex(val => val === null)
+  if (nullIndex !== -1) {
+    selectedLetters.value[nullIndex] = letterId
+  }
+  else if (selectedLetters.value.length < filledAnswer.value.length) {
     selectedLetters.value.push(letterId)
   }
 }
 
-watch(() => selectedLetters.value.length, () => {
+watch(selectedLetters, () => {
   const answer = selectedLetters.value
-    .map(letterId =>
-      scrambledLetters.value.find(letter => letter.value === letterId)?.label,
-    )
+    .map(letterId => letterId ? (scrambledLetters.value.find(letter => letter.value === letterId)?.label || '') : '')
     .join('')
   props.question.userAnswer = answer
-})
+}, { deep: true })
 </script>
 
 <template>
