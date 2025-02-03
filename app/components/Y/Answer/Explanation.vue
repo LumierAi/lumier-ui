@@ -170,7 +170,7 @@ function getPrefix(answer: string | boolean, isCorrect: boolean): string {
         {{ result.explanation }}
       </p>
     </div>
-    <div class="flex flex-col flex-1 justify-end space-y-4">
+    <div class="flex flex-col flex-1 justify-end space-y-4 overflow-y-scroll no-scrollbar">
       <div class="flex flex-col transition-all duration-300" :class="{ 'h-full': chatMode }">
         <div v-show="chatMode" class="transition-all duration-300 flex-1 w-full pb-4">
           <div class="overflow-y-auto space-y-4">
