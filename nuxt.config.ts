@@ -116,6 +116,10 @@ export default defineNuxtConfig({
         'Avatar',
         'MenuItem',
         'Menubar',
+        'Tabs',
+        'TabPanel',
+        'TabPanels',
+        'TabList',
       ],
     },
     options: {
