@@ -117,6 +117,7 @@ export default defineNuxtConfig({
         'MenuItem',
         'Menubar',
         'Tabs',
+        'Tab',
         'TabPanel',
         'TabPanels',
         'TabList',
