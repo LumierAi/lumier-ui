@@ -95,9 +95,11 @@ const chatConfig = ref({
   jasne_initial_information: false,
   issues_search: false,
 })
+const knowledgeMode = ref('Plik')
 </script>
 
 <template>
+  <SelectButton v-model="knowledgeMode" size="large" :options="['Plik', 'Tekst']" />{{ knowledgeMode }}
   <YCard class="m-4" title="Playground">
     <template #menu>
       <YBtn

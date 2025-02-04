@@ -706,7 +706,55 @@ export const JasnePreset = definePreset(Aura, {
           },
         },
       },
-
+    },
+    selectButton: {
+      root: {
+        borderRadius: '8px',
+      },
+      colorScheme: {
+        light: {
+          root: {
+            invalidBorderColor: '8px',
+          },
+        },
+      },
+    },
+    togglebutton: {
+      root: {
+        padding: '0.5rem 1rem',
+        borderRadius: '8px',
+        gap: '0.5rem',
+        fontWeight: '500',
+        disabledBackground: '{form.field.disabled.background}',
+        disabledBorderColor: '{form.field.disabled.background}',
+        disabledColor: '{form.field.disabled.color}',
+        invalidBorderColor: '{form.field.invalid.border.color}',
+      },
+      content: {
+        checkedShadow: 'none',
+      },
+      colorScheme: {
+        light: {
+          root: {
+            background: 'transparent',
+            checkedBackground: '{background.2}',
+            hoverBackground: '{surface.100}',
+            borderColor: '{surface.100}',
+            color: '{secondary}',
+            hoverColor: '{surface.700}',
+            checkedColor: '{secondary}',
+            checkedBorderColor: 'none',
+          },
+          content: {
+            checkedBackground: '{surface.900}',
+          },
+          icon: {
+            color: '{secondary}',
+            hoverColor: '{surface.700}',
+            checkedColor: '{surface.900}',
+          },
+        },
+      },
     },
   },
   extend: {

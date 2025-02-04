@@ -109,6 +109,8 @@ export default defineNuxtConfig({
         'DataTable',
         'Column',
         'Popover',
+        'SelectButton',
+        'ToggleButton',
         'ConfirmDialog',
         'Paginator',
         'Drawer',
