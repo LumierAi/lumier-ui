@@ -41,21 +41,20 @@ const inputModel = defineModel<string>()
             icon-pos="left"
             @click="config.tavily_web_search = !config.tavily_web_search"
           />
-          <ToggleSwitch
-            v-model="config.knowledge_blocks_search"
-            v-tooltip.bottom="'Wyszukiwanie w bazie wiedzy'"
-            :disabled="disabledAdditionalOptions"
-          />
-          <ToggleSwitch
-            v-model="config.jasne_initial_information"
-            v-tooltip.bottom="'Wprowadzenie do Jasne'"
-            :disabled="disabledAdditionalOptions"
-          />
-          <ToggleSwitch
-            v-model="config.issues_search"
-            v-tooltip.bottom="'Wyszukiwanie w zagadnieniach'"
-            :disabled="disabledAdditionalOptions"
-          />
+          <template v-if="!disabledAdditionalOptions">
+            <ToggleSwitch
+              v-model="config.knowledge_blocks_search"
+              v-tooltip.bottom="'Wyszukiwanie w bazie wiedzy'"
+            />
+            <ToggleSwitch
+              v-model="config.jasne_initial_information"
+              v-tooltip.bottom="'Wprowadzenie do Jasne'"
+            />
+            <ToggleSwitch
+              v-model="config.issues_search"
+              v-tooltip.bottom="'Wyszukiwanie w zagadnieniach'"
+            />
+          </template>
         </div>
       </div>
     </div>
