@@ -742,7 +742,7 @@ export const JasnePreset = definePreset(Aura, {
             borderColor: 'transparent',
             color: '{secondary}',
             hoverColor: '{surface.100}',
-            checkedColor: '{background.2}',
+            checkedColor: '{secondary}',
             checkedBorderColor: 'transparent',
           },
           content: {
