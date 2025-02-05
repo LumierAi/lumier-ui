@@ -44,8 +44,8 @@ const availableToolInvocations = computed(() => {
               </div>
             </div>
           </div>
-          {{ message.content }}
           <YMDC v-else :content="message.content" />
+          {{ message.content }}
         </div>
       </div>
     </template>
