@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import { useChat } from '@ai-sdk/vue'
 import type { CoreMessage } from 'ai'
 import type { CourseQuestion } from '../../../../types/Question'
+import { useChat } from '@ai-sdk/vue'
 
 interface QuizResult {
   isCorrect: boolean
@@ -221,7 +221,7 @@ function getPrefix(answer: string | boolean, isCorrect: boolean): string {
             v-model="input"
             :rows="1"
             rounded
-            placeholder="Ask a question"
+            placeholder="Dopytaj"
             size="small"
             class="flex-1 transition-all duration-300 min-w-0"
             :class="(isChatInputFull) ? 'max-w-full' : 'max-w-[200px]'"
