@@ -37,7 +37,6 @@ const availableToolInvocations = computed(() => {
             <div v-for="toolInvocation in availableToolInvocations" :key="toolInvocation.toolCallId">
               <div v-if="toolInvocation.toolName === 'tavily_web_search'">
                 <YChatToolSearch
-
                   :result="((toolInvocation as any).result as any)"
                   :is-loading="toolInvocation.state !== 'result'"
                 />
@@ -45,7 +44,6 @@ const availableToolInvocations = computed(() => {
             </div>
           </div>
           <YMDC v-else :content="message.content" />
-          {{ message.content }}
         </div>
       </div>
     </template>
