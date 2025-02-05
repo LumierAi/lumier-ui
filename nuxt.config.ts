@@ -14,7 +14,6 @@ export default defineNuxtConfig({
   imports: {
     dirs: ['composables', 'utils', 'types/**'],
   },
-
   devtools: { enabled: true },
 
   css: [
@@ -129,13 +128,13 @@ export default defineNuxtConfig({
       theme: {
         preset: JasnePreset,
         options: {
-          darkModeSelector: '.dark-mode',
+          darkModeSelector: '.fake-dark-mode',
         },
       },
     },
   },
-
   tailwindcss: {
     configPath: 'tailwind.config',
+    
   },
 })

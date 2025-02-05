@@ -2,6 +2,7 @@ import type { Config } from 'tailwindcss'
 
 export default <Partial<Config>>{
   safelist: ['bg-success', 'bg-danger'],
+  darkMode: 'class',
   theme: {
     extend: {
       colors: {

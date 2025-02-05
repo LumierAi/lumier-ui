@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import type { RoutePathSchema, RoutesNamedLocations } from '~~/.nuxt/typed-router'
+import type { RoutePathSchema, RoutesNamedLocations } from '~~/.nuxt/typed-router';
 
 export type RouteLocationRaw = RoutePathSchema | RoutesNamedLocations
 const props = withDefaults(defineProps<{
@@ -87,7 +87,11 @@ async function onClick(e: Event) {
         class: [
           props.class,
           '!gap-0 transition-all duration-300 ease-in-out',
-          { '!px-[12.5px]': label && !text, '!p-0': fullIcon },
+          {
+            '!px-[12.5px]': label && !text,
+            '!p-0': fullIcon,
+            'text-[#312319]': secondary,
+          },
         ],
         style: {
           'height': height || fullIcon ? 'initial' : 0 || (size === 'small' ? '40px' : '48px'),

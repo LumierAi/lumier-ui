@@ -100,6 +100,7 @@ const knowledgeMode = ref('Plik')
 
 <template>
   <SelectButton v-model="knowledgeMode" size="large" :options="['Plik', 'Tekst']" />{{ knowledgeMode }}
+  <YBtn secondary label="Test" />
   <YCard class="m-4" title="Playground">
     <template #menu>
       <YBtn

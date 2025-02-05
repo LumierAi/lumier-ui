@@ -1,7 +1,7 @@
 <script setup lang="ts">
+import { useChat } from '@ai-sdk/vue'
 import type { CoreMessage } from 'ai'
 import type { CourseQuestion } from '../../../../types/Question'
-import { useChat } from '@ai-sdk/vue'
 
 interface QuizResult {
   isCorrect: boolean
@@ -98,6 +98,10 @@ function getPrefix(answer: string | boolean, isCorrect: boolean): string {
   <div class="rounded-lg transition-all duration-300 relative flex flex-col" :class="{ 'h-[80vh]': chatMode }">
     <!-- Result Badge -->
     <div class="space-y-2">
+      <div v-if="result.newBulb" class="mt-4 text-center text-sm text-success headline-5">
+        <i class="pi pi-star-fill mr-2" />
+        Nowy punkt zdobyty!
+      </div>
       <div class="flex items-center gap-3 justify-between">
         <div class="flex items-center gap-2 h-[34px] relative overflow-hidden">
           <Transition name="slide-left">
@@ -155,7 +159,7 @@ function getPrefix(answer: string | boolean, isCorrect: boolean): string {
           <span
             class="headline-5"
           >
-            Correct
+            Poprawnie
           </span>
         </div>
         <p class="body-2">
@@ -238,12 +242,6 @@ function getPrefix(answer: string | boolean, isCorrect: boolean): string {
           @click="input ? submitQuestion() : $emit('continue')"
         />
       </Transition>
-    </div>
-
-    <!-- New Point Indicator -->
-    <div v-if="result.newBulb" class="mt-4 text-center text-sm text-success">
-      <i class="pi pi-star-fill mr-2" />
-      New point earned!
     </div>
   </div>
 </template>
