@@ -1,9 +1,13 @@
 <script setup lang="ts">
 import type { Message } from 'ai'
 
-defineProps<{
+const props = defineProps<{
   message: Message
 }>()
+
+const availableToolInvocations = computed(() => {
+  return props.message.toolInvocations?.filter(x => x.toolName === 'tavily_web_search')
+})
 </script>
 
 <template>
@@ -29,16 +33,18 @@ defineProps<{
           />
         </div>
         <div class="flex-1">
-          <div v-if="(message.toolInvocations?.length ?? 0) > 0">
-            <div v-for="toolInvocation in message.toolInvocations" :key="toolInvocation.toolCallId">
+          <div v-if="(availableToolInvocations?.length ?? 0) > 0">
+            <div v-for="toolInvocation in availableToolInvocations" :key="toolInvocation.toolCallId">
               <div v-if="toolInvocation.toolName === 'tavily_web_search'">
                 <YChatToolSearch
+
                   :result="((toolInvocation as any).result as any)"
                   :is-loading="toolInvocation.state !== 'result'"
                 />
               </div>
             </div>
           </div>
+          {{ message.content }}
           <YMDC v-else :content="message.content" />
         </div>
       </div>
