@@ -39,7 +39,8 @@ const { messages, handleSubmit, input, isLoading } = useChat({
   initialMessages: [{
     id: '1',
     role: 'system',
-    content: `You are a helpful assistant that explains answers to questions.
+    content: `
+     You are a helpful assistant that explains answers to questions.
      Explain following question: ${props.currentQuestion.body.question}
      Correct answer: ${props.result.answer}
      User answer: ${props.currentQuestion.userAnswer}
@@ -98,12 +99,8 @@ function getPrefix(answer: string | boolean, isCorrect: boolean): string {
   <div class="rounded-lg transition-all duration-300 relative flex flex-col" :class="{ 'h-[80vh]': chatMode }">
     <!-- Result Badge -->
     <div class="space-y-2">
-      <div v-if="result.newBulb" class="mt-4 text-center text-sm text-success headline-5">
-        <i class="pi pi-star-fill mr-2" />
-        Nowy punkt zdobyty!
-      </div>
-      <div class="flex items-center gap-3 justify-between">
-        <div class="flex items-center gap-2 h-[34px] relative overflow-hidden">
+      <div class="flex items-center justify-between">
+        <div class="flex items-center gap-2 h-[34px] relative overflow-hidden w-full">
           <Transition name="slide-left">
             <div
               v-if="chatMode"
@@ -121,7 +118,7 @@ function getPrefix(answer: string | boolean, isCorrect: boolean): string {
             :class="{
               'ml-6 transition-all duration-300': chatMode,
             }"
-            class="flex items-center gap-3"
+            class="flex items-center gap-3 w-full"
           >
             <YAnswerPrefix
               :prefix="getPrefix(currentQuestion.userAnswer!, result.isCorrect)"
@@ -131,10 +128,21 @@ function getPrefix(answer: string | boolean, isCorrect: boolean): string {
               class="headline-5"
               :class="[result.isCorrect ? 'text-success' : 'text-danger']"
             >
-              {{ result.isCorrect ? 'Correct' : 'Incorrect' }}
+              {{ result.isCorrect ? 'Poprawnie' : 'Niepoprawnie' }}
             </span>
+            <div class="grow" />
+            <div v-if="result.newBulb">
+              <img
+                src="../../../assets/jasne-icons/plus1.png"
+                class="object-contain"
+                width="77"
+                height="48"
+                alt="+1 point"
+              >
+            </div>
           </div>
         </div>
+
         <Transition name="slide-right">
           <div v-if="chatMode">
             <YBtn
