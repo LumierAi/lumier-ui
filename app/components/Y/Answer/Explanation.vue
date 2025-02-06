@@ -100,7 +100,7 @@ function getPrefix(answer: string | boolean, isCorrect: boolean): string {
     <!-- Result Badge -->
     <div class="space-y-2">
       <div class="flex items-center justify-between">
-        <div class="flex items-center gap-2 h-[34px] relative overflow-hidden w-full">
+        <div class="flex items-center gap-2 h-[34px] relative w-full">
           <Transition name="slide-left">
             <div
               v-if="chatMode"
