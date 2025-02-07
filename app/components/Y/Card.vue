@@ -6,7 +6,6 @@ const props = defineProps<{
   title?: string
   class?: string | object
   borderless?: boolean
-  disabled?: boolean
   contentClass?: string | object
 }>()
 
@@ -75,7 +74,6 @@ onUnmounted(() => {
         <slot name="actions" />
       </div>
     </template>
-    <div v-if="disabled" class="absolute size-full z-10 top-0 left-0 bg-current opacity-[0.08]" />
   </div>
 </template>
 
