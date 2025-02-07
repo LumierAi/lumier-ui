@@ -42,7 +42,12 @@ const filledAnswerLetters = filledAnswer.value.split('')
 
 const hasDigits = filledAnswerLetters.some(c => /\d/.test(c))
 // const randomChars = generateRandomChars(filledAnswerLetters.length, hasDigits)
-const proposalsCount = Math.ceil(filledAnswerLetters.length * 0.6)
+const ADDITIONAL_PROPOSALS_RATIO = filledAnswer.value.length < 10
+  ? filledAnswer.value.length < 7
+    ? 0.6
+    : 0.5
+  : 0.4
+const proposalsCount = Math.ceil(filledAnswerLetters.length * ADDITIONAL_PROPOSALS_RATIO)
 const randomChars = generateRandomChars(proposalsCount, hasDigits)
 
 // Tworzymy tablicę z literą z odpowiedzi oraz losowo wygenerowanymi literami
