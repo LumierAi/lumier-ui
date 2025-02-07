@@ -6,6 +6,7 @@ const props = defineProps<{
   title?: string
   class?: string | object
   borderless?: boolean
+  disabled?: boolean
   contentClass?: string | object
 }>()
 
@@ -39,7 +40,7 @@ onUnmounted(() => {
 </script>
 
 <template>
-  <div class="y-card rounded-3xl p-6 bg-white dark:bg-gray-800 overflow-hidden" :class="[{ 'opacity-50': loading, '!border-none': props.borderless }, props.class]">
+  <div class="y-card relative rounded-3xl p-6 bg-white dark:bg-gray-800 overflow-hidden" :class="[{ 'opacity-50': loading, '!border-none': props.borderless }, props.class]">
     <template v-if="slots.title || props.title || slots.menu">
       <div class="dark:border-gray-700 flex justify-between">
         <slot v-if="slots.title" name="title" />
@@ -74,6 +75,7 @@ onUnmounted(() => {
         <slot name="actions" />
       </div>
     </template>
+    <div v-if="disabled" class="absolute size-full z-10 top-0 left-0 bg-current opacity-[0.08]" />
   </div>
 </template>
 
