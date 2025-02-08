@@ -8,10 +8,12 @@ const props = defineProps<{
   question: CourseQuestion<string>
 }>()
 
-function generateRandomChars(count: number, includeDigits: boolean): string[] {
-  let pool = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ'
-  if (includeDigits)
-    pool += '0123456789'
+function generateRandomChars(count: number, specialMode?: 'onlyDigits' | 'hasDigits'): string[] {
+  const digits = '0123456789'
+  const letters = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ'
+  let pool = specialMode === 'onlyDigits' ? digits : letters
+  if (specialMode === 'hasDigits')
+    pool += digits
 
   return Array.from({ length: count }, () => {
     const randomIndex = Math.floor(Math.random() * pool.length)
@@ -41,6 +43,7 @@ const filledAnswer = computed(() => {
 const filledAnswerLetters = filledAnswer.value.split('')
 
 const hasDigits = filledAnswerLetters.some(c => /\d/.test(c))
+const onlyDigits = filledAnswerLetters.every(c => /\d/.test(c))
 // const randomChars = generateRandomChars(filledAnswerLetters.length, hasDigits)
 const ADDITIONAL_PROPOSALS_RATIO = filledAnswer.value.length < 10
   ? filledAnswer.value.length < 7
@@ -48,7 +51,7 @@ const ADDITIONAL_PROPOSALS_RATIO = filledAnswer.value.length < 10
     : 0.5
   : 0.4
 const proposalsCount = Math.ceil(filledAnswerLetters.length * ADDITIONAL_PROPOSALS_RATIO)
-const randomChars = generateRandomChars(proposalsCount, hasDigits)
+const randomChars = generateRandomChars(proposalsCount, hasDigits ? 'hasDigits' : onlyDigits ? 'onlyDigits' : undefined)
 
 // Tworzymy tablicę z literą z odpowiedzi oraz losowo wygenerowanymi literami
 const combined = [...filledAnswerLetters, ...randomChars]
