@@ -1,4 +1,4 @@
-import type { I18nUiMessagesKeys } from '~~/i18n/I18nUiMessages'
+import type { I18nUiMessagesKeys } from '../../i18n/I18nUiMessages'
 
 export default defineNuxtPlugin((nuxtApp) => {
   nuxtApp.vueApp.config.globalProperties.$ut = (key: I18nUiMessagesKeys) => {
