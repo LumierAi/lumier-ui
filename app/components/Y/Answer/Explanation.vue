@@ -128,7 +128,7 @@ function getPrefix(answer: string | boolean, isCorrect: boolean): string {
               class="headline-5"
               :class="[result.isCorrect ? 'text-success' : 'text-danger']"
             >
-              {{ result.isCorrect ? $t('answer.explanation.correct') : $t('answer.explanation.incorrect') }}
+              {{ result.isCorrect ? $ut('answer.explanation.correct') : $ut('answer.explanation.incorrect') }}
             </span>
             <div class="grow" />
             <div v-if="result.newBulb">
@@ -146,7 +146,7 @@ function getPrefix(answer: string | boolean, isCorrect: boolean): string {
         <Transition name="slide-right">
           <div v-if="chatMode">
             <YBtn
-              :label="$t('answer.explanation.continue')"
+              :label="$ut('answer.explanation.continue')"
               block
               class="w-full text-white"
               size="small"
@@ -167,7 +167,7 @@ function getPrefix(answer: string | boolean, isCorrect: boolean): string {
           <span
             class="headline-5"
           >
-            {{ $t('answer.explanation.correct') }}
+            {{ $ut('answer.explanation.correct') }}
           </span>
         </div>
         <p class="body-2">
@@ -216,7 +216,7 @@ function getPrefix(answer: string | boolean, isCorrect: boolean): string {
             ]"
           >
             <YBtn
-              :label="$t('answer.explanation.explain')"
+              :label="$ut('answer.explanation.explain')"
               class="text-white whitespace-nowrap transition-opacity duration-300"
               size="small"
               height="32px"
@@ -229,7 +229,7 @@ function getPrefix(answer: string | boolean, isCorrect: boolean): string {
             v-model="input"
             :rows="1"
             rounded
-            :placeholder="$t('answer.explanation.askMore')"
+            :placeholder="$ut('answer.explanation.askMore')"
             size="small"
             class="flex-1 transition-all duration-300 min-w-0"
             :class="(isChatInputFull) ? 'max-w-full' : 'max-w-[200px]'"
@@ -243,7 +243,7 @@ function getPrefix(answer: string | boolean, isCorrect: boolean): string {
       <Transition name="slide-down">
         <YBtn
           v-if="!chatMode"
-          :label="input ? $t('answer.explanation.sendMessage') : $t('answer.explanation.continue')"
+          :label="input ? $ut('answer.explanation.sendMessage') : $ut('answer.explanation.continue')"
           block
           class="w-full text-white"
           :color="input ? undefined : result.isCorrect ? 'success' : 'danger'"
