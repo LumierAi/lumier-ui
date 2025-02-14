@@ -39,7 +39,7 @@ const t = useUiT()
 t(key)
 
 Funkcja wyglada tak:
-function useUiT(key: I18nMessagesKeys): string
+function useUiT(key: I18nUiMessages): string
 example:
 
 ```

@@ -1,6 +1,8 @@
+import type { I18nUiMessagesKeys } from '../i18n/I18nUiMessages'
+
 declare module '@vue/runtime-core' {
   interface ComponentCustomProperties {
-    $t: (key: I18nMessagesKeys) => string
+    $t: (key: I18nUiMessagesKeys) => string
   }
 }
 

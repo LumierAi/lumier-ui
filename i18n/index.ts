@@ -1,4 +1,4 @@
-import type { I18nMessages } from './I18nMessages'
+import type { I18nMessages } from './I18nUiMessages'
 import type { Locale } from './locales'
 import en from './locales/en'
 import pl from './locales/pl'

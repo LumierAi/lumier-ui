@@ -1,4 +1,4 @@
-import type { DotNotation } from '~~/types'
+import type { DotNotation } from '../types'
 import type pl from './locales/pl'
 
 export type I18nMessages = typeof pl

@@ -1,4 +1,4 @@
-import type { I18nMessages } from '../I18nMessages'
+import type { I18nMessages } from '../I18nUiMessages'
 
 export default {
   answer: {
