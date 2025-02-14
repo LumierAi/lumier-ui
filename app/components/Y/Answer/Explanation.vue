@@ -68,7 +68,7 @@ function submitQuestion() {
 
 function startChat() {
   chatMode.value = true
-  input.value = useT('answer.explanation.defaultQuestion')
+  input.value = useUiT('answer.explanation.defaultQuestion')
   handleSubmit()
 }
 

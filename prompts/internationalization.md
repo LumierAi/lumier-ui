@@ -32,15 +32,16 @@ login: {
 ```
 
 Jeżeli to plik .ts lub wewnątrz <script setup> w .vue
-to użyj useT(key) do tłumaczenia
-useT zwraca odrazu przetłumaczony tekst
+to użyj useUiT(key) do tłumaczenia
+useUiT zwraca odrazu przetłumaczony tekst
 NIGDY nie używaj tego jako
-const t = useT()
+const t = useUiT()
 t(key)
 
-function useT(key: I18nMessagesKeys): string
+Funkcja wyglada tak:
+function useUiT(key: I18nMessagesKeys): string
 example:
 
 ```
-    openSuccessSnackbar(useT('courses.generateSuccess'))
+    openSuccessSnackbar(useUiT('courses.generateSuccess'))
 ```
