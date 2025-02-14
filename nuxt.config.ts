@@ -13,6 +13,9 @@ export default defineNuxtConfig({
     '@nuxt/icon',
     '@nuxtjs/i18n',
   ],
+  $meta: {
+    name: 'lumier-ui',
+  },
   imports: {
     dirs: ['composables', 'utils', 'types/**'],
   },
