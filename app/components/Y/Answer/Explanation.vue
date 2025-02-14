@@ -146,7 +146,7 @@ function getPrefix(answer: string | boolean, isCorrect: boolean): string {
         <Transition name="slide-right">
           <div v-if="chatMode">
             <YBtn
-              label="Kontynuuj"
+              :label="$t('answer.explanation.continue')"
               block
               class="w-full text-white"
               size="small"
