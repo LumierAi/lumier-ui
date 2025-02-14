@@ -68,7 +68,7 @@ function submitQuestion() {
 
 function startChat() {
   chatMode.value = true
-  input.value = 'Wytłumacz mi to'
+  input.value = useT('answer.explanation.defaultQuestion')
   handleSubmit()
 }
 
@@ -128,7 +128,7 @@ function getPrefix(answer: string | boolean, isCorrect: boolean): string {
               class="headline-5"
               :class="[result.isCorrect ? 'text-success' : 'text-danger']"
             >
-              {{ result.isCorrect ? 'Poprawnie' : 'Niepoprawnie' }}
+              {{ result.isCorrect ? $t('answer.explanation.correct') : $t('answer.explanation.incorrect') }}
             </span>
             <div class="grow" />
             <div v-if="result.newBulb">
@@ -167,7 +167,7 @@ function getPrefix(answer: string | boolean, isCorrect: boolean): string {
           <span
             class="headline-5"
           >
-            Poprawnie
+            {{ $t('answer.explanation.correct') }}
           </span>
         </div>
         <p class="body-2">
@@ -216,7 +216,7 @@ function getPrefix(answer: string | boolean, isCorrect: boolean): string {
             ]"
           >
             <YBtn
-              label="Wyjasnij"
+              :label="$t('answer.explanation.explain')"
               class="text-white whitespace-nowrap transition-opacity duration-300"
               size="small"
               height="32px"
@@ -229,7 +229,7 @@ function getPrefix(answer: string | boolean, isCorrect: boolean): string {
             v-model="input"
             :rows="1"
             rounded
-            placeholder="Dopytaj"
+            :placeholder="$t('answer.explanation.askMore')"
             size="small"
             class="flex-1 transition-all duration-300 min-w-0"
             :class="(isChatInputFull) ? 'max-w-full' : 'max-w-[200px]'"
@@ -243,7 +243,7 @@ function getPrefix(answer: string | boolean, isCorrect: boolean): string {
       <Transition name="slide-down">
         <YBtn
           v-if="!chatMode"
-          :label="input ? 'Wyślij wiadomość' : 'Kontynuuj'"
+          :label="input ? $t('answer.explanation.sendMessage') : $t('answer.explanation.continue')"
           block
           class="w-full text-white"
           :color="input ? undefined : result.isCorrect ? 'success' : 'danger'"

@@ -1,6 +1,7 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 import { join } from 'node:path'
 import { JasnePreset } from './app/constants/PrimeTheme'
+import { LocaleDictionary } from './i18n/locales'
 
 export default defineNuxtConfig({
   modules: [
@@ -10,6 +11,7 @@ export default defineNuxtConfig({
     '@primevue/nuxt-module',
     'nuxt-typed-router',
     '@nuxt/icon',
+    '@nuxtjs/i18n',
   ],
   imports: {
     dirs: ['composables', 'utils', 'types/**'],
@@ -59,6 +61,17 @@ export default defineNuxtConfig({
       styles: ['normal'],
       subsets: ['latin-ext', 'latin'],
     },
+  },
+
+  i18n: {
+    locales: LocaleDictionary,
+    defaultLocale: 'en',
+    strategy: 'no_prefix',
+    detectBrowserLanguage: {
+      useCookie: true,
+      cookieKey: 'i18n_cookie',
+    },
+    vueI18n: './i18n.config.ts',
   },
   icon: {
     provider: 'server',
@@ -135,6 +148,6 @@ export default defineNuxtConfig({
   },
   tailwindcss: {
     configPath: 'tailwind.config',
-    
+
   },
 })

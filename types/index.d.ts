@@ -1,3 +1,9 @@
+declare module '@vue/runtime-core' {
+  interface ComponentCustomProperties {
+    $t: (key: I18nMessagesKeys) => string
+  }
+}
+
 /**
  * Type that omits a type from a union.
  *
@@ -167,3 +173,38 @@ export type OptionalUndefined<T> = {
 export type NullableDeep<T> = {
   [K in keyof T]: T[K] extends object ? NullableDeep<T[K]> : T[K] | null;
 }
+
+/**
+ * Utility type that conditionally prefixes a string with a dot.
+ *
+ * @template T - A string type.
+ * @returns If T is non-empty, returns `.{T}`, otherwise returns an empty string.
+ *
+ * @remarks
+ * This type is used in i18n to construct dot notation keys for nested translation objects.
+ */
+type DotPrefix<T extends string> = T extends '' ? '' : `.${T}`
+
+/**
+ * Recursive type that generates a union of dot notation keys for an object.
+ *
+ * It traverses the object properties and concatenates keys into a dot notation string.
+ * For non-object properties, the key is returned as a string.
+ *
+ * @template T - The type of the object to extract keys from.
+ * @returns A union of strings representing all dot notation paths within T.
+ *
+ * @remarks
+ * This type is used in i18n for accessing nested translation keys.
+ */
+export type DotNotation<T> = (
+  T extends object
+    ? {
+        [K in keyof T]: K extends string
+          ? T[K] extends object
+            ? `${K}${DotPrefix<DotNotation<T[K]>>}`
+            : `${K}`
+          : never
+      }[keyof T]
+    : ''
+) extends infer D ? Extract<D, string> : never
