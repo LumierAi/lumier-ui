@@ -9,7 +9,7 @@ settings: 'Ustawienia',
 },
 }
 
-Jeżeli wyciągasz teksty z template z .vue, to użyj $t(key) do tłumaczenia.
+Jeżeli wyciągasz teksty z template z .vue, to użyj $ut(key) do tłumaczenia.
 
 example:
 
@@ -18,7 +18,7 @@ zmieniam plik login.vue
 ```
 <template>
   <div>
-    {{ $t('login.title') }}
+    {{ $ut('login.title') }}
   </div>
 </template>
 ```

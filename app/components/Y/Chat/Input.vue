@@ -22,7 +22,7 @@ const inputModel = defineModel<string>()
     <div class="relative">
       <Textarea
         v-model="inputModel"
-        placeholder="Wpisz swoją wiadomość..."
+        :placeholder="$ut('chat.input.placeholder')"
         :auto-resize="true"
         rows="3"
         text
@@ -32,27 +32,27 @@ const inputModel = defineModel<string>()
       <div class="absolute bottom-0 w-full border-t border-gray-200">
         <div class="pt-1 pb-4 px-2 space-x-2">
           <YBtn
-            v-tooltip.bottom="'Wyszukiwanie w internecie'"
+            v-tooltip.bottom="$ut('chat.input.webSearchTooltip')"
             prepend-icon="tabler:world-search"
             size="small"
             text
             :color="config.tavily_web_search ? 'primary' : 'contrast'"
-            :label="config.tavily_web_search ? 'Szukaj' : undefined"
+            :label="config.tavily_web_search ? $ut('chat.input.searchLabel') : undefined"
             icon-pos="left"
             @click="config.tavily_web_search = !config.tavily_web_search"
           />
           <template v-if="!disabledAdditionalOptions">
             <ToggleSwitch
               v-model="config.knowledge_blocks_search"
-              v-tooltip.bottom="'Wyszukiwanie w bazie wiedzy'"
+              v-tooltip.bottom="$ut('chat.input.knowledgeBaseSearchTooltip')"
             />
             <ToggleSwitch
               v-model="config.jasne_initial_information"
-              v-tooltip.bottom="'Wprowadzenie do Jasne'"
+              v-tooltip.bottom="$ut('chat.input.jasneIntroTooltip')"
             />
             <ToggleSwitch
               v-model="config.issues_search"
-              v-tooltip.bottom="'Wyszukiwanie w zagadnieniach'"
+              v-tooltip.bottom="$ut('chat.input.issuesSearchTooltip')"
             />
           </template>
         </div>
