@@ -4,6 +4,7 @@ import { computed, ref } from 'vue'
 
 const props = defineProps<{
   question: CourseQuestion<boolean>
+  isSubmittingAnswer?: boolean
 }>()
 
 const emits = defineEmits(['questionAnswered'])
@@ -26,12 +27,14 @@ function setAnswer(value: boolean) {
     <div class="flex gap-4 mt-6 mx-auto justify-center">
       <YBtn
         block
+        :loading="isSubmittingAnswer"
         :label="$ut('question.trueOrFalse.false')"
         color="danger"
         @click="setAnswer(false)"
       />
       <YBtn
         block
+        :loading="isSubmittingAnswer"
         :label="$ut('question.trueOrFalse.true')"
         color="success"
         @click="setAnswer(true)"

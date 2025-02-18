@@ -4,6 +4,7 @@ import type { CourseQuestion, QuestionType } from '../../../../types/Question'
 
 defineProps<{
   question: CourseQuestion<string | boolean>
+  isSubmittingAnswer?: boolean
 }>()
 
 const components: Record<QuestionType, () => ConcreteComponent> = {
@@ -19,7 +20,7 @@ function getQuestionComponent(type: QuestionType) {
 </script>
 
 <template>
-  <component :is="getQuestionComponent(question.type)" :question="question" />
+  <component :is="getQuestionComponent(question.type)" :question="question" :is-submitting-answer="isSubmittingAnswer" />
 </template>
 
 <style scoped>
