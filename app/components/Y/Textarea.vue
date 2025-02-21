@@ -5,7 +5,9 @@ const props = defineProps<BaseFieldProps & {
   rows?: number
   size?: 'small' | 'large'
   rounded?: boolean
+  contrast?: boolean
   placeholder?: string
+  label?: string
   submitOnEnter?: boolean
   loading?: boolean
   glow?: boolean
@@ -21,6 +23,7 @@ const slots = defineSlots<{
 }>()
 const model = defineModel<string | null>()
 const { rules } = defineRules(props)
+const id = `field-${Math.floor(Math.random() * (9999 - 1000 + 1)) + 1000}`
 
 function handleEnter(e: KeyboardEvent) {
   if (props.submitOnEnter) {
@@ -37,30 +40,37 @@ function handleEnter(e: KeyboardEvent) {
 </script>
 
 <template>
-  <YField v-bind="props" class="w-full relative">
-    <Textarea
-      v-model="model"
-      class="w-full"
-      :class="({ 'input-glow': glow } as any)"
-      :size="size"
-      :placeholder="placeholder"
-      :auto-resize="true"
-      :rules="rules"
-      :pt="{
-        root: {
-          style: {
-            'padding-bottom': slots.actions ? '48px' : undefined,
-            'border-radius': rounded ? '9999px' : undefined,
+  <div v-bind="props" class="w-full relative">
+    <FloatLabel variant="in">
+      <Textarea
+        :id
+        v-model="model"
+        class="w-full leading-5 text-sm"
+        :class="({ 'input-glow': glow } as any)"
+        :size
+        :placeholder="placeholder"
+        :auto-resize="true"
+        :rules
+        :pt="{
+          root: {
+            style: {
+              'padding-bottom': slots.actions ? '48px' : undefined,
+              'border-radius': rounded ? '9999px' : undefined,
+              'background-color': contrast ? 'var(--p-background-2)' : undefined,
+              'color': 'var(--p-secondary)',
+              'border': contrast ? 'none' : undefined,
+            },
           },
-        },
-      }"
-      :disabled="loading || disabled"
-      :rows="rows ?? 4"
-      @focus="emits('focus')"
-      @blur="emits('blur')"
-      @keydown.enter="handleEnter"
-    />
-    <div v-if="slots.actions" class="absolute bottom-2 border-t border-gray-100 dark:border-gray-800 w-full pt-[1px] ps-[1px]">
+        }"
+        :disabled="loading || disabled"
+        :rows="rows ?? 4"
+        @focus="emits('focus')"
+        @blur="emits('blur')"
+        @keydown.enter="handleEnter"
+      />
+      <label v-if="label" class="text-sm leading-6 !font-semibold" :for="id">{{ label }}</label>
+    </FloatLabel>
+    <div v-if="slots.actions" class="absolute bottom-2 w-full">
       <slot name="actions" />
     </div>
     <Transition
@@ -79,7 +89,7 @@ function handleEnter(e: KeyboardEvent) {
         />
       </div>
     </Transition>
-  </YField>
+  </div>
 </template>
 
 <style scoped lang="scss">
@@ -88,5 +98,18 @@ function handleEnter(e: KeyboardEvent) {
   :deep(.p-inputtextarea:focus) {
     border-color: var(--primary-color);
   }
+}
+
+:deep(.p-textarea) {
+  --p-textarea-focus-ring-width: 0px;
+  --p-textarea-focus-ring-offset: 0px;
+  --p-textarea-focus-ring-shadow: none;
+  --p-textarea-shadow: none;
+}
+
+:deep(.p-floatlabel) {
+  --p-floatlabel-active-color: var(--p-secondary);
+  --p-floatlabel-color: var(--p-secondary);
+  --p-floatlabel-focus-color: var(--p-secondary);
 }
 </style>

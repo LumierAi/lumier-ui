@@ -136,6 +136,7 @@ export default defineNuxtConfig({
         'Tabs',
         'Tab',
         'TabPanel',
+        'FloatLabel',
         'TabPanels',
         'TabList',
       ],
