@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import type { BaseInputProps } from '~~/types/props/BaseField'
+import type { BaseInputProps } from '../../../types/props/BaseField'
 
 const props = defineProps<BaseInputProps & {
   glow?: boolean
