@@ -26,6 +26,12 @@ export default defineNuxtConfig({
     join(__dirname, './app/assets/typography/index.css'),
     join(__dirname, './app/assets/core/index.css'),
   ],
+  alias: {
+    'secure-json-parse': 'secure-json-parse',
+  },
+  build: {
+    transpile: ['secure-json-parse'],
+  },
 
   future: {
     compatibilityVersion: 4,
