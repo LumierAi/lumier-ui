@@ -16,6 +16,15 @@ const label = computed<string>(() => props.question.body.question)
 <template>
   <div>
     <label :for="question.id" class="leading-8 text-xl font-bold">{{ label }}</label>
-    <YRadio :id="question.id" v-model="question.userAnswer" class="mt-6" :items size="large" :letter-label="true" />
+    <!-- eslint-disable vue/no-mutating-props -->
+    <YRadio
+      :id="question.id"
+      v-model="question.userAnswer"
+      class="mt-6"
+      :items="items"
+      size="large"
+      :letter-label="true"
+    />
+    <!-- eslint-enable vue/no-mutating-props -->
   </div>
 </template>

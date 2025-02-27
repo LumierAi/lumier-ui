@@ -20,7 +20,11 @@ function getQuestionComponent(type: QuestionType) {
 </script>
 
 <template>
-  <component :is="getQuestionComponent(question.type)" :question="question" :is-submitting-answer="isSubmittingAnswer" />
+  <component
+    :is="getQuestionComponent(question.type)"
+    :question="question"
+    :is-submitting-answer="isSubmittingAnswer"
+  />
 </template>
 
 <style scoped>

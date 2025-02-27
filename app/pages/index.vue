@@ -2,32 +2,7 @@
 import type { Lesson } from '~~/types/Lesson'
 import type { CourseQuestion } from '~~/types/Question'
 
-const a = () => console.log('a')
-const question: CourseQuestion<string> = {
-  id: 'asd',
-  createdAt: new Date(),
-  type: 'closed_question',
-  userAnswer: null,
-  moduleId: '',
-  schemaId: 'fbc3d12a-9b27-416e-8e95-8a60fac170b4',
-  userId: 'asd',
-  position: 1,
-  lessonId: 'asd',
-  difficulty: 'hard',
-  message: 'asd',
-  body: {
-    question: 'Jakie specyficzne cechy oświetlenia wyróżniają BYD Seal U DM-i na tle innych modeli?',
-    options: [
-      'LED, automatyczne, dynamiczne powitalne.',
-      'LED, manualne, dynamiczne powitalne.',
-      'LED, automatyczne, statyczne powitalne.',
-      'LED, automatyczne, bez powitalnych funkcji.',
-    ],
-    difficulty: 'hard',
-    type: 'closed_question',
-    schemaId: 'fbc3d12a-9b27-416e-8e95-8a60fac170b4',
-  },
-}
+const a = () => console.error('a')
 const lesson: Ref<Lesson> = ref({
   id: '416fdc3a-313a-40e3-a95e-118d12ead25b',
   bulbs: 0,
@@ -85,7 +60,7 @@ function updateCorrectAnswers() {
 }
 
 function log() {
-  console.log('log')
+  console.error('log')
 }
 const search = ref(false)
 const prompt = ref('')
@@ -99,31 +74,32 @@ const knowledgeMode = ref('Plik')
 </script>
 
 <template>
-  <SelectButton v-model="knowledgeMode" size="large" :options="['Plik', 'Tekst']" />{{ knowledgeMode }}
-  <YBtn secondary label="Test" />
-  <YCard class="m-4" title="Playground">
-    <template #menu>
-      <YBtn
-        label="Chat"
-      />
-    </template>
-    <YBtn text :click="a" label="Zaloguj" block />
-    <Icon name="tabler:home" />
-    <YQuestion :question />
-    <div class="w-1/2">
-      <YQuestionProgress :lesson />
-    </div>
-    <button @click="updateCorrectAnswers">
-      asd
-    </button>
-    <YTextarea v-model="prompt">
-      <template #actions>
-        <YBtn text icon="tabler:world-search" rounded size="small" :label="search ? 'Search' : undefined" :color="search ? 'primary' : 'contrast'" icon-pos="left" @click="search = !search" />
+  <div>
+    <SelectButton v-model="knowledgeMode" size="large" :options="['Plik', 'Tekst']" />
+    <YBtn secondary label="Test" />
+    <YCard class="m-4" title="Playground">
+      <template #menu>
+        <YBtn
+          label="Chat"
+        />
       </template>
-    </YTextarea>
-    <YChatInput v-model="prompt" v-model:config="chatConfig" :handle-submit="() => {}" :disabled-additional-options="false" />
-    <YAnswerExplanation :result="answerResult" :current-question="currentAnswer" @continue="log" />
-  </YCard>
+      <YBtn text :click="a" label="Zaloguj" block />
+      <Icon name="tabler:home" />
+      <div class="w-1/2">
+        <YQuestionProgress :lesson />
+      </div>
+      <button @click="updateCorrectAnswers">
+        asd
+      </button>
+      <YTextarea v-model="prompt">
+        <template #actions>
+          <YBtn text icon="tabler:world-search" rounded size="small" :label="search ? 'Search' : undefined" :color="search ? 'primary' : 'contrast'" icon-pos="left" @click="search = !search" />
+        </template>
+      </YTextarea>
+      <YChatInput v-model="prompt" v-model:config="chatConfig" :handle-submit="() => {}" :disabled-additional-options="false" />
+      <YAnswerExplanation :result="answerResult" :current-question="currentAnswer" @continue="log" />
+    </YCard>
+  </div>
 </template>
 
 <style scoped lang="scss">
