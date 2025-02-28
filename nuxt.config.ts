@@ -139,6 +139,7 @@ export default defineNuxtConfig({
         'FloatLabel',
         'TabPanels',
         'TabList',
+        'Calendar',
       ],
     },
     options: {
