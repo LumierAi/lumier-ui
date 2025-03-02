@@ -140,6 +140,7 @@ export default defineNuxtConfig({
         'TabPanels',
         'TabList',
         'Calendar',
+        'InputOtp',
       ],
     },
     options: {
