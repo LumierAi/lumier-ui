@@ -38,6 +38,7 @@ const isInputInFocus = ref(false)
 
 const { messages, handleSubmit, input, isLoading } = useChat({
   api: props.chatUrl || '/api/ai/explanation/chat',
+  credentials: props.chatUrl ? 'include' : 'same-origin',
   initialMessages: [{
     id: '1',
     role: 'system',
