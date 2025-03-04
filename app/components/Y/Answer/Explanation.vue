@@ -220,10 +220,10 @@ function getPrefix(answer: string | boolean, isCorrect: boolean): string {
           >
             <YBtn
               :label="$ut('answer.explanation.explain')"
-              class="text-white whitespace-nowrap transition-opacity duration-300"
+              class="whitespace-nowrap transition-opacity duration-300"
               size="small"
               height="32px"
-              color="secondary"
+              secondary
               rounded
               @click="startChat()"
             />
@@ -234,8 +234,7 @@ function getPrefix(answer: string | boolean, isCorrect: boolean): string {
             rounded
             :placeholder="$ut('answer.explanation.askMore')"
             size="small"
-            class="flex-1 transition-all duration-300 min-w-0"
-            :class="(isChatInputFull) ? 'max-w-full' : 'max-w-[200px]'"
+            class="flex-1 transition-all duration-300 w-full"
             submit-on-enter
             @focus="isInputInFocus = true"
             @blur="handleBlur"
