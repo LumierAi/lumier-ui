@@ -24,6 +24,7 @@ interface ExplanationChatBody {
 const props = defineProps<{
   result: QuizResult
   currentQuestion: CourseQuestion<string | boolean>
+  chatUrl?: string
 }>()
 
 defineEmits<{
@@ -34,8 +35,9 @@ const chatMode = ref<boolean>(false)
 const isInputInFocus = ref(false)
 
 // Add chat functionality
+
 const { messages, handleSubmit, input, isLoading } = useChat({
-  api: '/api/ai/explanation/chat',
+  api: props.chatUrl || '/api/ai/explanation/chat',
   initialMessages: [{
     id: '1',
     role: 'system',

@@ -1,4 +1,5 @@
 <script lang="ts" setup>
+import { useId } from 'vue'
 import type { BaseFieldProps } from '../../../types/props/BaseField'
 
 const props = defineProps<BaseFieldProps & {
@@ -11,6 +12,7 @@ const props = defineProps<BaseFieldProps & {
   submitOnEnter?: boolean
   loading?: boolean
   glow?: boolean
+  id?: string
 }>()
 const emits = defineEmits<{
   (e: 'focus'): void
@@ -23,7 +25,7 @@ const slots = defineSlots<{
 }>()
 const model = defineModel<string | null>()
 const { rules } = defineRules(props)
-const id = `field-${Math.floor(Math.random() * (9999 - 1000 + 1)) + 1000}`
+const id = props.id || useId()
 
 function handleEnter(e: KeyboardEvent) {
   if (props.submitOnEnter) {
@@ -41,7 +43,7 @@ function handleEnter(e: KeyboardEvent) {
 
 <template>
   <div v-bind="props" class="w-full relative">
-    <FloatLabel variant="in">
+    <FloatLabel v-if="label" variant="in">
       <Textarea
         :id
         v-model="model"
@@ -68,8 +70,35 @@ function handleEnter(e: KeyboardEvent) {
         @blur="emits('blur')"
         @keydown.enter="handleEnter"
       />
-      <label v-if="label" class="text-sm leading-6 !font-semibold" :for="id">{{ label }}</label>
+      <label class="text-sm leading-6 !font-semibold" :for="id">{{ label }}</label>
     </FloatLabel>
+    <Textarea
+      v-else
+      :id
+      v-model="model"
+      class="w-full leading-5 text-sm"
+      :class="({ 'input-glow': glow } as any)"
+      :size
+      :placeholder="placeholder"
+      :auto-resize="true"
+      :rules
+      :pt="{
+        root: {
+          style: {
+            'padding-bottom': slots.actions ? '48px' : undefined,
+            'border-radius': rounded ? '9999px' : undefined,
+            'background-color': contrast ? 'var(--p-background-2)' : undefined,
+            'color': 'var(--p-secondary)',
+            'border': contrast ? 'none' : undefined,
+          },
+        },
+      }"
+      :disabled="loading || disabled"
+      :rows="rows ?? 4"
+      @focus="emits('focus')"
+      @blur="emits('blur')"
+      @keydown.enter="handleEnter"
+    />
     <div v-if="slots.actions" class="absolute bottom-2 w-full">
       <slot name="actions" />
     </div>

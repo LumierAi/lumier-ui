@@ -91,11 +91,7 @@ const knowledgeMode = ref('Plik')
       <button @click="updateCorrectAnswers">
         asd
       </button>
-      <YTextarea v-model="prompt">
-        <template #actions>
-          <YBtn text icon="tabler:world-search" rounded size="small" :label="search ? 'Search' : undefined" :color="search ? 'primary' : 'contrast'" icon-pos="left" @click="search = !search" />
-        </template>
-      </YTextarea>
+      <YTextarea v-model="prompt" :rows="1"  placeholder="sad"/>
       <YChatInput v-model="prompt" v-model:config="chatConfig" :handle-submit="() => {}" :disabled-additional-options="false" />
       <YAnswerExplanation :result="answerResult" :current-question="currentAnswer" @continue="log" />
     </YCard>
