@@ -33,7 +33,7 @@ defineEmits<{
 
 const chatMode = ref<boolean>(false)
 const isInputInFocus = ref(false)
-
+const defaultQuestion = useUiT('answer.explanation.defaultQuestion')
 // Add chat functionality
 
 const { messages, handleSubmit, input, isLoading } = useChat({
@@ -71,7 +71,7 @@ function submitQuestion() {
 
 function startChat() {
   chatMode.value = true
-  input.value = useUiT('answer.explanation.defaultQuestion')
+  input.value = defaultQuestion
   handleSubmit()
 }
 
