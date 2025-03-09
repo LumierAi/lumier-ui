@@ -657,6 +657,11 @@ export const JasnePreset = definePreset(Aura, {
     },
   },
   components: {
+    inputtext: {
+      root: {
+        placeholderColor: '{secondary2}',
+      },
+    },
     radiobutton: {
       icon: {
         checked: {
