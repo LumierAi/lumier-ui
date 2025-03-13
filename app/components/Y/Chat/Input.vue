@@ -54,8 +54,8 @@ const inputModel = defineModel<string>()
               v-model="config.issues_search"
               v-tooltip.bottom="$ut('chat.input.issuesSearchTooltip')"
             />
-            <slot name="actions" />
           </template>
+          <slot name="actions" />
         </div>
       </div>
     </div>
