@@ -9,7 +9,6 @@ export default defineNuxtConfig({
     '@nuxt/fonts',
     '@nuxt/eslint',
     '@primevue/nuxt-module',
-    'nuxt-typed-router',
     '@nuxt/icon',
     '@nuxtjs/i18n',
     '@nuxtjs/mdc',
