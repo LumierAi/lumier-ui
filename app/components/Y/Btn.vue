@@ -1,7 +1,6 @@
 <script lang="ts" setup>
-import type { RoutePathSchema, RoutesNamedLocations } from '~~/.nuxt/typed-router';
+import type { RouteLocationRaw } from 'vue-router'
 
-export type RouteLocationRaw = RoutePathSchema | RoutesNamedLocations
 const props = withDefaults(defineProps<{
   size?: 'large' | 'small'
   height?: `${string}px`
