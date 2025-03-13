@@ -43,7 +43,7 @@ const availableToolInvocations = computed(() => {
               </div>
             </div>
           </div>
-          <YMDC v-else :content="message.content" />
+          <YMarkdown v-else :content="message.content" />
         </div>
       </div>
     </template>

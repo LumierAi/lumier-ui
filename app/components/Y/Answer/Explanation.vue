@@ -191,10 +191,7 @@ function getPrefix(answer: string | boolean, isCorrect: boolean): string {
           <div class="overflow-y-auto space-y-4">
             <div v-for="message in messages" :key="message.id">
               <div v-if="message.role === 'assistant'" class="text-sm">
-                <YMDC
-                  class="prose prose-sm dark:prose-invert"
-                  :content="message.content"
-                />
+                <YMarkdown :content="message.content" />
               </div>
               <div v-else-if="message.role === 'user'" class="text-sm font-semibold text-right">
                 <div class="bg-primary/30 rounded-xl py-2 px-4 inline-block ml-auto">

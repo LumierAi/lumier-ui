@@ -2,18 +2,12 @@
 const props = defineProps<{
   content: string
 }>()
-
-const parsedContent = ref<string>(useMarkdown(props.content))
-
-watch(() => props.content, (newContent) => {
-  // TODO: remove this console.log
-  console.log('props.content', props.content)
-  parsedContent.value = useMarkdown(newContent)
-})
 </script>
 
 <template>
-  <div class="prose prose-sm dark:prose-invert mdc" v-html="parsedContent" />
+  <div class="prose prose-sm dark:prose-invert mdc">
+    <MDC :value="content" />
+  </div>
 </template>
 
 <style scoped lang="scss">

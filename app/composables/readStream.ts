@@ -26,22 +26,6 @@ export default async function readStream<T = string>(stream: ReadableStream, inp
       if (typeof input === 'function') {
         input(chunk)
       }
-      else {
-        if (options.parseMarkdown) {
-          try {
-            const parsedMarkdown = await useMarkdown(wholeText)
-            console.log('Parsed markdown:', parsedMarkdown)
-            input.value = parsedMarkdown || wholeText
-          }
-          catch (error) {
-            console.error('Error parsing markdown:', error)
-            input.value = wholeText
-          }
-        }
-        else {
-          input.value = wholeText
-        }
-      }
       if (typeof input === 'object' && 'value' in input) {
         console.log('Updated input value:', input.value)
       }

@@ -1,4 +1,4 @@
-import { i18nMessages } from './i18n'
+import { i18nMessages } from '.'
 
 export default defineI18nConfig(() => ({
   legacy: false,

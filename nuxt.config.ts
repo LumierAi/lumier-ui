@@ -12,6 +12,7 @@ export default defineNuxtConfig({
     'nuxt-typed-router',
     '@nuxt/icon',
     '@nuxtjs/i18n',
+    '@nuxtjs/mdc',
   ],
   $meta: {
     name: 'lumier-ui',
