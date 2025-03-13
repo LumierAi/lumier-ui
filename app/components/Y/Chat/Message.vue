@@ -12,7 +12,7 @@ const availableToolInvocations = computed(() => {
 
 <template>
   <Card
-    class="chat-message my-2"
+    class="chat-message my-2 shadow-none bg-white dark:bg-gray-800 rounded-3xl"
     :class="[
       message.role === 'user' ? 'user-message' : 'assistant-message',
       message.role === 'user' ? 'bg-primary' : 'bg-surface',
@@ -20,7 +20,7 @@ const availableToolInvocations = computed(() => {
   >
     <template #content>
       <div class="flex items-start gap-3">
-        <div class="flex-shrink-0 w-8 h-8 flex items-center justify-center rounded-full bg-gray-100 dark:bg-gray-800">
+        <div class="flex-shrink-0 w-8 h-8 flex items-center justify-center">
           <Icon
             v-if="message.role === 'user'"
             name="tabler:user"
@@ -32,7 +32,7 @@ const availableToolInvocations = computed(() => {
             class="w-5 h-5"
           />
         </div>
-        <div class="flex-1">
+        <div class="flex-1 mt-[6px] mb-[4px]">
           <div v-if="(availableToolInvocations?.length ?? 0) > 0">
             <div v-for="toolInvocation in availableToolInvocations" :key="toolInvocation.toolCallId">
               <div v-if="toolInvocation.toolName === 'tavily_web_search'">
@@ -75,5 +75,9 @@ const availableToolInvocations = computed(() => {
     opacity: 1;
     transform: translateY(0);
   }
+}
+
+:deep(.p-card-body) {
+  padding: 12px;
 }
 </style>

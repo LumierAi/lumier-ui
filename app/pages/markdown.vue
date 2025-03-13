@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import type { Message } from 'ai'
+
 const content = ref(`## Możliwości Markdown:
 
 Markdown to lekki język znaczników, który pozwala na formatowanie tekstu za pomocą prostej składni. Jest szeroko stosowany do tworzenia treści w Internecie, w tym dokumentacji, plików README, komentarzy na platformach takich jak GitHub czy Reddit, a także prostych stron internetowych.
@@ -205,10 +207,22 @@ Oto przegląd możliwości Markdown z przykładami użycia w składni Markdown o
 **Podsumowanie możliwości:**
 
 Markdown oferuje szeroki zakres opcji formatowania tekstu, od podstawowych nagłówków i stylów tekstu, po bardziej zaawansowane elementy, takie jak listy, linki, obrazy, bloki kodu i tabele. Jego prostota i czytelność sprawiają, że jest popularnym wyborem do tworzenia treści online. Warto pamiętać, że niektóre implementacje Markdowna mogą oferować dodatkowe rozszerzenia składni.`)
+
+const message = ref<Message>({
+  role: 'assistant',
+  content: content.value,
+  id: '1',
+})
+const userMessage = ref<Message>({
+  role: 'user',
+  content: 'Podaj miasto',
+  id: '2',
+})
 </script>
 
 <template>
-  <div>
-    <YMarkdown :content="content" />
+  <div class="p-8">
+      <YChatMessage :message="userMessage" />
+    <YChatMessage :message="message" />
   </div>
 </template>
