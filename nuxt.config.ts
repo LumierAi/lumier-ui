@@ -16,6 +16,7 @@ export default defineNuxtConfig({
   $meta: {
     name: 'lumier-ui',
   },
+  ssr: false,
   imports: {
     dirs: ['composables', 'utils', 'types/**'],
   },
