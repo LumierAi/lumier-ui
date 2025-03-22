@@ -75,6 +75,7 @@ export default defineNuxtConfig({
       useCookie: true,
       cookieKey: 'i18n_cookie',
     },
+    vueI18n: './i18n.config.ts',
   },
   icon: {
     provider: 'server',
