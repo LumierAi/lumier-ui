@@ -71,6 +71,21 @@ const chatConfig = ref({
   issues_search: false,
 })
 const knowledgeMode = ref('Plik')
+
+// Dane dla YRadio i YCheckbox
+const radioValue = ref('option2')
+const radioOptions = ref([
+  { value: 'option1', label: 'Opcja 1' },
+  { value: 'option2', label: 'Opcja 2' },
+  { value: 'option3', label: 'Opcja 3' },
+])
+
+const checkboxValue = ref(['option1'])
+const checkboxOptions = ref([
+  { value: 'option1', label: 'Wybór 1' },
+  { value: 'option2', label: 'Wybór 2' },
+  { value: 'option3', label: 'Wybór 3' },
+])
 </script>
 
 <template>
@@ -94,10 +109,24 @@ const knowledgeMode = ref('Plik')
       <YTextarea v-model="prompt" :rows="1"  placeholder="sad"/>
       <YChatInput v-model="prompt" v-model:config="chatConfig" :handle-submit="() => {}" :disabled-additional-options="false" />
       <YAnswerExplanation :result="answerResult" :current-question="currentAnswer" @continue="log" />
+      
+      <!-- Przykład użycia YRadio -->
+      <div class="mt-8">
+        <h3 class="text-xl mb-4">Przykład Radio</h3>
+        <YRadio v-model="radioValue" :items="radioOptions" />
+        <p class="mt-2">Wybrana wartość: {{ radioValue }}</p>
+      </div>
+      
+      <!-- Przykład użycia YCheckbox -->
+      <div class="mt-8">
+        <h3 class="text-xl mb-4">Przykład Checkbox</h3>
+        <YCheckbox inline v-model="checkboxValue" :items="checkboxOptions" />
+        <p class="mt-2">Wybrane wartości: {{ checkboxValue }}</p>
+      </div>
     </YCard>
   </div>
 </template>
 
 <style scoped lang="scss">
 
-</style>
+</style> 
