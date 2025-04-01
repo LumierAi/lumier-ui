@@ -115,6 +115,7 @@ export default defineNuxtConfig({
         'AccordionContent',
         'AccordionPanel',
         'Accordion',
+        'ToggleSwitch',
         'Slider',
         'Dialog',
         'InputNumber',

@@ -741,23 +741,23 @@ export const JasnePreset = definePreset(Aura, {
       colorScheme: {
         light: {
           root: {
-            background: 'transparent',
-            checkedBackground: '{secondary}',
-            hoverBackground: '{surface.100}',
-            borderColor: 'transparent',
+            background: '{surface.50}',
+            checkedBackground: '{surface.50}',
+            hoverBackground: '{surface.50}',
+            borderColor: '{background.2}',
             color: '{secondary}',
-            hoverColor: '{surface.100}',
+            hoverColor: '{secondary}',
             checkedColor: '{secondary}',
-            checkedBorderColor: 'transparent',
+            checkedBorderColor: '{background.2}'
           },
           content: {
-            checkedBackground: '{background.2}',
+            checkedBackground: '{background.3}'
           },
           icon: {
             color: '{secondary}',
-            hoverColor: '{surface.100}',
-            checkedColor: '{secondary}',
-          },
+            hoverColor: '{secondary}',
+            checkedColor: '{secondary}'
+          }
         },
       },
     },
