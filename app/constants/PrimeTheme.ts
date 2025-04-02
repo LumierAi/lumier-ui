@@ -751,7 +751,7 @@ export const JasnePreset = definePreset(Aura, {
             checkedBorderColor: '{background.2}'
           },
           content: {
-            checkedBackground: '{background.3}'
+            checkedBackground: '{surface.100}'
           },
           icon: {
             color: '{secondary}',

@@ -2,3 +2,8 @@ body {
   background-color: var(--p-surface-50);
   color: var(--p-secondary);
 }
+
+:root {
+  --p-togglebutton-content-border-radius: 0.5rem;
+  --p-togglebutton-padding: 0.25rem 0.25rem;
+}
