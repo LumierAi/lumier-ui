@@ -1,8 +1,6 @@
 import type { Config } from 'tailwindcss'
 
 export default <Partial<Config>>{
-  safelist: ['bg-success', 'bg-danger'],
-  darkMode: 'class',
   theme: {
     extend: {
       colors: {
@@ -10,9 +8,10 @@ export default <Partial<Config>>{
         primary600: '#ffb63c',
         transparent: 'transparent',
         white: '#FFFFFF',
-        success: '#28841C',
-        error: '#F20000',
-        info: '#3275FC',
+        success: '#28b41c',
+        secondary: '#312319',
+        secondary2: '#312319CC',
+        error: '#e7080d',
         danger: '#e7080d',
         surface: '#f9f8f6',
         surface400: '#af9e88',
@@ -20,7 +19,7 @@ export default <Partial<Config>>{
         background: {
           1: '#F9FAFC',
           2: '#F3F1ED',
-          3: '#E7EADC',
+          3: '#E7E4DC',
           4: '#D1CCBE',
         },
       },
@@ -29,4 +28,12 @@ export default <Partial<Config>>{
       sans: ['Nunito Sans', 'Roboto Slab'],
     },
   },
+  safelist: [
+    '!bg-success',
+    '!bg-error',
+    'bg-error',
+    'bg-danger',
+    'bg-success',
+    'text-danger',
+  ],
 }

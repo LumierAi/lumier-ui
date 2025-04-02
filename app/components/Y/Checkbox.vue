@@ -18,7 +18,7 @@ const model = defineModel<SelectModel>()
 const uniqueId = `checkbox-${Math.floor(Math.random() * 10000)}`
 const itemIds = computed(() => {
   if (!props.items) return {}
-  
+
   return props.items.reduce((acc, _, index) => {
     acc[index] = `${uniqueId}-${index}`
     return acc
@@ -42,7 +42,7 @@ function isActive(value: TValue): boolean {
       <div
         v-for="(item, index) in items"
         :key="index"
-        :class="`relative p-4 mb-4 last:mb-0 rounded-3xl bg-white border-2 border-transparent ${isActive(item.value) ? ' !border-primary active--shadow' : ''}`"
+        :class="`relative p-4 mb-4 last:mb-0 rounded-3xl border-2 border-background-4 ${isActive(item.value) ? ' !border-primary active--shadow' : ''}`"
       >
         <Checkbox
           v-model="model"
@@ -52,11 +52,11 @@ function isActive(value: TValue): boolean {
           :disabled="disabled"
           :pt="{
             box: ({ context }: CheckboxPassThroughMethodOptions) => ({
-              class: context.checked ? 'bg-primary' : '',
+              class: context.checked ? 'bg-primary' : 'text-background-4',
             }),
           }"
         />
-        <label :for="itemIds[index]" class="ml-2 mb-0 cursor-pointer text-sm absolute top-0 left-0 pl-12 pr-4 flex items-center h-full w-full">{{ item.label }}</label>
+        <label :for="itemIds[index]" :class="`ml-2 mb-0 cursor-pointer text-sm absolute top-0 left-0 pl-12 pr-4 flex items-center h-full w-full ${!isActive(item.value) ? 'text-secondary2' : ''}`">{{ item.label }}</label>
       </div>
     </div>
   </YField>
@@ -74,4 +74,4 @@ function isActive(value: TValue): boolean {
   line-height: 1.5rem;
   font-weight: 700;
 }
-</style> 
+</style>
