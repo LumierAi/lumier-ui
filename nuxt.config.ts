@@ -99,6 +99,7 @@ export default defineNuxtConfig({
         'Toast',
         'Image',
         'ToggleSwitch',
+        'Form',
         'InputText',
         'Divider',
         'Menu',
