@@ -1,7 +1,7 @@
 <script setup lang="ts">
 interface Props {
   prefix: string
-  color?: 'success' | 'danger' | null
+  color?: 'success' | 'danger' | `#${string}` | null
 }
 
 defineProps<Props>()
@@ -10,7 +10,7 @@ defineProps<Props>()
 <template>
   <div
     class="flex items-center justify-center size-8 rounded-[14px]"
-    :class="color ? `bg-${color}` : 'bg-gray-100'"
+    :class="color?.startsWith('#') ? `bg-[${color}]` : color ? `bg-${color}` : 'bg-gray-100'"
   >
     <span
       class="headline-6 flex items-center justify-center"
