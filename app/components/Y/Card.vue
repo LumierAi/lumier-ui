@@ -41,7 +41,7 @@ onUnmounted(() => {
 <template>
   <div class="y-card relative rounded-3xl p-6 bg-white dark:bg-gray-800 overflow-hidden space-y-2" :class="[{ 'opacity-50': loading, '!border-none': props.borderless }, props.class]">
     <template v-if="slots.title || props.title || slots.menu">
-      <div class="dark:border-gray-700 flex justify-between">
+      <div class="dark:border-gray-700 flex justify-between headline-6">
         <slot v-if="slots.title" name="title" />
         <h2 v-else-if="props.title" class="headline-6">
           {{ props.title }}
