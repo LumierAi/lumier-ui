@@ -19,7 +19,7 @@ const availableToolInvocations = computed(() => {
     ]"
   >
     <template #content>
-      <div class="flex items-start gap-3">
+      <div class="flex items-start gap-3" :class="{ 'flex-row-reverse': message.role === 'user' }">
         <div class="flex-shrink-0 w-8 h-8 flex items-center justify-center">
           <Icon
             v-if="message.role === 'user'"
