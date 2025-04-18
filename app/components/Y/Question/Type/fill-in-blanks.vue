@@ -76,8 +76,11 @@ if (answerLength > 0) { // Only run if there is an answer to fill
     numPrefilled = Math.floor(answerLength * 0.5)
   } else if (props.question.difficulty === 'medium') {
     console.log('medium')
-    numPrefilled = Math.floor(answerLength * 0.25)
-  } // Hard, very_hard, or other gets 0
+    numPrefilled = Math.floor(answerLength * 0.3)
+  } else if (props.question.difficulty === 'hard') {
+    console.log('hard')
+    numPrefilled = Math.floor(answerLength * 0.15)
+  } // Very_hard or other gets 0
 
   // 3. Select indices to pre-fill
   const indices = Array.from({ length: answerLength }, (_, i) => i)
