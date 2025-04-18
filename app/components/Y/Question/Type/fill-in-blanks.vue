@@ -79,7 +79,7 @@ if (answerLength > 0) { // Only run if there is an answer to fill
     numPrefilled = Math.floor(answerLength * 0.3)
   } else if (props.question.difficulty === 'hard') {
     console.log('hard')
-    numPrefilled = Math.floor(answerLength * 0.15)
+    numPrefilled = Math.ceil(answerLength * 0.15)
   } // Very_hard or other gets 0
 
   // 3. Select indices to pre-fill
