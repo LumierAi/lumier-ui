@@ -29,22 +29,22 @@ const closedQuestion = reactive<CourseQuestion<string>>({
 
 const fillInBlanksQuestion = reactive<CourseQuestion<string>>({
   userAnswer: null,
-  id: 'b60e27a5-f9db-4cac-b005-cfe6b9325ed6',
-  createdAt: new Date('2025-02-25T16:50:55.359Z'),
+  id: '0be1df24-0f0c-4802-8520-23863dc17949',
+  createdAt: new Date('2025-04-18T19:39:23.396Z'),
   type: 'fill_in_blanks',
   body: {
     type: 'fill_in_blanks',
-    question: 'W chemii, litera __BLANK__ oznacza masę atomową, a g oznacza masę atomu.',
-    answer: 'W chemii, litera u oznacza masę atomową, a g oznacza masę atomu.',
-    difficulty: 'hard',
-    schemaId: '11e3c74b-920c-4e1c-8426-6bb83d46381f',
+    question: 'Wzrost monopodialny oznacza, że storczyk rozwija jedną główną __BLANK__.',
+    answer: 'Wzrost monopodialny oznacza, że storczyk rozwija jedną główną łodygę.',
+    difficulty: 'medium',
+    schemaId: '01964a67-80b2-7cc4-8ac3-df5ac71e0dd7',
   },
-  moduleId: 'd439249c-0a37-483a-9368-748e2a892672',
-  schemaId: '11e3c74b-920c-4e1c-8426-6bb83d46381f',
+  moduleId: '5f6a8f78-423b-44db-b9a1-18ccf8273fcc',
+  schemaId: '01964a67-80b2-7cc4-8ac3-df5ac71e0dd7',
   userId: '5a86b106-a909-4ef9-8ba6-ba2580945d7f',
-  position: 1,
-  lessonId: 'b9560f01-3a82-45bc-8269-b7444d6e78ad',
-  difficulty: 'hard',
+  position: 3,
+  lessonId: 'afb1cac2-1884-4f82-ac99-cfdfc712faeb',
+  difficulty: 'medium',
 })
 
 const openQuestion = reactive<CourseQuestion<string>>({
