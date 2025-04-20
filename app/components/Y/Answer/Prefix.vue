@@ -16,7 +16,7 @@ const props = withDefaults(defineProps<Props>(), {
     class="flex items-center justify-center"
     :style="color?.startsWith('#') ? { backgroundColor: color } : {}"
     :class="[
-      size === 'small' ? 'size-6 rounded-[8px]' : size === 'medium' ? 'size-8 rounded-[14px]' : 'size-10 rounded-[22px]',
+      size === 'small' ? 'size-6 min-w-6 rounded-[8px]' : size === 'medium' ? 'size-8 min-w-8 rounded-[14px]' : 'size-10 min-w-10 rounded-[22px]',
       color?.startsWith('#') ? '' : color ? `bg-${color}` : 'bg-gray-100'
       ]"
   >
