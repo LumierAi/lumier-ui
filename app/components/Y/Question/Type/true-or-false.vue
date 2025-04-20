@@ -27,14 +27,16 @@ function setAnswer(value: boolean) {
     <div class="flex gap-4 mt-6 mx-auto justify-center">
       <YBtn
         block
-        :loading="isSubmittingAnswer"
+        :loading="isSubmittingAnswer && userAnswer === false"
+        :disabled="isSubmittingAnswer"
         :label="$ut('question.trueOrFalse.false')"
         color="danger"
         @click="setAnswer(false)"
       />
       <YBtn
         block
-        :loading="isSubmittingAnswer"
+        :loading="isSubmittingAnswer && userAnswer === true"
+        :disabled="isSubmittingAnswer"
         :label="$ut('question.trueOrFalse.true')"
         color="success"
         @click="setAnswer(true)"
