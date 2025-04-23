@@ -334,4 +334,8 @@ function getPrefix(answer: string | boolean, isCorrect: boolean): string {
 .animate-bounce {
   animation: bounce 1s infinite;
 }
+
+.no-scrollbar {
+  scrollbar-width: none;
+}
 </style>
