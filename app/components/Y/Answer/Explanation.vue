@@ -199,7 +199,7 @@ function getPrefix(answer: string | boolean, isCorrect: boolean): string {
       <div class="flex flex-col transition-all duration-300" :class="{ 'h-full': chatMode }">
         <div v-show="chatMode" class="transition-all duration-300 flex-1 w-full pb-4">
           <div class="overflow-y-auto space-y-4">
-            <div v-for="message in messages" :key="message.id">
+            <div v-for="(message, index) in messages" :key="message.id + index">
               <div v-if="message.role === 'assistant'" class="text-sm">
                 <YMarkdown :content="message.content" />
               </div>
