@@ -98,8 +98,8 @@ function domainNameFromUrl(url: string) {
                 :style="{ transitionDelay: `${0.2 * index}s` }"
                 class="group block h-full"
               >
-                <div class="bg-gray-200/70 dark:bg-gray-900 hover:bg-gray-300 hover:dark:bg-gray-800 flex flex-col justify-between h-full p-3 text-xs rounded-lg">
-                  <div class="text-gray-800 dark:text-gray-200">
+                <div class="bg-gray-200/70 hover:bg-gray-300 flex flex-col justify-between h-full p-3 text-xs rounded-lg">
+                  <div class="text-gray-800">
                     <span class="font-medium line-clamp-2">{{ searchResult.title }}</span>
                   </div>
                   <div class="flex items-center space-x-1 text-fg-soft/90">
@@ -115,7 +115,7 @@ function domainNameFromUrl(url: string) {
           </template>
           <div
             v-if="hasMoreResults"
-            class="h-24 flex items-center justify-center cursor-pointer bg-gray-200/70 dark:bg-gray-900 hover:bg-gray-300 rounded-lg px-4 text-center"
+            class="h-24 flex items-center justify-center cursor-pointer bg-gray-200/70 hover:bg-gray-300 rounded-lg px-4 text-center"
             @click="showMoreResults"
           >
             <span>View {{ remainingResults }} more</span>
@@ -125,7 +125,7 @@ function domainNameFromUrl(url: string) {
         <!-- Loading skeletons -->
         <template v-else>
           <div v-for="i in 4" :key="i" class="h-24">
-            <div class="bg-gray-200/70 dark:bg-gray-900 flex flex-col justify-between h-full p-3 rounded-lg">
+            <div class="bg-gray-200/70 flex flex-col justify-between h-full p-3 rounded-lg">
               <div class="space-y-2">
                 <Skeleton height="0.75rem" width="100%" />
                 <Skeleton height="0.75rem" width="75%" />
@@ -140,7 +140,7 @@ function domainNameFromUrl(url: string) {
       </div>
     </div>
 
-    <div v-if="result?.response_time && !isLoading" class="mt-4 text-xs text-gray-600 dark:text-gray-400">
+    <div v-if="result?.response_time && !isLoading" class="mt-4 text-xs text-gray-600">
       <strong>Response Time:</strong> {{ result.response_time.toFixed(2) }} seconds
     </div>
   </div>

@@ -12,7 +12,7 @@ const availableToolInvocations = computed(() => {
 
 <template>
   <Card
-    class="chat-message my-2 shadow-none bg-white dark:bg-gray-800 rounded-3xl"
+    class="chat-message my-2 shadow-none bg-white rounded-3xl"
     :class="[
       message.role === 'user' ? 'user-message' : 'assistant-message',
       message.role === 'user' ? 'bg-primary' : 'bg-surface',

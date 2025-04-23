@@ -40,9 +40,9 @@ onUnmounted(() => {
 </script>
 
 <template>
-  <div class="y-card relative rounded-3xl p-6 bg-white dark:bg-gray-800 overflow-hidden space-y-2" :class="[{ 'opacity-50': loading, '!border-none': props.borderless }, props.class]">
+  <div class="y-card relative rounded-3xl p-6 bg-white overflow-hidden space-y-2" :class="[{ 'opacity-50': loading, '!border-none': props.borderless }, props.class]">
     <template v-if="slots.title || props.title || slots.menu">
-      <div class="dark:border-gray-700 flex justify-between headline-6">
+      <div class="flex justify-between headline-6">
         <slot v-if="slots.title" name="title" />
         <h2 v-else-if="props.title" class="headline-6">
           {{ props.title }}
@@ -59,7 +59,7 @@ onUnmounted(() => {
           />
           <Popover
             ref="menuRef"
-            class="bg-white mt-2 dark:bg-gray-800"
+            class="bg-white mt-2"
             @click.stop
           >
             <slot name="menu" />
@@ -72,7 +72,7 @@ onUnmounted(() => {
       <slot />
     </div>
     <template v-if="slots.actions">
-      <div class="dark:border-gray-700 flex justify-end space-x-2">
+      <div class="flex justify-end space-x-2">
         <slot name="actions" />
       </div>
     </template>

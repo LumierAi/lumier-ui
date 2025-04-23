@@ -5,7 +5,7 @@ const props = defineProps<{
 </script>
 
 <template>
-  <div class="prose prose-sm dark:prose-invert">
+  <div class="prose prose-sm">
     <MDC :value="content" class="mdc" />
   </div>
 </template>
