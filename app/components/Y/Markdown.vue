@@ -2,11 +2,14 @@
 const props = defineProps<{
   content: string
 }>()
+
+const key = useId()
+
 </script>
 
 <template>
   <div class="prose prose-sm">
-    <MDC :value="content" class="mdc" />
+    <MDC :value="content" class="mdc" :cache-key="key" />
   </div>
 </template>
 
