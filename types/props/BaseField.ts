@@ -1,6 +1,7 @@
 import type { BaseRulesProps } from '../ValidationRules'
 
 export type BaseFieldProps = {
+  id?: string
   label?: string
   class?: string
   disabled?: boolean

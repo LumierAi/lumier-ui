@@ -5,6 +5,7 @@ import { LocaleDictionary } from './i18n/locales'
 
 export default defineNuxtConfig({
   modules: [
+    '@nuxtjs/color-mode',
     '@nuxtjs/tailwindcss',
     '@nuxt/fonts',
     '@nuxt/eslint',
@@ -65,6 +66,10 @@ export default defineNuxtConfig({
       styles: ['normal'],
       subsets: ['latin-ext', 'latin'],
     },
+  },
+
+  colorMode: {
+    preference: 'light',
   },
 
   i18n: {

@@ -162,7 +162,12 @@ function getPrefix(answer: string | boolean, isCorrect: boolean): string {
       </div>
       <div v-if="!result.isCorrect && !chatMode" class="space-y-2">
         <p class="line-through body-2">
-          {{ currentQuestion.userAnswer }}
+          <span v-if="currentQuestion.type === 'true_or_false'">
+            {{ currentQuestion.userAnswer === true ? 'Prawda' : 'Fałsz' }}
+          </span>
+          <span v-else>
+            {{ currentQuestion.userAnswer }}
+          </span>
         </p>
         <Icon name="tabler:arrow-down" class="text-gray-500 size-7" />
         <div class="flex items-center gap-3">
@@ -174,7 +179,12 @@ function getPrefix(answer: string | boolean, isCorrect: boolean): string {
           </span>
         </div>
         <p class="body-2">
-          {{ result.answer }}
+          <span v-if="currentQuestion.type === 'true_or_false'">
+            {{ result.answer === 'true' || (result.answer as unknown as boolean) === true ? 'Prawda' : 'Fałsz' }}
+          </span>
+          <span v-else>
+            {{ result.answer }}
+          </span>
         </p>
       </div>
     </div>
