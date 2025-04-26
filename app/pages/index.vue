@@ -98,7 +98,11 @@ const checkboxOptions = ref([
           label="Chat"
         />
       </template>
-      <YBtn text :click="a" label="Zaloguj" block />
+      <div class="gap-2">
+        <YBtn text :click="a" label="Zaloguj" />
+        <YBtn text :click="a" icon="tabler:home" />
+        <YBtn :click="a" icon="tabler:home" />
+      </div>
       <Icon name="tabler:home" />
       <div class="w-1/2">
         <YQuestionProgress :lesson />

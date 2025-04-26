@@ -69,16 +69,20 @@ async function onClick(e: Event) {
     emits('click', e)
   }
 }
+const computedSize = computed(() => {
+  return props.size === 'small' ? '40px' : '48px'
+})
 </script>
 
 <template>
+  {{fullIcon}}
   <Button
     :as="to ? 'router-link' : undefined"
     :to="to"
     :size="size || 'large'"
     :label="label"
     :variant="text ? 'text' : undefined"
-    :rounded="rounded || fullIcon"
+    :rounded="rounded"
     :severity="computedColor"
     :disabled="computedLoading || computedDisable"
     :pt="{
@@ -93,8 +97,8 @@ async function onClick(e: Event) {
           },
         ],
         style: {
-          'height': height || fullIcon ? 'initial' : 0 || (size === 'small' ? '40px' : '48px'),
-          'min-width': fullIcon ? 'initial' : 0 || (size === 'small' ? '40px' : '48px'),
+          'height': height || fullIcon ? text ? 'initial' : computedSize : 0 || computedSize,
+          'min-width': fullIcon ? text ? 'initial' : computedSize : 0 || computedSize,
         },
       },
       icon: {
