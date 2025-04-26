@@ -111,7 +111,11 @@ const checkboxOptions = ref([
         asd
       </button>
       <YTextarea v-model="prompt" :rows="1"  placeholder="sad"/>
-      <YChatInput v-model="prompt" v-model:config="chatConfig" :handle-submit="() => {}" :disabled-additional-options="false" />
+      <YChatInput 
+        :loading="true"
+        v-model="prompt"
+        v-model:config="chatConfig" 
+        :handle-submit="() => {}" :disabled-additional-options="false" />
       <YAnswerExplanation :result="answerResult" :current-question="currentAnswer" @continue="log" />
 
       <!-- Przykład użycia YRadio -->
