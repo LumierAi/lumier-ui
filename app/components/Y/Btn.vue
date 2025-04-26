@@ -75,7 +75,6 @@ const computedSize = computed(() => {
 </script>
 
 <template>
-  {{fullIcon}}
   <Button
     :as="to ? 'router-link' : undefined"
     :to="to"
