@@ -23,7 +23,7 @@ function handleKeyDown(e: KeyboardEvent): void {
   }
   e.preventDefault()
   e.stopPropagation()
-  props.handleSubmit(e)
+  props.handleSubmit()
 }
 
 </script>
