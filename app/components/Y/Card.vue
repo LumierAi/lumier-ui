@@ -47,7 +47,7 @@ onUnmounted(() => {
         <h2 v-else-if="props.title" class="headline-6">
           {{ props.title }}
         </h2>
-        <div v-if="slots.menu || slots.menuActions" class="flex items-center gap-2 flex-nowrap">
+        <div v-if="slots.menu || slots.menuActions" class="flex items-start gap-2 flex-nowrap">
           <slot name="menuActions" />
           <YBtn
             class="relative"
