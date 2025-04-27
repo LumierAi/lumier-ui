@@ -74,7 +74,7 @@ function handleKeyDown(e: KeyboardEvent): void {
           <slot name="actions" />
         </div>
       </div>
-      <div class="absolute bottom-3.5 w-full px-2">
+      <div class="absolute bottom-3.5 w-full px-2" v-if="loading">
         <ProgressBar mode="indeterminate" style="height: 2.5px"></ProgressBar>
       </div>
 
