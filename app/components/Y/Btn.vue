@@ -100,6 +100,7 @@ const computedSize = computed(() => {
         style: {
           'height': height || fullIcon ? text ? '24px' : computedSize : 0 || computedSize,
           'min-width': fullIcon ? text ? '24px' : computedSize : 0 || computedSize,
+          'width': fullIcon ? computedSize : undefined,
         },
       },
       icon: {
