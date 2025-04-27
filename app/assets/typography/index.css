@@ -48,6 +48,12 @@ body {
     font-weight: 400;
     line-height: 1.5;
   }
+  .body-1-bold {
+    font-family: 'Nunito Sans', sans-serif;
+    font-size: 1rem;
+    font-weight: 700;
+    line-height: 1.5;
+  }
   small,
   .body-2 {
     font-family: 'Nunito Sans', sans-serif;
