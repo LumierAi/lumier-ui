@@ -2,7 +2,7 @@
 import type { RouteLocationRaw } from 'vue-router'
 
 const props = withDefaults(defineProps<{
-  size?: 'large' | 'small'
+  size?: 'large' | 'small' | `${string}px`
   height?: `${string}px`
   color?: 'primary' | 'secondary' | 'contrast' | 'danger' | 'success' | 'warning'
   label?: string
@@ -70,7 +70,9 @@ async function onClick(e: Event) {
   }
 }
 const computedSize = computed(() => {
-  return props.size === 'small' ? '40px' : '48px'
+  return props.size === 'small' 
+  ? '40px' : props.size === 'large'
+  ? '48px' : props.size
 })
 </script>
 
