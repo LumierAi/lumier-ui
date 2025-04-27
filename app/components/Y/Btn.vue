@@ -122,7 +122,7 @@ const computedSize = computed(() => {
     />
 
     <!-- Tekst przycisku -->
-    <span v-if="label">{{ label }}</span>
+    <span v-if="label" class="body-1-bold">{{ label }}</span>
 
     <!-- Ikona na końcu przycisku -->
     <div class="flex items-center">
