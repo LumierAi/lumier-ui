@@ -119,7 +119,7 @@ const computedSize = computed(() => {
       v-if="props.prependIcon"
       :name="props.prependIcon"
       class="size-5 min-w-5"
-      :class="{ 'mr-2': props.label }"
+      :class="{ 'mr-2': props.label && !iconOnMobile, 'mr-0 sm:mr-2': props.label && iconOnMobile }"
     />
 
     <!-- Tekst przycisku -->
