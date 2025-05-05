@@ -91,7 +91,7 @@ const checkboxOptions = ref([
 <template>
   <div>
     <SelectButton v-model="knowledgeMode" size="large" :options="['Plik', 'Tekst']" />
-    <YBtn secondary label="Test" />
+    <YBtn secondary label="Testtt" icon="tabler:home"/>
     <YCard class="m-4" title="Playground">
       <template #menu>
         <YBtn

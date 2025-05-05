@@ -18,6 +18,7 @@ const props = withDefaults(defineProps<{
   loading?: boolean
   glow?: boolean
   rounded?: boolean
+  iconOnMobile?: boolean
   // eslint-disable-next-line ts/no-unsafe-function-type
   click?: Function
   class?: string
@@ -122,7 +123,7 @@ const computedSize = computed(() => {
     />
 
     <!-- Tekst przycisku -->
-    <span v-if="label" class="body-1-bold">{{ label }}</span>
+    <span v-if="label" class="body-1-bold" :class="{ 'hidden sm:inline': iconOnMobile }">{{ label }}</span>
 
     <!-- Ikona na końcu przycisku -->
     <div class="flex items-center">
@@ -137,7 +138,7 @@ const computedSize = computed(() => {
         v-else-if="icon"
         :name="icon"
         class="size-5 min-w-5"
-        :class="{ 'ml-2': label }"
+        :class="{ 'ml-2': label && !iconOnMobile, 'ml-0 sm:ml-2': label && iconOnMobile }"
       />
       <!-- Ikona ładowania dla przycisku z tekstem -->
       <div
