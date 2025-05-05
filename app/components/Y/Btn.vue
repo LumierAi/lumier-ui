@@ -94,7 +94,7 @@ const computedSize = computed(() => {
           {
             '!px-[12.5px]': label && !text,
             '!p-0': fullIcon,
-            'text-[#312319]': secondary,
+            'text-secondary bg-background-3': secondary,
           },
         ],
         style: {
