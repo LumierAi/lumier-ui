@@ -76,10 +76,11 @@ export default defineNuxtConfig({
     locales: LocaleDictionary,
     defaultLocale: 'pl',
     strategy: 'no_prefix',
-    detectBrowserLanguage: {
+/*     detectBrowserLanguage: {
       useCookie: true,
       cookieKey: 'i18n_cookie',
-    },
+      cookieDomain: process.env.MAIN_DOMAIN
+    }, */
     vueI18n: './i18n.config.ts',
   },
   icon: {
